@@ -81,7 +81,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    PPDB ONLINE 
+                    <br>RA QURROTA A'YUN
                 </div>
 
                 <div class="links">
