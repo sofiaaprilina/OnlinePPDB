@@ -56,6 +56,7 @@ class PendaftarController extends Controller
         $pendaftar->jenis_kelamin = $request->jenis_kelamin;
         $pendaftar->alamat = $request->alamat;
         $pendaftar->no_telp = $request->no_telp;
+        $pendaftar->email = $request->email;
         $pendaftar->sekolah = $request->sekolah;
         $pendaftar->tgl_daftar = $request->tgl_daftar;
         if($request->file('bayar')){
@@ -121,6 +122,7 @@ class PendaftarController extends Controller
         $pendaftar->jenis_kelamin = $request->jenis_kelamin;
         $pendaftar->alamat = $request->alamat;
         $pendaftar->no_telp = $request->no_telp;
+        $pendaftar->email = $request->email;
         $pendaftar->sekolah = $request->sekolah;
         $pendaftar->tgl_daftar = $request->tgl_daftar;
 

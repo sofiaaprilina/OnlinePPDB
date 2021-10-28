@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
-@section('title', 'Pendaftar')
+@section('title', ' Akun Pendaftar')
 
  @section('content')
      <div class="row">
          <div class="col-lg-12 margin-tb">
              <div class="pull-left">
-                 <h2>Data Pendaftar</h2>
+                 <h2>Data Akun Pendaftar</h2>
              </div>
              <div class="pull-right">
-                 <a class="btn btn-success" href="{{ route('pendaftar.create') }}"> Tambah Pendaftar</a>
+                 <a class="btn btn-success" href="{{ route('akun.create') }}"> Tambah Akun Pendaftar</a>
                  <div class="pull-right" style="float: right">
                     <form action="/cari" method="GET"
                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -38,29 +38,22 @@
      <table class="table table-bordered">
          <tr>
              <th>Id</th>
-             <th>Nama Siswa</th>
-             <th>Nama Ortu</th>
-             <th>Tanggal Daftar</th>
-             <th>Email</th>
-             <th>No. Telp</th>
-             <th>Bukti Pembayaran</th>
+             <th>Nama</th>
+             <th>Username</th>
+             <th>Password</th>
              <th >Action</th>
          </tr>
-         @foreach ($pendaftars as $pendaftar)
+         @foreach ($users as $user)
          <tr>
-             <td>{{ $pendaftar->id }}</td>
-             <td>{{ $pendaftar->siswa }}</td>
-             <td>{{ $pendaftar->ortu }}</td>
-             <td>{{ $pendaftar->tgl_daftar }}</td>
-             <td>{{ $pendaftar->email }}</td>
-             <td>{{ $pendaftar->no_telp }}</td>
-             <td><img width="150px" src="{{asset('storage/'.$pendaftar->bayar)}}"></td>
+             <td>{{ $user->id }}</td>
+             <td>{{ $user->name }}</td>
+             <td>{{ $user->username }}</td>
+             <td>{{ $user->password }}</td>
              <td width="250px">
-                <form action="{{ route('pendaftar.destroy',$pendaftar->id) }}" method="POST">
-                    <a class="btn btn-warning" href="#">Konfirmasi</a><br>
-                    <a class="btn btn-info" href="{{ route('pendaftar.show',$pendaftar->id) }}"><i class="fas fa-clipboard-list text-gray-100"></i></a>
+                <form action="{{ route('akun.destroy',$user->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('akun.show',$user->id) }}"><i class="fas fa-clipboard-list text-gray-100"></i></a>
     
-                    <a class="btn btn-primary" href="{{ route('pendaftar.edit',$pendaftar->id) }}"><i class="fas fa-edit text-gray-100"></a>
+                    <a class="btn btn-primary" href="{{ route('akun.edit',$user->id) }}"><i class="fas fa-edit text-gray-100"></a>
    
                     @csrf
                     @method('DELETE')
@@ -72,6 +65,6 @@
         @endforeach
      </table>
 
-    {{ $pendaftars->links() }}
+    {{ $users->links() }}
 
  @endsection
