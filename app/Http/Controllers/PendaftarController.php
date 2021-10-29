@@ -101,7 +101,7 @@ class PendaftarController extends Controller
      * @param  \App\Pendaftar  $pendaftar
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request, Pendaftar $pendaftar)
+    public function update($id, Request $request)
     {
         $pendaftar = \App\Pendaftar::find($id);
         $request->validate([
@@ -126,7 +126,6 @@ class PendaftarController extends Controller
         $pendaftar->sekolah = $request->sekolah;
         $pendaftar->tgl_daftar = $request->tgl_daftar;
 
-        $pendaftar->update($request->all());
         if($pendaftar->bayar && file_exists(storage_path('app/public/' . $pendaftar->bayar)))
         {
             \Storage::delete('public/'.$pendaftar->bayar);

@@ -44,3 +44,17 @@ Route::post('/store', 'AkunController@store')->name('akun.store');
 Route::put('/update/{id}', 'AkunController@update')->name('akun.update');
 Route::delete('/destroy', 'AkunController@destroy')->name('akun.destroy');
 Route::delete('/destroy{id}', 'AkunController@destroy')->name('akun.destroy');
+
+//Siswa
+Route::resource('siswa','SiswaController');
+Route::get('/index', 'SiswaController@index')->name('siswa.index');
+Route::get('/create', 'SiswaController@create')->name('siswa.create');
+Route::get('/edit', 'SiswaController@edit')->name('siswa.edit');
+Route::get('/edit/{id}', 'SiswaController@edit')->name('siswa.edit');
+Route::get('/show', 'SiswaController@show')->name('siswa.show');
+Route::get('/show/{id}', 'SiswaController@show')->name('siswa.show');
+Route::post('/store', 'SiswaController@store')->name('siswa.store');
+// Route::put('/update', 'SiswaController@update')->name('siswa.update');
+Route::put('/update/{id}', 'SiswaController@update')->name('siswa.update');
+Route::delete('/destroy', 'SiswaController@destroy')->name('siswa.destroy');
+Route::delete('/destroy{id}', 'SiswaController@destroy')->name('siswa.destroy');

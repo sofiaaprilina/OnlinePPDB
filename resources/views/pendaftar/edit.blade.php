@@ -96,7 +96,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <label for="cover">Bukti Pembayaran</label>
+                <label for="bayar">Bukti Pembayaran</label>
                 <input type="file" class="form-control" name="bayar" value="{{ $pendaftar->bayar }}">
                 <img width="150px" src="{{asset('storage/'.$pendaftar->bayar)}}">
             </div>
