@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Pendaftar;
 use Illuminate\Http\Request;
 
-class PendaftarController extends Controller
+class FormController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class PendaftarController extends Controller
      */
     public function index()
     {
-        $pendaftars = Pendaftar::paginate(5);
-        return view('pendaftar.index',compact('pendaftars'))
-            ->with('i', (request()->input('page', 1) - 1) * 5); 
+        return view('form.index');
     }
 
     /**
@@ -26,7 +24,7 @@ class PendaftarController extends Controller
      */
     public function create()
     {
-        return view('pendaftar.create');
+        return view('form.create');
     }
 
     /**
@@ -66,8 +64,8 @@ class PendaftarController extends Controller
   
         $pendaftar->save();
    
-        return redirect()->route('pendaftar.index')
-                        ->with('success','Pendaftar berhasil ditambahkan');
+        return redirect()->route('form.index')
+                        ->with('success','Pendaftar Sukses, Tunggu Konfirmasi Selanjutnya');
     }
 
     /**
@@ -79,7 +77,7 @@ class PendaftarController extends Controller
     public function show($id)
     {
         $pendaftar = \App\Pendaftar::find($id);
-        return view('pendaftar.show',compact('pendaftar'));
+        return view('form.index',compact('pendaftar'));
     }
 
     /**
@@ -88,10 +86,9 @@ class PendaftarController extends Controller
      * @param  \App\Pendaftar  $pendaftar
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pendaftar $pendaftar)
     {
-        $pendaftar = \App\Pendaftar::find($id);
-        return view('pendaftar.edit',compact('pendaftar'));
+        //
     }
 
     /**
@@ -101,41 +98,9 @@ class PendaftarController extends Controller
      * @param  \App\Pendaftar  $pendaftar
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update(Request $request, Pendaftar $pendaftar)
     {
-        $pendaftar = \App\Pendaftar::find($id);
-        $request->validate([
-            'siswa' => 'required',
-            'ortu' => 'required',
-            'tempat' => 'required',
-            'tgl_lahir' => 'required',
-            'jenis_kelamin' => 'required',
-            'alamat' => 'required',
-            'no_telp' => 'required',
-            'email' => 'required',
-            'bayar' => 'required',
-        ]);
-        $pendaftar->siswa = $request->siswa;
-        $pendaftar->ortu = $request->ortu;
-        $pendaftar->tempat = $request->tempat;
-        $pendaftar->tgl_lahir = $request->tgl_lahir;
-        $pendaftar->jenis_kelamin = $request->jenis_kelamin;
-        $pendaftar->alamat = $request->alamat;
-        $pendaftar->no_telp = $request->no_telp;
-        $pendaftar->email = $request->email;
-        $pendaftar->sekolah = $request->sekolah;
-        $pendaftar->tgl_daftar = $request->tgl_daftar;
-
-        if($pendaftar->bayar && file_exists(storage_path('app/public/' . $pendaftar->bayar)))
-        {
-            \Storage::delete('public/'.$pendaftar->bayar);
-        }
-        $image_name = $request->file('bayar')->store('images', 'public');
-        $pendaftar->bayar = $image_name;
-        $pendaftar->save();
-        
-        return redirect()->route('pendaftar.index')
-                        ->with('success','Pendaftar berhasil diupdate');
+        //
     }
 
     /**
@@ -144,12 +109,8 @@ class PendaftarController extends Controller
      * @param  \App\Pendaftar  $pendaftar
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pendaftar $pendaftar)
     {
-        $pendaftar = \App\Pendaftar::find($id);
-        $pendaftar->delete();
-  
-        return redirect()->route('pendaftar.index')
-                        ->with('success','Pendaftar berhasil dihapus');
+        //
     }
 }

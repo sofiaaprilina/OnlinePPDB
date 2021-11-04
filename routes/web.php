@@ -58,3 +58,16 @@ Route::post('/store', 'SiswaController@store')->name('siswa.store');
 Route::put('/update/{id}', 'SiswaController@update')->name('siswa.update');
 Route::delete('/destroy', 'SiswaController@destroy')->name('siswa.destroy');
 Route::delete('/destroy{id}', 'SiswaController@destroy')->name('siswa.destroy');
+
+//Form
+Route::resource('form','FormController');
+Route::get('/index', 'FormController@index')->name('form.index');
+Route::get('/create', 'FormController@create')->name('form.create');
+Route::get('/edit', 'FormController@edit')->name('form.edit');
+Route::get('/edit/{id}', 'FormController@edit')->name('form.edit');
+Route::get('/show', 'FormController@show')->name('form.show');
+Route::get('/show/{id}', 'FormController@show')->name('form.show');
+Route::post('/store', 'FormController@store')->name('form.store');
+Route::put('/update/{id}', 'FormController@update')->name('form.update');
+Route::delete('/destroy', 'FormController@destroy')->name('form.destroy');
+Route::delete('/destroy{id}', 'FormController@destroy')->name('form.destroy');
