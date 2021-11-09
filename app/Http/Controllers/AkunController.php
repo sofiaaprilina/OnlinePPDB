@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AkunController extends Controller
 {
@@ -41,16 +43,24 @@ class AkunController extends Controller
             'name' => 'required',
             'email' => 'required',
             'username' => 'required',
-            'password' => 'required',
+            // 'password' => 'required',
 
         ]);
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->username = $request->username;
-        $user->password = $request->password;
+        $pass = substr(md5(mt_rand()), 1, 8);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'username' => $request->username,
+            'password' => Hash::make($pass),
+            'decrypt' => $pass,
+        ]);
+        // $user = new User;
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->username = $request->username;
+        // $user->password = $request->password;
   
-        $user->save();
+        // $user->save();
    
         return redirect()->route('akun.index')
                         ->with('success','Akun Pendaftar berhasil ditambahkan');
@@ -94,12 +104,10 @@ class AkunController extends Controller
             'name' => 'required',
             'email' => 'required',
             'username' => 'required',
-            'password' => 'required',
         ]);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->username = $request->username;
-        $user->password = $request->password;
 
         $user->update($request->all());
         $user->save();

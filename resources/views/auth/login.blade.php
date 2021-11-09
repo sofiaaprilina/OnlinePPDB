@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Login Admin</title>
+    <title>Login Pendaftar</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -18,7 +18,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('guru/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -49,9 +49,9 @@
                                             @csrf
                                             
                                                 <div class="form-group">
-                                                    <input id="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" aria-describedby="emailHelp" name="email" value="{{ old('email') }}" placeholder="Enter E-mail Address..." required autocomplete="email" autofocus>
+                                                    <input id="usernam" type="username" class="form-control form-control-user @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="Enter Username" required autocomplete="username" autofocus>
                     
-                                                    @error('email')
+                                                    @error('username')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -95,7 +95,7 @@
                                                     @endif
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="/register">Create an Account!</a>
+                                        <a class="small" href="/form/create">Daftar</a>
                                     </div>
                                 </div>
                             </div>
@@ -110,14 +110,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('guru/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('guru/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{asset('admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('guru/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{asset('admin/js/sb-admin-2.min.js')}}"></script>
+    <script src="{{asset('guru/js/sb-admin-2.min.js')}}"></script>
 
 </body>
 

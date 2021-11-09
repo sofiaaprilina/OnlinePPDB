@@ -48,7 +48,7 @@
              <td>{{ $user->id }}</td>
              <td>{{ $user->name }}</td>
              <td>{{ $user->username }}</td>
-             <td>{{ $user->password }}</td>
+             <td>{{ $user->decrypt }}</td>
              <td width="250px">
                 <form action="{{ route('akun.destroy',$user->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('akun.show',$user->id) }}"><i class="fas fa-clipboard-list text-gray-100"></i></a>

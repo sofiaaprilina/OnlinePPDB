@@ -17,8 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//login admin
+Route::get('/admin/login', 'Auth\AdminAuthController@getLogin')->name('admin.login');
+Route::post('/admin/login', 'Auth\AdminAuthController@postLogin');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::middleware('auth:admin')->group(function(){
+    Route::get('/dashboard', 'HomeController1@index')->name('admin.home');
 //Pendaftar
 Route::resource('pendaftar','PendaftarController');
 Route::get('/index', 'PendaftarController@index')->name('pendaftar.index');
@@ -58,6 +64,7 @@ Route::post('/store', 'SiswaController@store')->name('siswa.store');
 Route::put('/update/{id}', 'SiswaController@update')->name('siswa.update');
 Route::delete('/destroy', 'SiswaController@destroy')->name('siswa.destroy');
 Route::delete('/destroy{id}', 'SiswaController@destroy')->name('siswa.destroy');
+});
 
 //Form
 Route::resource('form','FormController');
