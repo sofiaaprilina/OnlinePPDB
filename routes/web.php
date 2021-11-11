@@ -83,3 +83,16 @@ Route::post('/store', 'BiodataController@store')->name('biodata.store');
 Route::put('/update/{id}', 'BiodataController@update')->name('biodata.update');
 Route::delete('/destroy', 'BiodataController@destroy')->name('biodata.destroy');
 Route::delete('/destroy{id}', 'BiodataController@destroy')->name('biodata.destroy');
+
+//Berkas
+Route::resource('berkas','BerkasController');
+Route::get('/index', 'BerkasController@index')->name('berkas.index');
+Route::get('/create', 'BerkasController@create')->name('berkas.create');
+Route::get('/edit', 'BerkasController@edit')->name('berkas.edit');
+Route::get('/edit/{id}', 'BerkasController@edit')->name('berkas.edit');
+Route::get('/show', 'BerkasController@show')->name('berkas.show');
+Route::get('/show/{id}', 'BerkasController@show')->name('berkas.show');
+Route::post('/store', 'BerkasController@store')->name('berkas.store');
+Route::put('/update/{id}', 'BerkasController@update')->name('berkas.update');
+Route::delete('/destroy', 'BerkasController@destroy')->name('berkas.destroy');
+Route::delete('/destroy{id}', 'BerkasController@destroy')->name('berkas.destroy');

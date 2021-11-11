@@ -35,7 +35,10 @@
          </div>
      @endif
     
-     <table class="table table-bordered">
+     <div class="card shadow">
+        <div class="card-body">
+            <div class="table">
+     <table class="table-bordered" width="1000px">
          <tr>
              <th>Id</th>
              <th>Nama Siswa</th>
@@ -55,9 +58,9 @@
              <td>{{ $siswa->alamat }}</td>
              <td>{{ $siswa->no_ibu }}</td>
              <td>{{ $siswa->email }}</td>
-             <td width="250px">
+             <td width="200px">
                 <form action="{{ route('siswa.destroy',$siswa->id) }}" method="POST">
-                    <a class="btn btn-warning" href="#">Konfirmasi</a><br>
+                    {{-- <a class="btn btn-warning" href="#">Konfirmasi</a><br> --}}
                     <a class="btn btn-info" href="{{ route('siswa.show',$siswa->id) }}"><i class="fas fa-clipboard-list text-gray-100"></i></a>
     
                     <a class="btn btn-primary" href="{{ route('siswa.edit',$siswa->id) }}"><i class="fas fa-edit text-gray-100"></a>
@@ -71,6 +74,9 @@
         </tr>
         @endforeach
      </table>
+            </div>
+        </div>
+     </div>
 
     {{ $siswas->links() }}
 

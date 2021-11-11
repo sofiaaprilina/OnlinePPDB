@@ -55,7 +55,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/berkas">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Berkas</span></a>
             </li>

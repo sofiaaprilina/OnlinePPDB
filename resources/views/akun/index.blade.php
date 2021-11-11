@@ -35,7 +35,10 @@
          </div>
      @endif
     
-     <table class="table table-bordered">
+     <div class="card shadow">
+        <div class="card-body">
+            <div class="table">
+     <table class="table-bordered" width="1000px">
          <tr>
              <th>Id</th>
              <th>Nama</th>
@@ -64,6 +67,9 @@
         </tr>
         @endforeach
      </table>
+            </div>
+        </div>
+     </div>
 
     {{ $users->links() }}
 
