@@ -48,7 +48,7 @@
 
             <!-- Nav Item - Anggota -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/biodata">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Biodata</span></a>
             </li>

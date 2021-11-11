@@ -70,11 +70,16 @@ Route::delete('/destroy{id}', 'SiswaController@destroy')->name('siswa.destroy');
 Route::resource('form','FormController');
 Route::get('/index', 'FormController@index')->name('form.index');
 Route::get('/create', 'FormController@create')->name('form.create');
-Route::get('/edit', 'FormController@edit')->name('form.edit');
-Route::get('/edit/{id}', 'FormController@edit')->name('form.edit');
-Route::get('/show', 'FormController@show')->name('form.show');
-Route::get('/show/{id}', 'FormController@show')->name('form.show');
-Route::post('/store', 'FormController@store')->name('form.store');
-Route::put('/update/{id}', 'FormController@update')->name('form.update');
-Route::delete('/destroy', 'FormController@destroy')->name('form.destroy');
-Route::delete('/destroy{id}', 'FormController@destroy')->name('form.destroy');
+
+//Biodata
+Route::resource('biodata','BiodataController');
+Route::get('/index', 'BiodataController@index')->name('biodata.index');
+Route::get('/create', 'BiodataController@create')->name('biodata.create');
+Route::get('/edit', 'BiodataController@edit')->name('biodata.edit');
+Route::get('/edit/{id}', 'BiodataController@edit')->name('biodata.edit');
+Route::get('/show', 'BiodataController@show')->name('biodata.show');
+Route::get('/show/{id}', 'BiodataController@show')->name('biodata.show');
+Route::post('/store', 'BiodataController@store')->name('biodata.store');
+Route::put('/update/{id}', 'BiodataController@update')->name('biodata.update');
+Route::delete('/destroy', 'BiodataController@destroy')->name('biodata.destroy');
+Route::delete('/destroy{id}', 'BiodataController@destroy')->name('biodata.destroy');

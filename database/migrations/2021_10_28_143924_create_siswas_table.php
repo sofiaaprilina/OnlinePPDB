@@ -31,11 +31,17 @@ class CreateSiswasTable extends Migration
             $table->string('kj_wali')->nullable();
             $table->string('no_wali')->nullable();
             $table->string('email');
-            $table->string('akte');
-            $table->string('kk');
-            $table->string('ktp');
+            $table->string('akte')->nullable();
+            $table->string('kk')->nullable();
+            $table->string('ktp')->nullable();
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
         });
+        Schema::table('siswas', function($table)
+        {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+        });
+
     }
 
     /**
