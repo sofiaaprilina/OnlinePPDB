@@ -96,3 +96,17 @@ Route::post('/store', 'BerkasController@store')->name('berkas.store');
 Route::put('/update/{id}', 'BerkasController@update')->name('berkas.update');
 Route::delete('/destroy', 'BerkasController@destroy')->name('berkas.destroy');
 Route::delete('/destroy{id}', 'BerkasController@destroy')->name('berkas.destroy');
+
+//Cetak
+Route::resource('cetak','CetakController');
+Route::get('/index', 'CetakController@index')->name('cetak.index');
+Route::get('/create', 'CetakController@create')->name('cetak.create');
+Route::get('/edit', 'CetakController@edit')->name('cetak.edit');
+Route::get('/edit/{id}', 'CetakController@edit')->name('cetak.edit');
+Route::get('/show', 'CetakController@show')->name('cetak.show');
+Route::get('/show/{id}', 'CetakController@show')->name('cetak.show');
+Route::post('/store', 'CetakController@store')->name('cetak.store');
+Route::put('/update/{id}', 'CetakController@update')->name('cetak.update');
+Route::delete('/destroy', 'CetakController@destroy')->name('cetak.destroy');
+Route::delete('/destroy{id}', 'CetakController@destroy')->name('cetak.destroy');
+Route::get('/cetak_pdf', 'CetakController@cetak')->name('cetak.cetak_pdf');

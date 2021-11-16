@@ -62,7 +62,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/cetak">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Cetak</span></a>
             </li>
