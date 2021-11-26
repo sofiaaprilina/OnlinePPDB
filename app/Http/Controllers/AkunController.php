@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Pendaftar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -28,7 +29,8 @@ class AkunController extends Controller
      */
     public function create()
     {
-        return view('akun.create');
+        $pendaftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('akun.create', compact('pendaftars'));
     }
 
     /**
@@ -41,6 +43,8 @@ class AkunController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'idPendaftar' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'username' => 'required',
             // 'password' => 'required',
@@ -48,6 +52,7 @@ class AkunController extends Controller
         ]);
         $pass = substr(md5(mt_rand()), 1, 8);
         $user = User::create([
+            'idPendaftar' => $request->get('idPendaftar'),
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,

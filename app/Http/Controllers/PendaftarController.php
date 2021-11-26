@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Pendaftar;
+use App\Siswa;
+use App\User;
 use Illuminate\Http\Request;
 
 class PendaftarController extends Controller
@@ -155,5 +157,39 @@ class PendaftarController extends Controller
   
         return redirect()->route('pendaftar.index')
                         ->with('success','Pendaftar berhasil dihapus');
+    }
+
+    public function add($id)
+    {
+        $pendaftar = \App\Pendaftar::find($id);
+        return view('pendaftar.add',compact('pendaftar'));
+    }
+
+    public function olah($id, Request $request)
+    {
+        $user = \App\User::find($id);
+        
+        $request->validate([
+            'idPendaftar' => 'required',
+            'nama' => 'required',
+            'tempat' => 'required',
+            'tgl_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+            'email' => 'required',
+        ]);
+        $siswa = Siswa::create([
+            'idPendaftar' => $request->id,
+            'nama' => $request->nama,
+            'tempat' => $request->tempat,
+            'tgl_lahir' => $request->tgl_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+            'email' => $request->email,
+            'user_id' => $user->id,
+        ]);
+
+        return redirect()->route('pendaftar.index')
+            ->with('success','Siswa berhasil ditambahkan. Silahkan cek menu Data Siswa');
     }
 }

@@ -15,18 +15,19 @@ class CreateSiswasTable extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('idPendaftar')->unsigned();
             $table->string('nama');
             $table->string('tempat');
             $table->date('tgl_lahir');
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
-            $table->string('agama');
+            $table->string('agama')->nullable();
             $table->string('alamat');
-            $table->string('nm_ayah');
-            $table->string('kj_ayah');
-            $table->string('no_ayah');
-            $table->string('nm_ibu');
-            $table->string('kj_ibu');
-            $table->string('no_ibu');
+            $table->string('nm_ayah')->nullable();
+            $table->string('kj_ayah')->nullable();
+            $table->string('no_ayah')->nullable();
+            $table->string('nm_ibu')->nullable();
+            $table->string('kj_ibu')->nullable();
+            $table->string('no_ibu')->nullable();
             $table->string('nm_wali')->nullable();
             $table->string('kj_wali')->nullable();
             $table->string('no_wali')->nullable();
@@ -34,7 +35,7 @@ class CreateSiswasTable extends Migration
             $table->string('akte')->nullable();
             $table->string('kk')->nullable();
             $table->string('ktp')->nullable();
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->timestamps();
         });
         Schema::table('siswas', function($table)

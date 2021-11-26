@@ -19,12 +19,13 @@ class CreatePendaftarsTable extends Migration
             $table->string('ortu');
             $table->string('tempat');
             $table->date('tgl_lahir');
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
             $table->string('alamat');
             $table->string('no_telp');
             $table->string('email');
             $table->string('sekolah')->nullable();
             $table->string('bayar');
+            $table->enum('status', ['Terkonfirmasi', 'Belum Konfirmasi'])->default('Belum Konfirmasi');
             $table->timestamp('tgl_daftar')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });

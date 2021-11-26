@@ -16,12 +16,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'decrypt',
+        'idPendaftar', 'name', 'username', 'email', 'password', 'decrypt',
     ];
 
     public function siswa()
     {
         return $this->hasOne('App\Siswa', 'user_id');
+    }
+    public function pendaftar(){
+        return $this->hasOne('App\Pendaftar', 'idPendaftar');
     }
 
     /**

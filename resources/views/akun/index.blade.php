@@ -10,6 +10,7 @@
              </div>
              <div class="pull-right">
                  <a class="btn btn-success" href="{{ route('akun.create') }}"> Tambah Akun Pendaftar</a>
+                 <a class="btn btn-warning" href="{{ route('pendaftar.index') }}"> Data Pendaftar</a>
                  <div class="pull-right" style="float: right">
                     <form action="/cari" method="GET"
                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -41,6 +42,7 @@
      <table class="table-bordered" width="1000px">
          <tr>
              <th>Id</th>
+             <th>ID Pendaftaran</th>
              <th>Nama</th>
              <th>Username</th>
              <th>Password</th>
@@ -49,6 +51,7 @@
          @foreach ($users as $user)
          <tr>
              <td>{{ $user->id }}</td>
+             <td>{{ $user->idPendaftar }}</td>
              <td>{{ $user->name }}</td>
              <td>{{ $user->username }}</td>
              <td>{{ $user->decrypt }}</td>

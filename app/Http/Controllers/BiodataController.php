@@ -106,9 +106,34 @@ class BiodataController extends Controller
      * @param  \App\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Siswa $siswa)
+    public function update($id, Request $request)
     {
-        //
+        $siswa = \App\Siswa::find($id);
+        $request->validate([
+            'agama' => 'required',
+            'alamat' => 'required',
+            'nm_ayah' => 'required',
+            'kj_ayah' => 'required',
+            'no_ayah' => 'required',
+            'nm_ibu' => 'required',
+            'kj_ibu' => 'required',
+            'no_ibu' => 'required',
+            'email' => 'required',
+        ]);
+
+        $siswas = Siswa::where('id', $id)->update([
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
+            'nm_ayah' => $request->nm_ayah,
+            'kj_ayah' => $request->kj_ayah,
+            'no_ayah' => $request->no_ayah,
+            'nm_ibu' => $request->nm_ibu,
+            'kj_ibu' => $request->kj_ibu,
+            'no_ibu' => $request->no_ibu,
+            'email' => $request->email,
+        ]);
+        return redirect()->route('biodata.index')
+                        ->with('success','Biodata siswa berhasil diperbarui');
     }
 
     /**

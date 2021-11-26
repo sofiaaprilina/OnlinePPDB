@@ -46,6 +46,7 @@
              <th>Tanggal Daftar</th>
              <th>Email</th>
              <th>No. Telp</th>
+             <th>Status</th>
              <th>Bukti Pembayaran</th>
              <th >Action</th>
          </tr>
@@ -57,10 +58,23 @@
              <td>{{ $pendaftar->tgl_daftar }}</td>
              <td>{{ $pendaftar->email }}</td>
              <td>{{ $pendaftar->no_telp }}</td>
+             <td>{{ $pendaftar->status }}</td>
              <td><img width="150px" src="{{asset('storage/'.$pendaftar->bayar)}}"></td>
              <td width="250px">
                 <form action="{{ route('pendaftar.destroy',$pendaftar->id) }}" method="POST">
-                    <a class="btn btn-warning" href="#">Konfirmasi</a><br>
+                    <div class="nav-item dropdown no-arrow">
+                        <a class="btn btn-warning" href="#" id="userDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Konfirmasi</a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#" data-toggle="modal">
+                                Kirim Notifikasi
+                            </a>
+                            <a class="dropdown-item" href="{{ route('pendaftar.add',$pendaftar->id) }}">
+                                Tambah Siswa
+                             </a>
+                         </div>
+                    </div>
+                    <br>
                     <a class="btn btn-info" href="{{ route('pendaftar.show',$pendaftar->id) }}"><i class="fas fa-clipboard-list text-gray-100"></i></a>
     
                     <a class="btn btn-primary" href="{{ route('pendaftar.edit',$pendaftar->id) }}"><i class="fas fa-edit text-gray-100"></a>
