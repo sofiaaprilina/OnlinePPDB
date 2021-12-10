@@ -192,4 +192,13 @@ class PendaftarController extends Controller
         return redirect()->route('pendaftar.index')
             ->with('success','Siswa berhasil ditambahkan. Silahkan cek menu Data Siswa');
     }
+
+    public function confirm(){
+        
+    }
+
+    public function connect()
+    {
+        return view('pendaftar.koneksi');
+    }
 }
