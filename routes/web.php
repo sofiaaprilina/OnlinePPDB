@@ -37,9 +37,10 @@ Route::post('/store', 'PendaftarController@store')->name('pendaftar.store');
 Route::put('/update/{id}', 'PendaftarController@update')->name('pendaftar.update');
 Route::delete('/destroy', 'PendaftarController@destroy')->name('pendaftar.destroy');
 Route::delete('/destroy{id}', 'PendaftarController@destroy')->name('pendaftar.destroy');
-Route::get('/konfirmasi', 'PendaftarController@confirm')->name('pendaftar.konfirmasi');
+Route::post('/konfirmasi', 'PendaftarController@confirm')->name('pendaftar.konfirmasi');
 Route::get('/add/{id}', 'PendaftarController@add')->name('pendaftar.add');
 Route::post('/olah/{id}', 'PendaftarController@olah')->name('pendaftar.olah');
+Route::get('/koneksi', 'PendaftarController@connect')->name('pendaftar.connect');
 
 //Akun
 Route::resource('akun','AkunController');

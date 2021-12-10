@@ -9,7 +9,8 @@
                  <h2>Data Pendaftar</h2>
              </div>
              <div class="pull-right">
-                 <a class="btn btn-success" href="{{ route('pendaftar.create') }}"> Tambah Pendaftar</a>
+                 <a class="btn btn-primary" href="{{ route('pendaftar.create') }}"> Tambah Pendaftar</a>
+                 <a class="btn btn-success" href="{{ route('pendaftar.connect') }}"> Connect ke WA</a>
                  <div class="pull-right" style="float: right">
                     <form action="/cari" method="GET"
                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
