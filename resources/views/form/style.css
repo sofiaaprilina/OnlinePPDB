@@ -1,6 +1,6 @@
 /* mengatur warna backgroud dan padding pada tag body bagian atas agar form tidak menempel diatas */
 body{
-    background: #383a3d;
+    background-image: url("../form/bg.png");
     padding-top: 10vh;  
 }
  

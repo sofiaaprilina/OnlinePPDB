@@ -1,12 +1,13 @@
 /* mengatur warna backgroud dan padding pada tag body bagian atas agar form tidak menempel diatas */
 body{
-    background: #383a3d;
+    background-image: url("../images/bg.png");
+    background-size: cover;
     padding-top: 10vh;  
 }
  
 /* mengatur warna backgroud form */
 form{
-    background: #fff;
+    background: #cbe3f7;
 }
  
 /* mengatur border dan padding class form-container */

@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Login Admin</div>
 
-                <div class="card-body">
+                <div class="card-body ">
                     <form method="POST" action="">
                         @csrf
 

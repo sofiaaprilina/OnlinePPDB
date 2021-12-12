@@ -193,8 +193,34 @@ class PendaftarController extends Controller
             ->with('success','Siswa berhasil ditambahkan. Silahkan cek menu Data Siswa');
     }
 
-    public function confirm(){
-        
+    public function confirm($id, Request $request){
+
+        $pendaftar = \App\Pendaftar::find($id);
+        $user = \App\User::find($id);
+        $input = 'Username : '.$user->username .'Password : '.$user->password;
+        $message .= $input;
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'http://localhost:3000/send-message',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => 'number='.$pendaftar->no_telp.'&message='.$message,
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/x-www-form-urlencoded'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
     }
 
     public function connect()

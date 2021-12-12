@@ -13,13 +13,21 @@
 </div>
 
 <!-- Content Row -->
+<center>
 <div class="row">
+<div class="card shadow">
+    <div class="card-body">
+        <center><h1><b><p>SELAMAT DATANG DI</p></h1></center>
+        <center><h1><b>PPDB RA. QURROTA A'YUN</h1></center>
+        <br><br>
+        <img src="{{asset('images/g.png')}}" >
 
-    
-
+    </div>
+</div>
+</div>
+</center>
 </div>
 
-</div>
 <!-- /.container-fluid -->
 </div>
 @endsection
