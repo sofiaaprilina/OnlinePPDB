@@ -41,6 +41,7 @@ Route::post('/konfirmasi{id}', 'PendaftarController@confirm')->name('pendaftar.k
 Route::get('/add/{id}', 'PendaftarController@add')->name('pendaftar.add');
 Route::post('/olah/{id}', 'PendaftarController@olah')->name('pendaftar.olah');
 Route::get('/koneksi', 'PendaftarController@connect')->name('pendaftar.connect');
+Route::get('/cari', 'PendaftarController@cari')->name('cari');
 
 //Akun
 Route::resource('akun','AkunController');
@@ -54,6 +55,7 @@ Route::post('/store', 'AkunController@store')->name('akun.store');
 Route::put('/update/{id}', 'AkunController@update')->name('akun.update');
 Route::delete('/destroy', 'AkunController@destroy')->name('akun.destroy');
 Route::delete('/destroy{id}', 'AkunController@destroy')->name('akun.destroy');
+Route::get('/cariAkun', 'AkunController@cari')->name('cariAkun');
 
 //Siswa
 Route::resource('siswa','SiswaController');
@@ -68,6 +70,7 @@ Route::post('/store', 'SiswaController@store')->name('siswa.store');
 Route::put('/update/{id}', 'SiswaController@update')->name('siswa.update');
 Route::delete('/destroy', 'SiswaController@destroy')->name('siswa.destroy');
 Route::delete('/destroy{id}', 'SiswaController@destroy')->name('siswa.destroy');
+Route::get('/cariSiswa', 'SiswaController@cari')->name('cariSiswa');
 });
 
 //Form

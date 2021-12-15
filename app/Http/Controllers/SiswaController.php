@@ -196,4 +196,11 @@ class SiswaController extends Controller
         return redirect()->route('siswa.index')
                         ->with('success','Siswa berhasil dihapus');
     }
+    public function cari(Request $request){
+        $cari= $request->get('cari');
+        $siswas = \App\Siswa::where('nama', 'LIKE', '%' . $cari . '%')
+		->paginate(10);
+        
+	return view('siswa.index', ['siswas'=>$siswas]);
+    }
 }

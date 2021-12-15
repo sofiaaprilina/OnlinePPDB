@@ -123,7 +123,7 @@
                         <div class="card mb-5 mb-xl-0">
                             <div class="card-body p-5">
                                 <div class="mb-3">
-                                    <center><img src="https://cdn-icons.flaticon.com/png/512/4304/premium/4304009.png?token=exp=1639313312~hmac=d4adb3781c7a46a44b5c0b2553734e37" width="60px" height="60px"></center>
+                                    <center><img src="https://cdn-icons.flaticon.com/png/512/3815/premium/3815507.png?token=exp=1639399728~hmac=89f4caa3a0b049b424db0f90d7790f0c" width="60px" height="60px"></center>
                                 </div>
                                 <div class="small text-uppercase fw-bold text-muted"> <center><h1>3</h1></center></div>
                                 <ul class="list-unstyled mb-4">

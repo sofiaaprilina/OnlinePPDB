@@ -135,4 +135,12 @@ class AkunController extends Controller
         return redirect()->route('akun.index')
                         ->with('success','Akun Pendaftar berhasil dihapus');
     }
+    public function cari(Request $request){
+        $cari= $request->get('cari');
+        $users = \App\User::where('username', 'LIKE', '%' . $cari . '%')
+		->orwhere('name', 'like', '%' . $cari . '%')
+		->paginate(10);
+        
+	return view('akun.index', ['users'=>$users]);
+}
 }

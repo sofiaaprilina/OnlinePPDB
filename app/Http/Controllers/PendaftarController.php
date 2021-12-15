@@ -168,7 +168,7 @@ class PendaftarController extends Controller
     public function olah($id, Request $request)
     {
         $user = \App\User::find($id);
-        
+        $pendaftar = \App\Pendaftar::find($id);
         $request->validate([
             'idPendaftar' => 'required',
             'nama' => 'required',
@@ -188,6 +188,10 @@ class PendaftarController extends Controller
             'email' => $request->email,
             'user_id' => $user->id,
         ]);
+
+        $pendaftar->update([
+            'status' => 'Terkonfirmasi'
+            ]);
 
         return redirect()->route('pendaftar.index')
             ->with('success','Siswa berhasil ditambahkan. Silahkan cek menu Data Siswa');
@@ -227,4 +231,13 @@ class PendaftarController extends Controller
     {
         return view('pendaftar.koneksi');
     }
+    public function cari(Request $request){
+        $cari= $request->get('cari');
+        $pendaftars = \App\Pendaftar::where('siswa', 'LIKE', '%' . $cari . '%')
+		->orwhere('ortu', 'like', '%' . $cari . '%')
+		->orwhere('status', 'like', '%' . $cari . '%')
+		->paginate(10);
+        
+	return view('pendaftar.index', ['pendaftars'=>$pendaftars]);
+}
 }

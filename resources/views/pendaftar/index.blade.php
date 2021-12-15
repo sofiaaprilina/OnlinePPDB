@@ -59,8 +59,8 @@
              <td>{{ $pendaftar->email }}</td>
              <td>{{ $pendaftar->no_telp }}</td>
              <td>{{ $pendaftar->status }}</td>
-             <td><img width="150px" src="{{asset('storage/'.$pendaftar->bayar)}}"></td>
-             <td width="250px">
+             <td><img width="100px" src="{{asset('storage/'.$pendaftar->bayar)}}"></td>
+             <td width="200px">
                 <form action="{{ route('pendaftar.destroy',$pendaftar->id) }}" method="POST">
                     <div class="nav-item dropdown no-arrow">
                         <a class="btn btn-warning" href="#" id="userDropdown" role="button"
