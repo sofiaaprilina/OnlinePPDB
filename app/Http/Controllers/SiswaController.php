@@ -9,7 +9,7 @@ class SiswaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth:panitia');
     }
     /**
      * Display a listing of the resource.

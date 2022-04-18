@@ -51,6 +51,11 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
          ],
+
+         'panitia' => [
+            'driver' => 'session',
+            'provider' => 'panitias',
+         ],
     ],
 
     /*
@@ -79,6 +84,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
+        ],
+
+        'panitias' => [
+            'driver' => 'eloquent',
+            'model' => App\Panitia::class,
         ],
 
         // 'users' => [

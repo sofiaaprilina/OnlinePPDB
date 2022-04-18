@@ -30,7 +30,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
-                <div class="sidebar-brand-text mx-3">Panitia</div>
+                <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
 
             <!-- Divider -->
@@ -38,7 +38,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/dashboard">
+                <a class="nav-link" href="/dashboard-admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -46,26 +46,32 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            <li class="nav-item">
+                <a class="nav-link" href="/daftar-admin">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Admin</span></a>
+            </li>
+
             <!-- Nav Item - Anggota -->
             <li class="nav-item">
-                <a class="nav-link" href="/pendaftar">
+                <a class="nav-link" href="/daftar-panitia">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Pendaftar</span></a>
+                    <span>Panitia</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="/akun">
+                <a class="nav-link" href="/daftar-siswa">
                     <i class="fas fa-fw fa-list"></i>
-                    <span>Akun Pendaftar</span></a>
+                    <span>Siswa</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="/siswa">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Siswa Baru</span></a>
-            </li>
+            </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

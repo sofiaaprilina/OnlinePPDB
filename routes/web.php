@@ -21,10 +21,60 @@ Auth::routes();
 Route::get('/admin/login', 'Auth\AdminAuthController@getLogin')->name('admin.login');
 Route::post('/admin/login', 'Auth\AdminAuthController@postLogin');
 
+//login panitia
+Route::get('/panitia/login', 'Auth\PanitiaAuthController@getLogin')->name('panitia.login');
+Route::post('/panitia/login', 'Auth\PanitiaAuthController@postLogin');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth:admin')->group(function(){
-    Route::get('/dashboard', 'HomeController1@index')->name('admin.home');
+   Route::get('/dashboard-admin', 'AdminhomeController@index')->name('admin.home');
+
+   //Admin
+   Route::resource('daftar-admin','DaftarAdminController');
+   Route::get('/index', 'DaftarAdminController@index')->name('daftar-admin.index');
+   Route::get('/create', 'DaftarAdminController@create')->name('daftar-admin.create');
+   Route::get('/edit', 'DaftarAdminController@edit')->name('daftar-admin.edit');
+   Route::get('/edit/{id}', 'DaftarAdminController@edit')->name('daftar-admin.edit');
+   Route::get('/show', 'DaftarAdminController@show')->name('daftar-admin.show');
+   Route::get('/show/{id}', 'DaftarAdminController@show')->name('daftar-admin.show');
+   Route::post('/store', 'DaftarAdminController@store')->name('daftar-admin.store');
+   Route::put('/update/{id}', 'DaftarAdminController@update')->name('daftar-admin.update');
+   Route::delete('/destroy', 'DaftarAdminController@destroy')->name('daftar-admin.destroy');
+   Route::delete('/destroy{id}', 'DaftarAdminController@destroy')->name('daftar-admin.destroy');
+   Route::get('/cariAdmin', 'DaftarAdminController@cari')->name('cariAdmin');
+
+   //Panitia
+   Route::resource('daftar-panitia','DaftarPanitiaController');
+   Route::get('/index', 'DaftarPanitiaController@index')->name('daftar-panitia.index');
+   Route::get('/create', 'DaftarPanitiaController@create')->name('daftar-panitia.create');
+   Route::get('/edit', 'DaftarPanitiaController@edit')->name('daftar-panitia.edit');
+   Route::get('/edit/{id}', 'DaftarPanitiaController@edit')->name('daftar-panitia.edit');
+   Route::get('/show', 'DaftarPanitiaController@show')->name('daftar-panitia.show');
+   Route::get('/show/{id}', 'DaftarPanitiaController@show')->name('daftar-panitia.show');
+   Route::post('/store', 'DaftarPanitiaController@store')->name('daftar-panitia.store');
+   Route::put('/update/{id}', 'DaftarPanitiaController@update')->name('daftar-panitia.update');
+   Route::delete('/destroy', 'DaftarPanitiaController@destroy')->name('daftar-panitia.destroy');
+   Route::delete('/destroy{id}', 'DaftarPanitiaController@destroy')->name('daftar-panitia.destroy');
+   Route::get('/cariPanitia', 'DaftarPanitiaController@cari')->name('cariPanitia');
+
+   //Siswa
+   Route::resource('daftar-siswa','DaftarSiswaController');
+   Route::get('/index', 'DaftarSiswaController@index')->name('daftar-siswa.index');
+   Route::get('/create', 'DaftarSiswaController@create')->name('daftar-siswa.create');
+   Route::get('/edit', 'DaftarSiswaController@edit')->name('daftar-siswa.edit');
+   Route::get('/edit/{id}', 'DaftarSiswaController@edit')->name('daftar-siswa.edit');
+   Route::get('/show', 'DaftarSiswaController@show')->name('daftar-siswa.show');
+   Route::get('/show/{id}', 'DaftarSiswaController@show')->name('daftar-siswa.show');
+   Route::post('/store', 'DaftarSiswaController@store')->name('daftar-siswa.store');
+   Route::put('/update/{id}', 'DaftarSiswaController@update')->name('daftar-siswa.update');
+   Route::delete('/destroy', 'DaftarSiswaController@destroy')->name('daftar-siswa.destroy');
+   Route::delete('/destroy{id}', 'DaftarSiswaController@destroy')->name('daftar-siswa.destroy');
+   Route::get('/cari-Siswa', 'DaftarSiswaController@cari')->name('cariPanitia');
+});
+
+Route::middleware('auth:panitia')->group(function(){
+    Route::get('/dashboard', 'HomeController1@index')->name('panitia.home');
 //Pendaftar
 Route::resource('pendaftar','PendaftarController');
 Route::get('/index', 'PendaftarController@index')->name('pendaftar.index');
