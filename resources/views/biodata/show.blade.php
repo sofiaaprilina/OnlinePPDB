@@ -57,6 +57,12 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Penghasilan Ayah   : </strong>
+                {{ $siswa->ph_ayah }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>No Telp Ayah   : </strong>
                 {{ $siswa->no_ayah }}
             </div>
@@ -71,6 +77,12 @@
             <div class="form-group">
                 <strong>Pekerjaan Ibu   : </strong>
                 {{ $siswa->kj_ibu }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Penghasilan Ibu   : </strong>
+                {{ $siswa->ph_ibu }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -93,8 +105,20 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Penghasilan Wali   : </strong>
+                {{ $siswa->ph_wali }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>No Telp Wali   : </strong>
                 {{ $siswa->no_wali }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Tanggungan Orang Tua   : </strong>
+                {{ $siswa->tanggungan }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

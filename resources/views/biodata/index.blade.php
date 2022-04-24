@@ -64,6 +64,10 @@
                             <td><input type="text" name="kj_ayah" value="{{ $siswa->kj_ayah }}" class="form-control"></td>
                         </tr>
                         <tr>
+                            <td><strong>Penghasilan Ayah   : </strong></td>
+                            <td><input type="text" name="ph_ayah" value="{{ $siswa->ph_ayah }}" class="form-control"></td>
+                        </tr>
+                        <tr>
                             <td><strong>No Telp Ayah   : </strong></td>
                             <td><input type="text" name="no_ayah" value="{{ $siswa->no_ayah }}" class="form-control"></td>
                         </tr>
@@ -74,6 +78,10 @@
                         <tr>
                             <td><strong>Pekerjaan Ibu   : </strong></td>
                             <td><input type="text" name="kj_ibu" value="{{ $siswa->kj_ibu }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Penghasilan Ibu   : </strong></td>
+                            <td><input type="text" name="ph_ibu" value="{{ $siswa->ph_ibu }}" class="form-control"></td>
                         </tr>
                         <tr>
                             <td><strong>No Telp Ibu   : </strong></td>
@@ -88,8 +96,16 @@
                             <td><input type="text" name="kj_wali" value="{{ $siswa->kj_wali }}" class="form-control"></td>
                         </tr>
                         <tr>
+                            <td><strong>Penghasilan Wali   : </strong></td>
+                            <td><input type="text" name="ph_wali" value="{{ $siswa->ph_wali }}" class="form-control"></td>
+                        </tr>
+                        <tr>
                             <td><strong>No Telp Wali   : </strong></td>
                             <td><input type="text" name="no_wali" value="{{ $siswa->no_wali }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tanggungan Orang Tua   : </strong></td>
+                            <td><input type="text" name="tanggungan" value="{{ $siswa->tanggungan }}" class="form-control"></td>
                         </tr>
                         <tr>
                             <td><strong>Email           : </strong></td>

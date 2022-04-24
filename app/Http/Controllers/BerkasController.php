@@ -77,6 +77,7 @@ class BerkasController extends Controller
             'akte' => 'required|mimes:png,jpg,jpeg|max:5000',
             'kk' => 'required|mimes:png,jpg,jpeg|max:5000',
             'ktp' => 'required|mimes:png,jpg,jpeg|max:5000',
+            'gaji' => 'required|mimes:png,jpg,jpeg|max:5000',
         ]);
 
         if($siswa->akte && file_exists(storage_path('app/public/' . $siswa->akte)))
@@ -91,9 +92,14 @@ class BerkasController extends Controller
         {
             \Storage::delete('public/'.$siswa->ktp);
         }
+        if($siswa->gaji && file_exists(storage_path('app/public/' . $siswa->gaji)))
+        {
+            \Storage::delete('public/'.$siswa->gaji);
+        }
         $image_name = $request->file('akte')->store('images', 'public');
         $image_name2 = $request->file('kk')->store('images', 'public');
         $image_name3  = $request->file('ktp')->store('images', 'public');
+        $image_name4  = $request->file('gaji')->store('images', 'public');
         // $siswa->akte = $image_name;
         // $siswa->kk = $image_name2;
         // $siswa->ktp = $image_name3;
@@ -103,6 +109,7 @@ class BerkasController extends Controller
             'akte' => $image_name,
             'kk' => $image_name2,
             'ktp' => $image_name3,
+            'gaji' => $image_name4,
         ]);
         return redirect()->route('berkas.index')
                         ->with('success','Berkas Siswa berhasil ditambahkan');

@@ -87,6 +87,13 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Penghasilan Ayah:</strong>
+                <input type="text" name="ph_ayah" class="form-control" placeholder="Penghasilan Ayah">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>No. Telp Ayah:</strong>
                 <input type="text" name="no_ayah" class="form-control" placeholder="Nomor Telp atau WA Ayah">
             </div>
@@ -103,6 +110,13 @@
             <div class="form-group">
                 <strong>Pekerjaan Ibu:</strong>
                 <input type="text" name="kj_ibu" class="form-control" placeholder="Pekerjaan Ibu">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Penghasilan Ibu:</strong>
+                <input type="text" name="ph_ibu" class="form-control" placeholder="Penghasilan Ibu">
             </div>
         </div>
 
@@ -129,8 +143,22 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Penghasilan Wali:</strong>
+                <input type="text" name="ph_wali" class="form-control" placeholder="Penghasilan Wali">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>No. Telp Wali:</strong>
                 <input type="text" name="no_wali" class="form-control" placeholder="Nomor Telp atau WA Wali">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Tanggungan Orang Tua:</strong>
+                <input type="text" name="tanggungan" class="form-control" placeholder="Tanggungan Orang Tua">
             </div>
         </div>
 

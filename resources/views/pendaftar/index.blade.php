@@ -66,9 +66,9 @@
                         <a class="btn btn-warning" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Konfirmasi</a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="{{ route('pendaftar.konfirmasi',$pendaftar->id) }}" data-toggle="modal">
+                            <!-- <a class="dropdown-item" href="{{ route('pendaftar.konfirmasi',$pendaftar->id) }}" data-toggle="modal">
                                 Kirim Notifikasi
-                            </a>
+                            </a> -->
                             <a class="dropdown-item" href="{{ route('pendaftar.add',$pendaftar->id) }}">
                                 Tambah Siswa
                              </a>

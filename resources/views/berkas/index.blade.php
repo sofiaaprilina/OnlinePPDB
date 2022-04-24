@@ -53,6 +53,13 @@
                             <input type="file" class="form-control" name="ktp" value="{{ $siswa->ktp}}">
                         </td>
                     </tr>
+                    <tr>
+                        <td><center><img width="250px" src="{{asset('storage/'.$siswa->gaji)}}"></center></td>
+                        <td><center>Slip Gaji Orang Tua</center></td>
+                        <td width="250px">   
+                            <input type="file" class="form-control" name="gaji" value="{{ $siswa->gaji}}">
+                        </td>
+                    </tr>
                     </table>
             <br>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

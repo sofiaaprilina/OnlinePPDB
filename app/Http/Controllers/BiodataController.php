@@ -47,10 +47,13 @@ class BiodataController extends Controller
             'alamat' => 'required',
             'nm_ayah' => 'required',
             'kj_ayah' => 'required',
+            'ph_ayah' => 'required',
             'no_ayah' => 'required',
             'nm_ibu' => 'required',
             'kj_ibu' => 'required',
+            'ph_ibu' => 'required',
             'no_ibu' => 'required',
+            'tanggungan' => 'required',
             'email' => 'required',
 
         ]);
@@ -63,10 +66,13 @@ class BiodataController extends Controller
         $siswa->alamat = $request->alamat;
         $siswa->nm_ayah = $request->nm_ayah;
         $siswa->kj_ayah = $request->kj_ayah;
+        $siswa->ph_ayah = $request->ph_ayah;
         $siswa->no_ayah = $request->no_ayah;
         $siswa->nm_ibu = $request->nm_ibu;
         $siswa->kj_ibu = $request->kj_ibu;
+        $siswa->ph_ibu = $request->ph_ibu;
         $siswa->no_ibu = $request->no_ibu;
+        $siswa->tanggungan = $request->tanggungan;
         $siswa->email = $request->email;
         $siswa->user_id = Auth::user()->id;
   
@@ -114,10 +120,13 @@ class BiodataController extends Controller
             'alamat' => 'required',
             'nm_ayah' => 'required',
             'kj_ayah' => 'required',
+            'ph_ayah' => 'required',
             'no_ayah' => 'required',
             'nm_ibu' => 'required',
             'kj_ibu' => 'required',
+            'ph_ibu' => 'required',
             'no_ibu' => 'required',
+            'tanggungan' => 'required',
             'email' => 'required',
         ]);
 
@@ -126,10 +135,13 @@ class BiodataController extends Controller
             'alamat' => $request->alamat,
             'nm_ayah' => $request->nm_ayah,
             'kj_ayah' => $request->kj_ayah,
+            'ph_ayah' => $request->ph_ayah,
             'no_ayah' => $request->no_ayah,
             'nm_ibu' => $request->nm_ibu,
             'kj_ibu' => $request->kj_ibu,
+            'ph_ibu' => $request->ph_ibu,
             'no_ibu' => $request->no_ibu,
+            'tanggungan' => $request->tanggungan,
             'email' => $request->email,
         ]);
         return redirect()->route('biodata.index')
