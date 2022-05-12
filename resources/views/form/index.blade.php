@@ -21,7 +21,7 @@
             <form class="form-container">
 			<center>
 				<h2>Terimakasih Sudah Melalukan Pendaftaran</h2>
-            	<h2>Tunggu Konfirmasi Selanjutnya Melalui WhatssApp</h2>
+            	<h2>Tunggu Konfirmasi Selanjutnya Melalui Email</h2>
 			</center>
 			<br>
             <br>

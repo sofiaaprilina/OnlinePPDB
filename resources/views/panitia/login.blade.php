@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Login Admin</title>
+    <title>Login Panitia</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -93,9 +93,6 @@
                                                             {{ __('Forgot Your Password?') }}
                                                         </a>
                                                     @endif
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="/register">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>

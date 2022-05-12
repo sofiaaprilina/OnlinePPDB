@@ -89,15 +89,15 @@
                         </tr>
                         <tr>
                             <td><strong>Akte           : </strong></td>
-                            <td><img width="250px" src="{{asset('storage/'.$siswa->akte)}}"></td>
+                            <td><img width="250px" src="{{asset('uploads/'.$siswa->akte)}}"></td>
                         </tr>
                         <tr>
                             <td><strong>KK           : </strong></td>
-                            <td><img width="250px" src="{{asset('storage/'.$siswa->kk)}}"></td>
+                            <td><img width="250px" src="{{asset('uploads/'.$siswa->kk)}}"></td>
                         </tr>
                         <tr>
                             <td><strong>KTP           : </strong></td>
-                            <td><img width="250px" src="{{asset('storage/'.$siswa->ktp)}}"></td>
+                            <td><img width="250px" src="{{asset('uploads/'.$siswa->ktp)}}"></td>
                         </tr>
                     </table>
                 </div>

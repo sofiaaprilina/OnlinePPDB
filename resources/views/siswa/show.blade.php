@@ -1,6 +1,9 @@
 @extends('layouts.main')
+@section('title', 'Detail Data Siswa') 
 @section('content')
 <div>
+    <div class="card shadow">
+        <div class="card-body">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -10,116 +13,103 @@
                 <a class="btn btn-primary" href="{{ route('siswa.index') }}"> Back</a>
             </div>
         </div>
-    </div>
-   
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nama Calon Siswa    : </strong>
-                {{ $siswa->nama }}
+    </div><br>
+            <div class="table">
+                <table width="1000px">
+                    <tr>
+                        <td><strong>Nama Calon Siswa    : </strong></td>
+                        <td>{{ $siswa->nama }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tempat,Tanggal Lahir    : </strong></td>
+                        <td>{{ $siswa->tempat }}, {{ $siswa->tgl_lahir }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jenis Kelamin       : </strong></td>
+                        <td>{{ $siswa->jenis_kelamin }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Agama          : </strong></td>
+                        <td>{{ $siswa->agama }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alamat          : </strong></td>
+                        <td>{{ $siswa->alamat }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nama Ayah   : </strong></td>
+                        <td>{{ $siswa->nm_ayah }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pekerjaan Ayah   : </strong></td>
+                        <td>{{ $siswa->kj_ayah }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Penghasilan Ayah   : </strong></td>
+                        <td>{{ $siswa->ph_ayah }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>No Telp Ayah   : </strong></td>
+                        <td>{{ $siswa->no_ayah }}</td>
+                    </tr>
+                    <tr> 
+                        <td><strong>Nama Ibu   : </strong></td>
+                        <td>{{ $siswa->nm_ibu }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pekerjaan Ibu   : </strong></td>
+                        <td>{{ $siswa->kj_ibu }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Penghasilan Ibu   : </strong></td>
+                        <td>{{ $siswa->ph_ibu }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>No Telp Ibu   : </strong></td>
+                        <td>{{ $siswa->no_ibu }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nama Wali   : </strong></td>
+                        <td>{{ $siswa->nm_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pekerjaan Wali   : </strong></td>
+                        <td>{{ $siswa->kj_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Penghasilan Wali   : </strong></td>
+                        <td>{{ $siswa->ph_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>No Telp Wali   : </strong></td>
+                        <td>{{ $siswa->no_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tanggungan Orang Tua   : </strong></td>
+                        <td>{{ $siswa->tanggungan }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email           : </strong></td>
+                        <td>{{ $siswa->email }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Akte Kelahiran : </strong></td>
+                        <td><img width="150px" src="{{asset('uploads/'.$siswa->akte)}}" data-action="zoom"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kartu Keluarga : </strong></td>
+                        <td><img width="150px" src="{{asset('uploads/'.$siswa->kk)}}" data-action="zoom"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>KTP Orang Tua : </strong></td>
+                        <td><img width="150px" src="{{asset('uploads/'.$siswa->ktp)}}" data-action="zoom"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Slip Gaji : </strong></td>
+                        <td><img width="150px" src="{{asset('uploads/'.$siswa->gaji)}}" data-action="zoom"></td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Tempat,Tanggal Lahir    : </strong>
-                {{ $siswa->tempat }}, {{ $siswa->tgl_lahir }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Jenis Kelamin       : </strong>
-                {{ $siswa->jenis_kelamin }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Agama          : </strong>
-                {{ $siswa->agama }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Alamat          : </strong>
-                {{ $siswa->alamat }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nama Ayah   : </strong>
-                {{ $siswa->nm_ayah }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Pekerjaan Ayah   : </strong>
-                {{ $siswa->kj_ayah }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>No Telp Ayah   : </strong>
-                {{ $siswa->no_ayah }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nama Ibu   : </strong>
-                {{ $siswa->nm_ibu }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Pekerjaan Ibu   : </strong>
-                {{ $siswa->kj_ibu }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>No Telp Ibu   : </strong>
-                {{ $siswa->no_ibu }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nama Wali   : </strong>
-                {{ $siswa->nm_wali }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Pekerjaan Wali   : </strong>
-                {{ $siswa->kj_wali }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>No Telp Wali   : </strong>
-                {{ $siswa->no_wali }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email           : </strong>
-                {{ $siswa->email }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Akte Kelahiran    :</strong><br>
-                <img width="150px" src="{{asset('storage/'.$siswa->akte)}}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Kartu Keluarga    :</strong><br>
-                <img width="150px" src="{{asset('storage/'.$siswa->kk)}}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>KTP Orang Tua    :</strong><br>
-                <img width="150px" src="{{asset('storage/'.$siswa->ktp)}}">
-            </div>
-        </div>
-    </div>
+     </div>
 @endsection

@@ -1,78 +1,61 @@
 @extends('layouts.main')
+@section('title', 'Detail Data Pendaftar')   
 @section('content')
 <div>
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Detail Pendaftar</h2>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12 margin-tb">
+                    <div class="pull-left">
+                        <h2> Detail Pendaftar</h2>
+                    </div>
+                    <div class="pull-right">
+                        <a class="btn btn-primary" href="{{ route('pendaftar.index') }}"> Back</a>
+                    </div>
+                </div>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('pendaftar.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
-   
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nama Calon Siswa    : </strong>
-                {{ $pendaftar->siswa }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nama Orang Tua Calon Siswa  : </strong>
-                {{ $pendaftar->ortu }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Tempat,Tanggal Lahir    : </strong>
-                {{ $pendaftar->tempat }}, {{ $pendaftar->tgl_lahir }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Jenis Kelamin       : </strong>
-                {{ $pendaftar->jenis_kelamin }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Alamat          : </strong>
-                {{ $pendaftar->alamat }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>No. Telp (WA)   : </strong>
-                {{ $pendaftar->no_telp }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email           : </strong>
-                {{ $pendaftar->email }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Sekolah Asal    : </strong>
-                {{ $pendaftar->sekolah }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Waktu Daftar    : </strong>
-                {{ $pendaftar->tgl_daftar }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Bukti Pembayaran    :</strong><br>
-                <img width="150px" src="{{asset('storage/'.$pendaftar->bayar)}}">
-                
+            <br>
+            <div class="table">
+                <table width="1000px">
+                    <tr>
+                        <td><strong>Nama Calon Siswa    : </strong></td>
+                        <td>{{ $pendaftar->siswa }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nama Orang Tua Calon Siswa    : </strong></td>
+                        <td>{{ $pendaftar->ortu }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tempat,Tanggal Lahir    : </strong></td>
+                        <td>{{ $pendaftar->tempat }}, {{ $pendaftar->tgl_lahir }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jenis Kelamin       : </strong></td>
+                        <td>{{ $pendaftar->jenis_kelamin }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alamat          : </strong></td>
+                        <td>{{ $pendaftar->alamat }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>No Telepon      : </strong></td>
+                        <td>{{ $pendaftar->no_telp }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email           : </strong></td>
+                        <td>{{ $pendaftar->email }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ijazah PAUD : </strong></td>
+                        <td><img width="150px" src="{{asset('uploads/ijazahPaud/'.$pendaftar->sekolah)}}" data-action="zoom"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bukti Pembayaran : </strong></td>
+                        <td><img width="150px" src="{{asset('storage/'.$pendaftar->bayar)}}" data-action="zoom"></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
+</div>
 @endsection

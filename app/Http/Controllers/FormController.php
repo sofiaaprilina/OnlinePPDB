@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pendaftar;
+use File;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -35,17 +36,6 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'siswa' => 'required',
-            'ortu' => 'required',
-            'tempat' => 'required',
-            'tgl_lahir' => 'required',
-            'jenis_kelamin' => 'required',
-            'alamat' => 'required',
-            'no_telp' => 'required',
-            'email' => 'required',
-            'bayar' => 'required',
-        ]);
         $pendaftar = new Pendaftar;
         $pendaftar->siswa = $request->siswa;
         $pendaftar->ortu = $request->ortu;
@@ -55,11 +45,32 @@ class FormController extends Controller
         $pendaftar->alamat = $request->alamat;
         $pendaftar->no_telp = $request->no_telp;
         $pendaftar->email = $request->email;
-        $pendaftar->sekolah = $request->sekolah;
+        // $pendaftar->sekolah = $request->sekolah;
         $pendaftar->tgl_daftar = $request->tgl_daftar;
-        if($request->file('bayar')){
-            $image_name = $request->file('bayar')->store('images','public');
-            $pendaftar->bayar = $image_name;
+        // if($request->file('bayar')){
+        //     $image_name = $request->file('bayar')->store('images','public');
+        //     $pendaftar->bayar = $image_name;
+        // }
+        if($request->sekolah != null){
+            $image_name = $request->id . '_ijazahPaud_' . time(). '.'. $request->sekolah->extension();
+            if(File::exists(public_path('uploads/ijazahPaud/' . $pendaftar->sekolah))) {
+                File::delete(public_path('uploads/ijazahPaud/' . $pendaftar->sekolah));
+            }  
+            $request->sekolah->move(public_path('uploads/ijazahPaud'), $image_name);
+            $pendaftar->sekolah = $image_name;
+        } else if($request->sekolah == null && $pendaftar->sekolah && file_exists(public_path('uploads/ijazahPaud/' . $pendaftar->sekolah))){
+            $image_name = $pendaftar->sekolah;
+        }
+
+        if($request->bayar != null){
+            $image_name2 = $request->id . '_pembayaran_' . time(). '.'. $request->bayar->extension();
+            if(File::exists(public_path('buktiPendaftaran' . $pendaftar->bayar))) {
+                File::delete(public_path('buktiPendaftaran' . $pendaftar->bayar));
+            }  
+            $request->bayar->move(public_path('buktiPendaftaran'), $image_name2);
+            $pendaftar->bayar = $image_name2;
+        } else if($request->bayar == null && $pendaftar->bayar && file_exists(public_path('buktiPendaftaran/' . $pendaftar->bayar))){
+            $image_name2 = $pendaftar->bayar;
         }
   
         $pendaftar->save();

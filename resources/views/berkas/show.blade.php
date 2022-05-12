@@ -18,7 +18,7 @@
      @endif
     
      <div class="row">
-        @foreach ($siswas as $siswa)
+        {{-- @foreach ($siswas as $siswa) --}}
         @if (Auth::user()->id == $siswa->user_id)
         <form action="{{ route('berkas.update',$siswa->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -69,7 +69,7 @@
     </div>
         </form>
         @endif
-        @endforeach 
+        {{-- @endforeach  --}}
     </div>
 
  @endsection

@@ -1,5 +1,8 @@
-@extends('layouts.main')   
+@extends('layouts.main')
+@section('title', 'Edit Akun Pendaftar')   
 @section('content')
+<div class="card shadow">
+    <div class="card-body">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -8,6 +11,7 @@
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('akun.index') }}"> Back</a>
             </div>
+            <br>
         </div>
     </div>
    
@@ -55,4 +59,6 @@
         </div>
    
     </form>
+    </div>
+</div>
 @endsection

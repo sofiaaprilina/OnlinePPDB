@@ -147,21 +147,28 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="akte">Akte Kelahiran</label>
-                <input type="file" name="akte">
+                <input type="file" name="akte" accept="image/jpeg,image/jpg,image/png">
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="kk">Kartu Keluarga</label>
-                <input type="file" name="kk">
+                <input type="file" name="kk" accept="image/jpeg,image/jpg,image/png">
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="ktp">KTP Orang Tua</label>
-                <input type="file" name="ktp">
+                <input type="file" name="ktp" accept="image/jpeg,image/jpg,image/png">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <label for="ktp">Slip Gaji</label>
+                <input type="file" name="gaji" accept="image/jpeg,image/jpg,image/png">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

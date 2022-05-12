@@ -24,43 +24,47 @@
 				</br>
                 <div class="form-group">
 				<label for="siswa">Nama Siswa</label>
-				<input type="text" id="siswa" name="siswa" class="form-control" placeholder="Masukkan Nama Siswa">
+				<input type="text" id="siswa" name="siswa" class="form-control" placeholder="Masukkan Nama Siswa" required>
 			</div>
             <div class="form-group">
 				<label for="ortu">Nama Orang Tua</label>
-				<input type="text" id="ortu" name="ortu" class="form-control" placeholder="Masukkan Nama Orang Tua">
+				<input type="text" id="ortu" name="ortu" class="form-control" placeholder="Masukkan Nama Orang Tua" required>
 			</div>
             <div class="form-group">
 				<label for="tempat">Tempat Lahir</label>
-				<input type="text" id="tempat" name="tempat" class="form-control" placeholder="Masukkan Tempat Lahir">
+				<input type="text" id="tempat" name="tempat" class="form-control" placeholder="Masukkan Tempat Lahir" required>
 			</div>
             <div class="form-group">
 				<label for="tgl_lahir">Tanggal Lahir</label>
-				<input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control" placeholder="Masukkan Tanggal Lahir">
+				<input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control" placeholder="Masukkan Tanggal Lahir" required>
 			</div>
             <div class="form-group">
 				<label for="jenis_kelamin">Jenis Kelamin</label>
-				<select id="jenis_kelamin" name="jenis_kelamin" class="form-control">
+				<select id="jenis_kelamin" name="jenis_kelamin" class="form-control" required>
 					<option value="">- Pilih Jenis Kelamin</option>
-					<option value="perempuan">Perempuan</option>
-					<option value="laki-laki">Laki-laki</option>
+					<option value="Perempuan">Perempuan</option>
+					<option value="Laki-laki">Laki-laki</option>
 				</select>
 			</div>
             <div class="form-group">
 				<label for="alamat">Alamat</label>
-				<textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan Alamat"></textarea>
+				<textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan Alamat" required></textarea>
 			</div>
             <div class="form-group">
 				<label for="no_telp">No Telepon (WhatssApp)</label>
-				<input type="text" id="no_telp" name="no_telp" class="form-control" placeholder="Masukkan Nomor Telepon">
+				<input type="text" id="no_telp" name="no_telp" class="form-control" placeholder="Masukkan Nomor Telepon" required>
 			</div>
             <div class="form-group">
 				<label for="email">Email</label>
-				<input type="text" id="email" name="email" class="form-control" placeholder="Masukkan Email">
+				<input type="text" id="email" name="email" class="form-control" placeholder="Masukkan Email" required>
+			</div>
+            <div class="form-group">
+                <label for="bayar">Ijazah PAUD (bila ada)</label>
+                <input type="file" name="sekolah" accept="image/jpeg,image/jpg,image/png">
 			</div>
             <div class="form-group">
                 <label for="bayar">Upload Bukti Pembayaran</label>
-                <input type="file" name="bayar">
+                <input type="file" name="bayar" accept="image/jpeg,image/jpg,image/png" required>
 			</div>
 			</br>
 			<div class="col-xs-15 col-sm-15 col-md-15 text-center">

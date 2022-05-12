@@ -74,15 +74,15 @@
                         </tr>
                         <tr>
                             <td><strong>Akte           : </strong></td>
-                            <td><img width="250px" src="{{public_path('storage/'.$s->akte)}}"></td>
+                            <td><img width="250px" src="{{public_path('uploads/'.$s->akte)}}"></td>
                         </tr>
                         <tr>
                             <td><strong>KK           : </strong></td>
-                            <td><img width="250px" src="{{public_path('storage/'.$s->kk)}}"></td>
+                            <td><img width="250px" src="{{public_path('uploads/'.$s->kk)}}"></td>
                         </tr>
                         <tr>
                             <td><strong>KTP           : </strong></td>
-                            <td><img width="250px" src="{{public_path('storage/'.$s->ktp)}}"></td>
+                            <td><img width="250px" src="{{public_path('uploads/'.$s->ktp)}}"></td>
                         </tr>
                         @endif
                         @endforeach 

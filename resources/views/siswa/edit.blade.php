@@ -1,4 +1,5 @@
-@extends('layouts.main')   
+@extends('layouts.main')
+@section('title', 'Edit Data Siswa')   
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -8,6 +9,7 @@
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('siswa.index') }}"> Back</a>
             </div>
+            <br>
         </div>
     </div>
    
@@ -26,152 +28,125 @@
         @csrf
         @method('PUT')
    
-         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Nama Calon Siswa:</strong>
-                    <input type="text" name="nama" value="{{ $siswa->nama }}" class="form-control" placeholder="Nama Calon Siswa">
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="table">
+                    <table width="1000px">
+                        <tr>
+                            <td><strong>Nama Calon Siswa </strong></td>
+                            <td><input type="text" name="nama" value="{{ $siswa->nama }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tempat,Tanggal Lahir </strong></td>
+                            <td><input type="text" value="{{ $siswa->tempat }}, {{ $siswa->tgl_lahir }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Jenis Kelamin </strong></td>
+                            <td><input type="text" name="jenis_kelamin" value="{{ $siswa->jenis_kelamin }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Agama </strong></td>
+                            <td><input type="text" name="agama" value="{{ $siswa->agama }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Alamat </strong></td>
+                            <td><input type="text" name="alamat" value="{{ $siswa->alamat }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nama Ayah </strong></td>
+                            <td><input type="text" name="nm_ayah" value="{{ $siswa->nm_ayah }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pekerjaan Ayah </strong></td>
+                            <td><input type="text" name="kj_ayah" value="{{ $siswa->kj_ayah }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Penghasilan Ayah </strong></td>
+                            <td><input type="text" name="ph_ayah" value="{{ $siswa->ph_ayah }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>No Telp Ayah </strong></td>
+                            <td><input type="text" name="no_ayah" value="{{ $siswa->no_ayah }}" class="form-control"></td>
+                        </tr>
+                        <tr> 
+                            <td><strong>Nama Ibu   : </strong></td>
+                            <td><input type="text" name="nm_ibu" value="{{ $siswa->nm_ibu }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pekerjaan Ibu </strong></td>
+                            <td><input type="text" name="kj_ibu" value="{{ $siswa->kj_ibu }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Penghasilan Ibu </strong></td>
+                            <td><input type="text" name="ph_ibu" value="{{ $siswa->ph_ibu }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>No Telp Ibu </strong></td>
+                            <td><input type="text" name="no_ibu" value="{{ $siswa->no_ibu }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nama Wali </strong></td>
+                            <td><input type="text" name="nm_wali" value="{{ $siswa->nm_wali }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pekerjaan Wali </strong></td>
+                            <td><input type="text" name="kj_wali" value="{{ $siswa->kj_wali }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Penghasilan Wali</strong></td>
+                            <td><input type="text" name="ph_wali" value="{{ $siswa->ph_wali }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>No Telp Wali </strong></td>
+                            <td><input type="text" name="no_wali" value="{{ $siswa->no_wali }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tanggungan Orang Tua </strong></td>
+                            <td><input type="text" name="tanggungan" value="{{ $siswa->tanggungan }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email</strong></td>
+                            <td><input type="text" name="email" value="{{ $siswa->email }}" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Akte Kelahiran</strong></td>
+                            <td><input type="file" class="form-control" name="akte" value="{{ $siswa->akte }}" accept="image/jpeg,image/jpg,image/png"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><img width="150px" src="{{asset('uploads/'.$siswa->akte)}}" data-action="zoom"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kartu Keluarga</strong></td>
+                            <td><input type="file" class="form-control" name="kk" value="{{ $siswa->kk }}" accept="image/jpeg,image/jpg,image/png"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><img width="150px" src="{{asset('uploads/'.$siswa->kk)}}" data-action="zoom"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>KTP Orang Tua</strong></td>
+                            <td><input type="file" class="form-control" name="ktp" value="{{ $siswa->ktp }}" accept="image/jpeg,image/jpg,image/png"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><img width="150px" src="{{asset('uploads/'.$siswa->ktp)}}" data-action="zoom"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Slip Gaji</strong></td>
+                            <td><input type="file" class="form-control" name="gaji" value="{{ $siswa->gaji }}" accept="image/jpeg,image/jpg,image/png"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><img width="150px" src="{{asset('uploads/'.$siswa->gaji)}}" data-action="zoom"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
                 </div>
             </div>
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Tempat Lahir:</strong>
-                <input type="text" name="tempat" value="{{ $siswa->tempat }}" class="form-control" placeholder="Tempat Lahir">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Tanggal Lahir:</strong>
-                <input type="date" name="tgl_lahir" value="{{ $siswa->tgl_lahir}}" class="form-control datepicker" placeholder="yyyy/mm/dd">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Jenis Kelamin:</strong>
-                <select class="form-control" name="jenis_kelamin">
-                    <option value="{{ $siswa->jenis_kelamin}}">{{ $siswa->jenis_kelamin}}</option>
-	                <option value="laki-laki">Laki-laki</option>
-	                <option value="perempuan">Perempuan</option>
-	            </select>
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Agama:</strong>
-                <input type="text" name="agama" value="{{ $siswa->agama }}" class="form-control" placeholder="Agama">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Alamat:</strong>
-                <input type="text" name="alamat" value="{{ $siswa->alamat }}" class="form-control" placeholder="Alamat">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nama Ayah:</strong>
-                <input type="text" name="nm_ayah" value="{{ $siswa->nm_ayah }}" class="form-control" placeholder="Nama Ayah">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Pekerjaan Ayah:</strong>
-                <input type="text" name="kj_ayah" value="{{ $siswa->kj_ayah }}" class="form-control" placeholder="Pekerjaan Ayah">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>No Telp Ayah:</strong>
-                <input type="text" name="no_ayah" value="{{ $siswa->no_ayah }}" class="form-control" placeholder="No Telp atau WA Ayah">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nama Ibu:</strong>
-                <input type="text" name="nm_ibu" value="{{ $siswa->nm_ibu }}" class="form-control" placeholder="Nama Ibu">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Pekerjaan Ibu:</strong>
-                <input type="text" name="kj_ibu" value="{{ $siswa->kj_ibu }}" class="form-control" placeholder="Pekerjaan Ibu">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>No Telp Ibu:</strong>
-                <input type="text" name="no_ibu" value="{{ $siswa->no_ibu }}" class="form-control" placeholder="No Telp atau WA Ibu">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nama Wali:</strong>
-                <input type="text" name="nm_wali" value="{{ $siswa->nm_wali }}" class="form-control" placeholder="Nama Wali">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Pekerjaan Wali:</strong>
-                <input type="text" name="kj_wali" value="{{ $siswa->kj_wali }}" class="form-control" placeholder="Pekerjaan Wali">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>No Telp Wali:</strong>
-                <input type="text" name="no_wali" value="{{ $siswa->no_wali }}" class="form-control" placeholder="No Telp atau WA Wali">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email:</strong>
-                <input type="text" name="email" value="{{ $siswa->email }}" class="form-control" placeholder="Masukkan Email">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <label for="akte">Akte Kelahiran</label>
-                <input type="file" class="form-control" name="akte" value="{{ $siswa->akte }}">
-                <img width="150px" src="{{asset('storage/'.$siswa->akte)}}">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <label for="kk">Kartu Keluarga</label>
-                <input type="file" class="form-control" name="kk" value="{{ $siswa->kk }}">
-                <img width="150px" src="{{asset('storage/'.$siswa->kk)}}">
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <label for="ktp">KTP Orang Tua</label>
-                <input type="file" class="form-control" name="ktp" value="{{ $siswa->ktp }}">
-                <img width="150px" src="{{asset('storage/'.$siswa->ktp)}}">
-            </div>
-        </div>
-        
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-   
+         </div> 
     </form>
 @endsection
