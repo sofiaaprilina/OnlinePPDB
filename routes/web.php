@@ -167,3 +167,7 @@ Route::put('/update/{id}', 'CetakController@update')->name('cetak.update');
 Route::delete('/destroy', 'CetakController@destroy')->name('cetak.destroy');
 Route::delete('/destroy{id}', 'CetakController@destroy')->name('cetak.destroy');
 Route::get('/cetak_pdf', 'CetakController@cetak')->name('cetak.cetak_pdf');
+
+//Ganti Password
+Route::get('change-password', 'ChangePasswordController@index')->name('change.pw');
+Route::post('change-password', 'ChangePasswordController@store')->name('change.password');

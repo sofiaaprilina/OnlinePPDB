@@ -1,5 +1,36 @@
 @extends('layouts.main')
 @section('title', 'Tambah Akun Pendaftar')
+@section('notif')
+<li class="nav-item dropdown no-arrow mx-1">
+    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bell fa-fw"></i>
+        <!-- Counter - Alerts -->
+        <span class="badge badge-danger badge-counter">{{$pendaftars->count()}}</span>
+    </a>
+    @foreach ($pendaftars as $daftar)
+    <!-- Dropdown - Alerts -->
+    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+        aria-labelledby="alertsDropdown">
+        <h6 class="dropdown-header">
+            Alerts Center
+        </h6>
+        <a class="dropdown-item d-flex align-items-center" href="/pendaftar">
+            <div class="mr-3">
+                <div class="icon-circle bg-warning">
+                    <i class="fas fa-exclamation-triangle text-white"></i>
+                </div>
+            </div>
+            <div>
+                <div class="small text-gray-500">{{$daftar->tgl_daftar}}</div>
+                <span class="font-weight-bold">Pendaftar: {{$daftar->siswa}} {{$daftar->status}}</span>
+            </div>
+        </a>
+        @endforeach
+        {{-- <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a> --}}
+    </div>
+</li>
+@endsection
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
@@ -45,14 +76,24 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nama Calon Siswa: </strong>
-                <input type="text" name="name" class="form-control" placeholder="Nama Calon Siswa">
+                <select name="name" class="form-control" id="name" required = 'required' >
+                    @foreach ($pendaftars as $p)
+                        <option value="{{$p->siswa}}">{{$p->id}} | {{$p->siswa}}</option>
+                    @endforeach
+                    </select>
+                {{-- <input type="text" name="name" class="form-control" placeholder="Nama Calon Siswa"> --}}
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Email: </strong>
-                <input type="text" name="email" class="form-control" placeholder="Email ">
+                <select name="email" class="form-control" id="email" required = 'required' >
+                @foreach ($pendaftars as $p)
+                    <option value="{{$p->email}}">{{$p->id}} | {{$p->email}}</option>
+                @endforeach
+                </select>
+                {{-- <input type="text" name="email" class="form-control" placeholder="Email "> --}}
             </div>
         </div>
 

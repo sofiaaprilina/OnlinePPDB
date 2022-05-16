@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pendaftar;
 use Illuminate\Http\Request;
 
 class HomeController1 extends Controller
@@ -13,6 +14,7 @@ class HomeController1 extends Controller
     
     public function index()
     {
-        return view('panitia.dashboard');
+        $pendaftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('panitia.dashboard', compact('pendaftars'));
     }
 }

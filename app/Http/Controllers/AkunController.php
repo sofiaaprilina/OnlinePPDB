@@ -18,7 +18,8 @@ class AkunController extends Controller
     public function index()
     {
         $users = User::paginate(5);
-        return view('akun.index',compact('users'))
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('akun.index',compact('users','daftars'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -80,7 +81,8 @@ class AkunController extends Controller
     public function show($id)
     {
         $user = \App\User::find($id);
-        return view('akun.show',compact('user'));
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('akun.show',compact('user','daftars'));
     }
 
     /**
@@ -92,7 +94,8 @@ class AkunController extends Controller
     public function edit($id)
     {
         $user = \App\User::find($id);
-        return view('akun.edit',compact('user'));
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('akun.edit',compact('user','daftars'));
     }
 
     /**

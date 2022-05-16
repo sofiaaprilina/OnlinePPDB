@@ -45,14 +45,24 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nama Calon Siswa: </strong>
-                <input type="text" name="name" class="form-control" placeholder="Nama Calon Siswa">
+                <select name="name" class="form-control" id="name" required = 'required' >
+                    @foreach ($pendaftars as $p)
+                        <option value="{{$p->siswa}}">{{$p->id}} | {{$p->siswa}}</option>
+                    @endforeach
+                    </select>
+                {{-- <input type="text" name="name" class="form-control" placeholder="Nama Calon Siswa"> --}}
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Email: </strong>
-                <input type="text" name="email" class="form-control" placeholder="Email ">
+                <select name="email" class="form-control" id="email" required = 'required' >
+                @foreach ($pendaftars as $p)
+                    <option value="{{$p->email}}">{{$p->id}} | {{$p->email}}</option>
+                @endforeach
+                </select>
+                {{-- <input type="text" name="email" class="form-control" placeholder="Email "> --}}
             </div>
         </div>
 

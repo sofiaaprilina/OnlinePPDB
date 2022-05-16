@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Siswa;
+use App\Pendaftar;
 use File;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,8 @@ class SiswaController extends Controller
     public function index()
     {
         $siswas = Siswa::paginate(5);
-        return view('siswa.index',compact('siswas'))
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('siswa.index',compact('siswas','daftars'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -31,7 +33,8 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view('siswa.create');
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('siswa.create',compact('daftars'));
     }
 
     /**
@@ -102,7 +105,8 @@ class SiswaController extends Controller
     public function show($id)
     {
         $siswa = \App\Siswa::find($id);
-        return view('siswa.show',compact('siswa'));
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('siswa.show',compact('siswa','daftars'));
     }
 
     /**
@@ -114,7 +118,8 @@ class SiswaController extends Controller
     public function edit($id)
     {
         $siswa = \App\Siswa::find($id);
-        return view('siswa.edit',compact('siswa'));
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('siswa.edit',compact('siswa','daftars'));
     }
 
     /**

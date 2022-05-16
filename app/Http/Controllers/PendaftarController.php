@@ -22,7 +22,8 @@ class PendaftarController extends Controller
     public function index()
     {
         $pendaftars = Pendaftar::paginate(5);
-        return view('pendaftar.index',compact('pendaftars'))
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('pendaftar.index',compact('pendaftars','daftars'))
             ->with('i', (request()->input('page', 1) - 1) * 5); 
     }
 
@@ -33,7 +34,8 @@ class PendaftarController extends Controller
      */
     public function create()
     {
-        return view('pendaftar.create');
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('pendaftar.create',compact('daftars'));
     }
 
     /**
@@ -107,7 +109,8 @@ class PendaftarController extends Controller
     public function show($id)
     {
         $pendaftar = \App\Pendaftar::find($id);
-        return view('pendaftar.show',compact('pendaftar'));
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('pendaftar.show',compact('pendaftar','daftars'));
     }
 
     /**
@@ -119,7 +122,8 @@ class PendaftarController extends Controller
     public function edit($id)
     {
         $pendaftar = \App\Pendaftar::find($id);
-        return view('pendaftar.edit',compact('pendaftar'));
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('pendaftar.edit',compact('pendaftar','daftars'));
     }
 
     /**
