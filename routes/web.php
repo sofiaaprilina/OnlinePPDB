@@ -171,3 +171,9 @@ Route::get('/cetak_pdf', 'CetakController@cetak')->name('cetak.cetak_pdf');
 //Ganti Password
 Route::get('change-password', 'ChangePasswordController@index')->name('change.pw');
 Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
+
+//Konfirmasi Email
+Route::get('kirim-email/{id}','MailController@index')->name('konfirmasi');
+Route::get('novalid/{id}','MailController@novalid')->name('novalid');
+Route::get('kirim-email/{id}','MailController@berkasvalid')->name('berkas.valid');
+Route::get('novalid/{id}','MailController@berkasnovalid')->name('berkas.novalid');

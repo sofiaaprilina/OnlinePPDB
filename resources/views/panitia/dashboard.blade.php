@@ -3,35 +3,32 @@
 @section('title', 'Dashboard')
 
 @section('notif')
-<li class="nav-item dropdown no-arrow mx-1">
-    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+    <li class="nav-item dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell fa-fw"></i>
-        <!-- Counter - Alerts -->
         <span class="badge badge-danger badge-counter">{{$pendaftars->count()}}</span>
-    </a>
-    @foreach ($pendaftars as $pendaftar)
-    <!-- Dropdown - Alerts -->
-    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-        aria-labelledby="alertsDropdown">
-        <h6 class="dropdown-header">
-            Alerts Center
-        </h6>
-        <a class="dropdown-item d-flex align-items-center" href="/pendaftar">
-            <div class="mr-3">
-                <div class="icon-circle bg-warning">
-                    <i class="fas fa-exclamation-triangle text-white"></i>
-                </div>
-            </div>
-            <div>
-                <div class="small text-gray-500">{{$pendaftar->tgl_daftar}}</div>
-                <span class="font-weight-bold">Pendaftar: {{$pendaftar->siswa}} {{$pendaftar->status}}</span>
-            </div>
         </a>
+        @foreach ($pendaftars as $pendaftar)
+        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="alertsDropdown">
+            <h6 class="dropdown-header">
+                Alerts Center
+            </h6>
+            <a class="dropdown-item d-flex align-items-center" href="/pendaftar">
+                <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">{{$pendaftar->tgl_daftar}}</div>
+                    <span class="font-weight-bold">Pendaftar: {{$pendaftar->siswa}} {{$pendaftar->status}}</span>
+                </div>
+            </a>
+        </div>
         @endforeach
-        {{-- <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a> --}}
-    </div>
-</li>
+    </li>
 @endsection
 
 @section('content')
