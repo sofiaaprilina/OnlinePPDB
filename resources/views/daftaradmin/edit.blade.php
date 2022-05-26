@@ -51,7 +51,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Password:</strong>
-                <input id="password" type="password" name="password" value="{{ $admin->password }}" class="form-control" placeholder="Password">
+                <input id="password" type="password" name="password" value="{{ $admin->password }}" class="form-control" minlength="6" placeholder="Password">
             </div>
         </div>
 

@@ -25,7 +25,7 @@ class CreatePendaftarsTable extends Migration
             $table->string('email');
             $table->string('sekolah')->nullable();
             $table->string('bayar');
-            $table->enum('status', ['Terkonfirmasi', 'Belum Konfirmasi'])->default('Belum Konfirmasi');
+            $table->enum('status', ['Terkonfirmasi', 'Belum Konfirmasi', 'Valid', 'Tidak Valid'])->default('Belum Konfirmasi');
             $table->timestamp('tgl_daftar')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });

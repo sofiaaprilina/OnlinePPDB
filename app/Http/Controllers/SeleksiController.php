@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use PDF;
+
 use App\Siswa;
-use App\Pengumuman;
+use App\Pendaftar;
 use Illuminate\Http\Request;
 
-class CetakController extends Controller
+class SeleksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,19 @@ class CetakController extends Controller
      */
     public function index()
     {
-        $siswas = Siswa::all();
-        $alerts = Pengumuman::where('kategori', '=', 'Alert')->get();
-        return view('cetak.index', compact('siswas','alerts'));
+        $siswas = Siswa::where('berkas', '=', 'Terkonfirmasi')->paginate(5);
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+
+        // $keringanan = "";
+
+        // if($siswa->status_ayah == 'Meninggal' && $siswa->tanggungan > 3 && $siswa->ph_ibu >= 1000000){
+        //     $keringanan = "Ya";
+        // } else{
+        //     $keringanan = "Tidak";
+        // }
+        return view('seleksi.index',compact('siswas','daftars','alerts'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -47,10 +57,9 @@ class CetakController extends Controller
      * @param  \App\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Siswa $siswa)
     {
-        $siswa = \App\Siswa::find($id);
-        return view('cetak.show',compact('siswa'));
+        //
     }
 
     /**
@@ -86,10 +95,4 @@ class CetakController extends Controller
     {
         //
     }
-    public function cetak(){
-        $siswa = Siswa::all();
-        // $siswa = Siswa::where('id', $id)->get();
-        $pdf = PDF::loadview('cetak.cetak_pdf',compact('siswa'));
-        return $pdf->stream();
-        }
 }

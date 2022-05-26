@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Pendaftar;
+use App\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -19,7 +20,8 @@ class AkunController extends Controller
     {
         $users = User::paginate(5);
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('akun.index',compact('users','daftars'))
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('akun.index',compact('users','daftars','alerts'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -31,7 +33,8 @@ class AkunController extends Controller
     public function create()
     {
         $pendaftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('akun.create', compact('pendaftars'));
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('akun.create', compact('pendaftars','alerts'));
     }
 
     /**
@@ -82,7 +85,8 @@ class AkunController extends Controller
     {
         $user = \App\User::find($id);
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('akun.show',compact('user','daftars'));
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('akun.show',compact('user','daftars','alerts'));
     }
 
     /**
@@ -95,7 +99,8 @@ class AkunController extends Controller
     {
         $user = \App\User::find($id);
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('akun.edit',compact('user','daftars'));
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('akun.edit',compact('user','daftars','alerts'));
     }
 
     /**

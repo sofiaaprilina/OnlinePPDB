@@ -23,7 +23,8 @@ class PendaftarController extends Controller
     {
         $pendaftars = Pendaftar::paginate(5);
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('pendaftar.index',compact('pendaftars','daftars'))
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('pendaftar.index',compact('pendaftars','daftars','alerts'))
             ->with('i', (request()->input('page', 1) - 1) * 5); 
     }
 
@@ -35,7 +36,8 @@ class PendaftarController extends Controller
     public function create()
     {
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('pendaftar.create',compact('daftars'));
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('pendaftar.create',compact('daftars','alerts'));
     }
 
     /**
@@ -110,7 +112,8 @@ class PendaftarController extends Controller
     {
         $pendaftar = \App\Pendaftar::find($id);
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('pendaftar.show',compact('pendaftar','daftars'));
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('pendaftar.show',compact('pendaftar','daftars','alerts'));
     }
 
     /**
@@ -123,7 +126,8 @@ class PendaftarController extends Controller
     {
         $pendaftar = \App\Pendaftar::find($id);
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('pendaftar.edit',compact('pendaftar','daftars'));
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('pendaftar.edit',compact('pendaftar','daftars','alerts'));
     }
 
     /**
@@ -194,6 +198,12 @@ class PendaftarController extends Controller
     public function destroy($id)
     {
         $pendaftar = \App\Pendaftar::find($id);
+        if(File::exists(public_path('buktiPendaftaran' . $pendaftar->bayar))) {
+            File::delete(public_path('buktiPendaftaran' . $pendaftar->bayar));
+        }
+        if(File::exists(public_path('uploads/ijazahPaud/' . $pendaftar->sekolah))) {
+            File::delete(public_path('uploads/ijazahPaud/' . $pendaftar->sekolah));
+        }
         $pendaftar->delete();
   
         return redirect()->route('pendaftar.index')
@@ -203,7 +213,8 @@ class PendaftarController extends Controller
     public function add($id)
     {
         $pendaftar = \App\Pendaftar::find($id);
-        return view('pendaftar.add',compact('pendaftar'));
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        return view('pendaftar.add',compact('pendaftar','daftars'));
     }
 
     public function olah($id, Request $request)
@@ -238,40 +249,6 @@ class PendaftarController extends Controller
             ->with('success','Siswa berhasil ditambahkan. Silahkan cek menu Data Siswa');
     }
 
-    public function confirm($id, Request $request){
-
-        $pendaftar = \App\Pendaftar::find($id);
-        $user = \App\User::find($id);
-        $input = 'Username : '.$user->username .'Password : '.$user->password;
-        $message .= $input;
-
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://localhost:3000/send-message',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => 'number='.$pendaftar->no_telp.'&message='.$message,
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/x-www-form-urlencoded'
-            ),
-        ));
-
-        $response = curl_exec($curl);
-
-        curl_close($curl);
-        echo $response;
-    }
-
-    public function connect()
-    {
-        return view('pendaftar.koneksi');
-    }
     public function cari(Request $request){
         $cari= $request->get('cari');
         $pendaftars = \App\Pendaftar::where('siswa', 'LIKE', '%' . $cari . '%')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pengumuman;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard');
+        $pengumumans = Pengumuman::where('kategori', '=', 'Dashboard')->get();
+        $alerts = Pengumuman::where('kategori', '=', 'Alert')->get();
+        return view('user.dashboard', compact('pengumumans','alerts'));
     }
 }

@@ -26,10 +26,12 @@ class CreateSiswasTable extends Migration
             $table->string('kj_ayah')->nullable();
             $table->string('ph_ayah')->nullable();
             $table->string('no_ayah')->nullable();
+            $table->enum('status_ayah', ['Masih Hidup', 'Meninggal'])->nullable();
             $table->string('nm_ibu')->nullable();
             $table->string('kj_ibu')->nullable();
             $table->string('ph_ibu')->nullable();
             $table->string('no_ibu')->nullable();
+            $table->enum('status_ibu', ['Masih Hidup', 'Meninggal'])->nullable();
             $table->string('nm_wali')->nullable();
             $table->string('kj_wali')->nullable();
             $table->string('ph_wali')->nullable();
@@ -40,6 +42,7 @@ class CreateSiswasTable extends Migration
             $table->string('kk')->nullable();
             $table->string('ktp')->nullable();
             $table->string('gaji')->nullable();
+            $table->enum('berkas', ['Terkonfirmasi', 'Belum Terkonfirmasi', 'Tidak Valid'])->default('Belum Terkonfirmasi');
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->timestamps();
         });

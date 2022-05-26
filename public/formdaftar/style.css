@@ -2,7 +2,9 @@
 body{
     background-image: url("../images/bg.png");
     background-size: cover;
-    padding-top: 10vh;  
+    background-position-x: -1cm;
+    background-position-y: 3.4cm;
+    padding-top: 10vh;   
 }
  
 /* mengatur warna backgroud form */

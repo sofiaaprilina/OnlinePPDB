@@ -121,6 +121,9 @@
                             </div>
                         </li>
 
+                        {{-- Nav Item - Notification --}}
+                        @yield('notif')
+
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->

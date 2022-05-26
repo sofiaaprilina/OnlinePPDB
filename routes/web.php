@@ -71,6 +71,20 @@ Route::middleware('auth:admin')->group(function(){
    Route::delete('/destroy', 'DaftarSiswaController@destroy')->name('daftar-siswa.destroy');
    Route::delete('/destroy{id}', 'DaftarSiswaController@destroy')->name('daftar-siswa.destroy');
    Route::get('/cari-Siswa', 'DaftarSiswaController@cari')->name('cariPanitia');
+
+   //Pengumuman
+   Route::resource('pengumuman','PengumumanController');
+   Route::get('/index', 'PengumumanController@index')->name('pengumuman.index');
+   Route::get('/create', 'PengumumanController@create')->name('pengumuman.create');
+   Route::get('/edit', 'PengumumanController@edit')->name('pengumuman.edit');
+   Route::get('/edit/{id}', 'PengumumanController@edit')->name('pengumuman.edit');
+   Route::get('/show', 'PengumumanController@show')->name('pengumuman.show');
+   Route::get('/show/{id}', 'PengumumanController@show')->name('pengumuman.show');
+   Route::post('/store', 'PengumumanController@store')->name('pengumuman.store');
+//    Route::put('/update/{id}', 'PengumumanController@update')->name('pengumuman.update');
+   Route::delete('/destroy', 'PengumumanController@destroy')->name('pengumuman.destroy');
+   Route::delete('/destroy{id}', 'PengumumanController@destroy')->name('pengumuman.destroy');
+   Route::get('/cariPengumuman', 'PengumumanController@cari')->name('cariPengumuman');
 });
 
 Route::middleware('auth:panitia')->group(function(){
@@ -87,7 +101,6 @@ Route::post('/store', 'PendaftarController@store')->name('pendaftar.store');
 Route::put('/update/{id}', 'PendaftarController@update')->name('pendaftar.update');
 Route::delete('/destroy', 'PendaftarController@destroy')->name('pendaftar.destroy');
 Route::delete('/destroy{id}', 'PendaftarController@destroy')->name('pendaftar.destroy');
-Route::post('/konfirmasi{id}', 'PendaftarController@confirm')->name('pendaftar.konfirmasi');
 Route::get('/add/{id}', 'PendaftarController@add')->name('pendaftar.add');
 Route::post('/olah/{id}', 'PendaftarController@olah')->name('pendaftar.olah');
 Route::get('/koneksi', 'PendaftarController@connect')->name('pendaftar.connect');
@@ -121,6 +134,21 @@ Route::put('/update/{id}', 'SiswaController@update')->name('siswa.update');
 Route::delete('/destroy', 'SiswaController@destroy')->name('siswa.destroy');
 Route::delete('/destroy{id}', 'SiswaController@destroy')->name('siswa.destroy');
 Route::get('/cariSiswa', 'SiswaController@cari')->name('cariSiswa');
+
+//Seleksi
+Route::resource('seleksi','SeleksiController');
+Route::get('/index', 'SeleksiController@index')->name('seleksi.index');
+Route::get('/create', 'SeleksiController@create')->name('seleksi.create');
+Route::get('/edit', 'SeleksiController@edit')->name('seleksi.edit');
+Route::get('/edit/{id}', 'SeleksiController@edit')->name('seleksi.edit');
+Route::get('/show', 'SeleksiController@show')->name('seleksi.show');
+Route::get('/show/{id}', 'SeleksiController@show')->name('seleksi.show');
+Route::post('/store', 'SeleksiController@store')->name('seleksi.store');
+// Route::put('/update', 'SiswaController@update')->name('siswa.update');
+Route::put('/update/{id}', 'SeleksiController@update')->name('seleksi.update');
+Route::delete('/destroy', 'SeleksiController@destroy')->name('seleksi.destroy');
+Route::delete('/destroy{id}', 'SeleksiController@destroy')->name('seleksi.destroy');
+Route::get('/cariSeleksi', 'SeleksiController@cari')->name('cariSeleksi');
 });
 
 //Form
@@ -175,5 +203,5 @@ Route::post('change-password', 'ChangePasswordController@store')->name('change.p
 //Konfirmasi Email
 Route::get('kirim-email/{id}','MailController@index')->name('konfirmasi');
 Route::get('novalid/{id}','MailController@novalid')->name('novalid');
-Route::get('kirim-email/{id}','MailController@berkasvalid')->name('berkas.valid');
-Route::get('novalid/{id}','MailController@berkasnovalid')->name('berkas.novalid');
+Route::get('berkas-valid/{id}','MailController@berkasvalid')->name('berkas.valid');
+Route::get('berkas-novalid/{id}','MailController@berkasnovalid')->name('berkas.novalid');

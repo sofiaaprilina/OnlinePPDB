@@ -81,19 +81,20 @@
                                 <ul class="list-unstyled mb-4">
                                     <li class="mb-2 text-muted">
                                         Melakukan pembayaran
-                                        formulir sebesar Rp. 10.000 ke Rekening Sekolah.
-                                    </li>
-                                    <li class="mb-2 text-muted">
-                                        No Rekening
+                                        formulir sebesar Rp. 10.000 melalui aplikasi LinkAja atau Dana.
                                     </li>
                                     <li class="mb-2 text-muted">
                                         <i class="bi bi-check text-primary"></i>
-                                        BNI     : 8971198
+                                        LinkAja : 085732263529
                                     </li>
                                     <li class="mb-2 text-muted">
+                                        <i class="bi bi-check text-primary"></i>
+                                        Dana    : 085707930793
+                                    </li>
+                                    {{-- <li class="mb-2 text-muted">
                                         <i class="bi bi-check text-primary"></i>
                                         BCA    : 9090118
-                                    </li>
+                                    </li> --}}
                                     <li class="mb-2 text-muted">
                                         an RA Qurrota A'yun
                                     </li>
@@ -123,13 +124,13 @@
                         <div class="card mb-5 mb-xl-0">
                             <div class="card-body p-5">
                                 <div class="mb-3">
-                                    <center><img src="https://cdn-icons.flaticon.com/png/512/3815/premium/3815507.png?token=exp=1639399728~hmac=89f4caa3a0b049b424db0f90d7790f0c" width="60px" height="60px"></center>
+                                    <center><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="60px" height="60px"></center>
                                 </div>
                                 <div class="small text-uppercase fw-bold text-muted"> <center><h1>3</h1></center></div>
                                 <ul class="list-unstyled mb-4">
                                     <li class="mb-2 text-muted">
                                         <center>
-                                            Menunggu konfirmasi untuk akun berupa user dan password untuk akses sistem melalui WhatsApp
+                                            Menunggu konfirmasi untuk akun berupa user dan password untuk akses sistem melalui Email
                                         </center>
                                     </li>
                                 </ul>

@@ -22,7 +22,8 @@ class SiswaController extends Controller
     {
         $siswas = Siswa::paginate(5);
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('siswa.index',compact('siswas','daftars'))
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('siswa.index',compact('siswas','daftars','alerts'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -34,7 +35,8 @@ class SiswaController extends Controller
     public function create()
     {
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('siswa.create',compact('daftars'));
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('siswa.create',compact('daftars','alerts'));
     }
 
     /**
@@ -106,7 +108,8 @@ class SiswaController extends Controller
     {
         $siswa = \App\Siswa::find($id);
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('siswa.show',compact('siswa','daftars'));
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('siswa.show',compact('siswa','daftars','alerts'));
     }
 
     /**
@@ -119,7 +122,8 @@ class SiswaController extends Controller
     {
         $siswa = \App\Siswa::find($id);
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('siswa.edit',compact('siswa','daftars'));
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        return view('siswa.edit',compact('siswa','daftars','alerts'));
     }
 
     /**
@@ -159,9 +163,11 @@ class SiswaController extends Controller
         $siswa->nm_ayah = $request->nm_ayah;
         $siswa->kj_ayah = $request->kj_ayah;
         $siswa->no_ayah = $request->no_ayah;
+        $siswa->status_ayah = $request->status_ayah;
         $siswa->nm_ibu = $request->nm_ibu;
         $siswa->kj_ibu = $request->kj_ibu;
         $siswa->no_ibu = $request->no_ibu;
+        $siswa->status_ibu = $request->status_ibu;
         $siswa->email = $request->email;
 
         // if($siswa->akte && file_exists(storage_path('app/public/' . $siswa->akte)))
@@ -237,6 +243,18 @@ class SiswaController extends Controller
     public function destroy($id)
     {
         $siswa = \App\Siswa::find($id);
+        if(File::exists(public_path('uploads/' . $siswa->akte))) {
+            File::delete(public_path('uploads/' . $siswa->akte));
+        }
+        if(File::exists(public_path('uploads/' . $siswa->kk))) {
+            File::delete(public_path('uploads/' . $siswa->kk));
+        }
+        if(File::exists(public_path('uploads/' . $siswa->ktp))) {
+            File::delete(public_path('uploads/' . $siswa->ktp));
+        }
+        if(File::exists(public_path('uploads/' . $siswa->gaji))) {
+            File::delete(public_path('uploads/' . $siswa->gaji));
+        }
         $siswa->delete();
   
         return redirect()->route('siswa.index')

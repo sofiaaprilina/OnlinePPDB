@@ -19,6 +19,10 @@ class MailController extends Controller
         ];
        
         \Mail::to($pendaftar->email)->send(new \App\Mail\MyTestMail($details));
+
+        $pendaftar->update([
+            'status' => 'Valid'
+            ]);
        
         // dd("Email sudah terkirim.");
         return redirect()->route('pendaftar.index')
@@ -37,6 +41,10 @@ class MailController extends Controller
         ];
        
         \Mail::to($pendaftar->email)->send(new \App\Mail\MyTestMail($details));
+
+        $pendaftar->update([
+            'status' => 'Tidak Valid'
+            ]);
        
         // dd("Email sudah terkirim.");
         return redirect()->route('pendaftar.index')
@@ -55,6 +63,10 @@ class MailController extends Controller
         ];
        
         \Mail::to($siswa->email)->send(new \App\Mail\MyTestMail($details));
+
+        $siswa::where('id', $id)->update([
+            'berkas' => 'Terkonfirmasi'
+        ]);
        
         // dd("Email sudah terkirim.");
         return redirect()->route('siswa.index')
@@ -73,6 +85,10 @@ class MailController extends Controller
         ];
        
         \Mail::to($siswa->email)->send(new \App\Mail\MyTestMail($details));
+
+        $siswa->update([
+            'berkas' => 'Tidak Valid'
+            ]);
        
         // dd("Email sudah terkirim.");
         return redirect()->route('siswa.index')

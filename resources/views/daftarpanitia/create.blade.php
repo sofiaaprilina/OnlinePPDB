@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Tambah Akun Penitia</h2>
+            <h2>Tambah Akun Panitia</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" style="float: right;" href="{{ route('daftar-panitia.index') }}"> Back</a>
@@ -55,7 +55,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Password: </strong>
-                <input type="text" name="password" class="form-control" placeholder="Password">
+                <input type="text" name="password" class="form-control" minlength="6" placeholder="Password">
             </div>
         </div>
 

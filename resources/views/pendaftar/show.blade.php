@@ -5,14 +5,16 @@
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell fa-fw"></i>
-        <span class="badge badge-danger badge-counter">{{$daftars->count()}}</span>
+        <?php $jumlah = $daftars->count() + $alerts->count() ?>
+        <span class="badge badge-danger badge-counter"><?php echo $jumlah = $daftars->count() + $alerts->count() ?></span>
         </a>
-        @foreach ($daftars as $daftar)
+        
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="alertsDropdown">
             <h6 class="dropdown-header">
                 Alerts Center
             </h6>
+            @foreach ($daftars as $daftar)
             <a class="dropdown-item d-flex align-items-center" href="/pendaftar">
                 <div class="mr-3">
                     <div class="icon-circle bg-warning">
@@ -24,8 +26,21 @@
                     <span class="font-weight-bold">Pendaftar: {{$daftar->siswa}} {{$daftar->status}}</span>
                 </div>
             </a>
+            @endforeach
+            @foreach ($alerts as $alert)
+            <a class="dropdown-item d-flex align-items-center" href="/siswa">
+                <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">{{$alert->created_at}}</div>
+                    <span class="font-weight-bold">Berkas: {{$alert->nama}} {{$alert->berkas}}</span>
+                </div>
+            </a>
+            @endforeach
         </div>
-        @endforeach
     </li>
 @endsection   
 @section('content')

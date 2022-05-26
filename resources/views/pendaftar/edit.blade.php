@@ -5,14 +5,16 @@
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell fa-fw"></i>
-        <span class="badge badge-danger badge-counter">{{$daftars->count()}}</span>
+        <?php $jumlah = $daftars->count() + $alerts->count() ?>
+        <span class="badge badge-danger badge-counter"><?php echo $jumlah = $daftars->count() + $alerts->count() ?></span>
         </a>
-        @foreach ($daftars as $daftar)
+        
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="alertsDropdown">
             <h6 class="dropdown-header">
                 Alerts Center
             </h6>
+            @foreach ($daftars as $daftar)
             <a class="dropdown-item d-flex align-items-center" href="/pendaftar">
                 <div class="mr-3">
                     <div class="icon-circle bg-warning">
@@ -24,10 +26,23 @@
                     <span class="font-weight-bold">Pendaftar: {{$daftar->siswa}} {{$daftar->status}}</span>
                 </div>
             </a>
+            @endforeach
+            @foreach ($alerts as $alert)
+            <a class="dropdown-item d-flex align-items-center" href="/siswa">
+                <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">{{$alert->created_at}}</div>
+                    <span class="font-weight-bold">Berkas: {{$alert->nama}} {{$alert->berkas}}</span>
+                </div>
+            </a>
+            @endforeach
         </div>
-        @endforeach
     </li>
-@endsection   
+@endsection  
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -82,8 +97,8 @@
                         <td>
                             <select class="form-control" name="jenis_kelamin">
                                 <option value="{{ $pendaftar->jenis_kelamin}}">{{ $pendaftar->jenis_kelamin}}</option>
-	                            <option value="laki-laki">Laki-laki</option>
-	                            <option value="perempuan">Perempuan</option>
+	                            <option value="Laki-laki">Laki-laki</option>
+	                            <option value="Perempuan">Perempuan</option>
 	                        </select>
                         </td>
                     </tr>
@@ -93,15 +108,21 @@
                     </tr>
                     <tr>
                         <td><strong>No. Telp (WA):</strong></td>
-                        <td><input type="text" name="no_telp" value="{{ $pendaftar->no_telp }}" class="form-control" placeholder="Masukkan no telp (WA)"></td>
+                        <td><input type="text" name="no_telp" value="{{ $pendaftar->no_telp }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="13" placeholder="Masukkan no telp (WA)"></td>
                     </tr>
                     <tr>
                         <td><strong>Email:</strong></td>
-                        <td><input type="text" name="email" value="{{ $pendaftar->email }}" class="form-control" placeholder="Masukkan Email"></td>
+                        <td>
+                            <input type="email" name="email" value="{{ $pendaftar->email }}" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Masukkan Email">
+                            <p><small style="color: red";>*</small> Gunakan email aktif dengan type gmail. Contoh: qurrotaayun@gmail.com</p>
+                        </td>
                     </tr>
                     <tr>
                         <td><strong>Ijazah PAUD</strong></td>
-                        <td><input type="file" name="sekolah" value="{{ $pendaftar->sekolah }}"></td>
+                        <td>
+                            <input type="file" name="sekolah" value="{{ $pendaftar->sekolah }}">
+                            <p><small style="color: red";>*</small> Format berkas berupa gambar dengan ekstensi .jpg/.jpeg/.png </p>
+                        </td>
                     </tr>
                     <tr>
                         <td></td>
@@ -109,7 +130,10 @@
                     </tr>
                     <tr>
                         <td><strong>Bukti Pembayaran</strong></td>
-                        <td><input type="file" class="form-control" name="bayar" value="{{ $pendaftar->bayar }}"></td>
+                        <td>
+                            <input type="file" class="form-control" name="bayar" value="{{ $pendaftar->bayar }}">
+                            <p><small style="color: red";>*</small> Format berkas berupa gambar dengan ekstensi .jpg/.jpeg/.png </p>
+                        </td>
                     </tr>
                     <tr>
                         <td></td>

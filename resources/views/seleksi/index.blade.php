@@ -1,12 +1,13 @@
 @extends('layouts.main')
 
-@section('title', ' Akun Pendaftar')
+@section('title', 'Data Siswa Baru')
 
 @section('notif')
     <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell fa-fw"></i>
+        <?php $jumlah = $daftars->count() + $alerts->count() ?>
         <span class="badge badge-danger badge-counter"><?php echo $jumlah = $daftars->count() + $alerts->count() ?></span>
         </a>
         
@@ -49,16 +50,15 @@
      <div class="row">
          <div class="col-lg-12 margin-tb">
              <div class="pull-left">
-                 <h2>Data Akun Pendaftar</h2>
+                 <h2>Data Siswa Baru</h2>
              </div>
              <div class="pull-right">
-                 <a class="btn btn-success" href="{{ route('akun.create') }}"> Tambah Akun Pendaftar</a>
-                 <a class="btn btn-warning" href="{{ route('pendaftar.index') }}"> Data Pendaftar</a>
+                 <!-- <a class="btn btn-success" href="{{ route('siswa.create') }}"> Tambah Siswa</a> -->
                  <div class="pull-right" style="float: right">
-                    <form action="/cariAkun" method="GET"
+                    <form action="/cariSiswa" method="GET"
                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
-                    <input type="text" name="cariAkun"  class="form-control bg-light border-1 small" placeholder="Search for..."
+                    <input type="text" name="cariSiswa"  class="form-control bg-light border-1 small" placeholder="Search for..."
                         aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">
@@ -85,29 +85,52 @@
      <table class="table-bordered" width="1000px">
          <tr>
              <th>Id</th>
-             <th>ID Pendaftaran</th>
-             <th>Nama</th>
-             <th>Username</th>
-             <th>Password</th>
+             <th>Nama Siswa</th>
+             <th>Email</th>
+             <th>Status Berkas</th>
+             <th>Status Keringanan</th>
              <th >Action</th>
          </tr>
-         @foreach ($users as $user)
+         @foreach ($siswas as $siswa)
+         <?php
+            $keringanan = "";
+
+            if($siswa->status_ayah == 'Meninggal' && $siswa->tanggungan > 3 && $siswa->ph_ibu >= 1000000){
+                $keringanan = "Ya";
+            } else{
+                $keringanan = "Tidak";
+            } 
+         ?>
          <tr>
-             <td>{{ $user->id }}</td>
-             <td>{{ $user->idPendaftar }}</td>
-             <td>{{ $user->name }}</td>
-             <td>{{ $user->username }}</td>
-             <td>{{ $user->decrypt }}</td>
-             <td width="250px">
-                <form action="{{ route('akun.destroy',$user->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('akun.show',$user->id) }}"><i class="fas fa-clipboard-list text-gray-100"></i></a>
+             <td>{{ $siswa->id }}</td>
+             <td>{{ $siswa->nama }}</td>
+             <td>{{ $siswa->email }}</td>
+             <td>{{ $siswa->berkas }}</td>
+             <td>{{ $keringanan }}</td>
+             <td width="200px">
+                {{-- <form action="#" method="POST"> --}}
+                    <div class="nav-item dropdown no-arrow">
+                        <a class="btn btn-warning" href="#" id="userDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Konfirmasi</a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#">
+                                Kirim Notifikasi Lulus
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                Kirim Notifikasi Keringanan
+                            </a>
+                         </div>
+                    </div>
+                    <br>
+                    {{-- <a class="btn btn-warning" href="#">Konfirmasi</a><br> --}}
+                    {{-- <a class="btn btn-info" href="{{ route('siswa.show',$siswa->id) }}"><i class="fas fa-clipboard-list text-gray-100"></i></a>
     
-                    <a class="btn btn-primary" href="{{ route('akun.edit',$user->id) }}"><i class="fas fa-edit text-gray-100"></a>
+                    <a class="btn btn-primary" href="{{ route('siswa.edit',$siswa->id) }}"><i class="fas fa-edit text-gray-100"></a> --}}
    
-                    @csrf
+                    {{-- @csrf
                     @method('DELETE')
       
-                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash text-gray-100"></button>
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash text-gray-100"></button> --}}
                 </form>
             </td>
         </tr>
@@ -117,6 +140,6 @@
         </div>
      </div>
 
-    {{ $users->links() }}
+    {{ $siswas->links() }}
 
  @endsection

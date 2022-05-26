@@ -67,7 +67,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/siswa">
                     <i class="fas fa-fw fa-book"></i>
-                    <span>Siswa Baru</span></a>
+                    <span>Biodata & Berkas</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="/seleksi">
+                    <i class="fas fa-fw fa-info-circle"></i>
+                    <span>Hasil Seleksi</span></a>
             </li>
 
             <!-- Divider -->

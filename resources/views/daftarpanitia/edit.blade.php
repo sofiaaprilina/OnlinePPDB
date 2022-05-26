@@ -56,7 +56,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Password:</strong>
-                <input id="password" type="password" name="password" value="{{ $panitia->decrypt }}" class="form-control" placeholder="Password">
+                <input id="password" type="password" name="password" minlength="6" value="{{ $panitia->decrypt }}" class="form-control" placeholder="Password">
             </div>
         </div>
 
