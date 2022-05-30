@@ -13,9 +13,11 @@ class MailController extends Controller
         $user = \App\User::find($id);
 
         $details = [
-        'title' => 'PPDB RA Qurrota Ayun',
-        'body' => 'Berikut adalah akun untuk melakukan login pada website PPDB RA. Qurrota Ayun
-                username: '.$user->username.' password: '.$user->decrypt
+        'title' => 'PPDB RA QURROTA AYUN websitepercobaan.com',
+        'body1' => 'Terimakasih sudah melakukan Pendaftaran Peserta Didik Baru pada RA.Qurrota Ayun Kepanjen.
+                    Berikut username dan password untuk login dan selanjutnya dapat melengkapi data-data yang dibutuhkan dalam pendaftaran.',
+        'body2' => 'Username: '.$user->username.'',
+        'body3' => 'Password: '.$user->decrypt
         ];
        
         \Mail::to($pendaftar->email)->send(new \App\Mail\MyTestMail($details));
@@ -35,9 +37,10 @@ class MailController extends Controller
         $user = \App\User::find($id);
 
         $details = [
-        'title' => 'PPDB RA Qurrota Ayun',
-        'body' => 'Mohon Maaf Bukti Pembayaran yang Anda Masukkan Tidak Sesuai. 
-                Mohon Melakukan Pendaftaran Kembali'
+        'title' => 'PPDB RA QURROTA AYUN websitepercobaan.com',
+        'body1' => 'Terimakasih sudah melakukan Pendaftaran Peserta Didik Baru pada RA.Qurrota Ayun Kepanjen.',
+        'body2' => 'Mohon Maaf Bukti Pembayaran yang Anda Masukkan Tidak Sesuai.',
+        'body3' => 'Mohon Melakukan Pendaftaran Kembali pada web PPDB RA QURROTA AYUN'
         ];
        
         \Mail::to($pendaftar->email)->send(new \App\Mail\MyTestMail($details));
@@ -57,9 +60,10 @@ class MailController extends Controller
         // $user = \App\User::find($id);
 
         $details = [
-        'title' => 'PPDB RA Qurrota Ayun',
-        'body' => 'Berkas Pendaftaran yang Anda Upload Sudah Sesuai.
-                Tunggu Informasi Selanjutnya Mengenai Hasil Selesi.'
+        'title' => 'PPDB RA QURROTA AYUN websitepercobaan.com',
+        'body1' => 'Terimakasih sudah melakukan Pendaftaran Peserta Didik Baru pada RA.Qurrota Ayun Kepanjen.',
+        'body2' => 'Berkas Pendaftaran yang Anda Upload/Masukkan Sudah Sesuai.',
+        'body3' => 'Tunggu Informasi Selanjutnya Mengenai Hasil Seleksi pada Website PPDB.'
         ];
        
         \Mail::to($siswa->email)->send(new \App\Mail\MyTestMail($details));
@@ -79,9 +83,10 @@ class MailController extends Controller
         // $user = \App\User::find($id);
 
         $details = [
-        'title' => 'PPDB RA Qurrota Ayun',
-        'body' => 'Berkas Pendaftaran yang Anda Upload Tidak Sesuai.
-                Mohon Untuk Melakukan Upload Ulang.'
+        'title' => 'PPDB RA QURROTA AYUN websitepercobaan.com',
+        'body1' => 'Terimakasih sudah melakukan Pendaftaran Peserta Didik Baru pada RA.Qurrota Ayun Kepanjen.',
+        'body2' => 'Berkas Pendaftaran yang Anda Upload/Masukkan Tidak Sesuai.',
+        'body3' => 'Mohon Untuk Melakukan Upload Ulang.'
         ];
        
         \Mail::to($siswa->email)->send(new \App\Mail\MyTestMail($details));

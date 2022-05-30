@@ -1,92 +1,168 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Cetak Laporan Data Pendaftaran</title>
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T">
 </head>
 <body>
-    <center>
-        <h1>Laporan Data Pendaftaran</h1>
-    </center>
+    @if ($message = Session::get('success'))
+         <div class="alert alert-success">
+             <p>{{ $message }}</p>
+         </div>
+     @endif
     
-                    <table width="1000px">
+     <div class="row">
+        @foreach ($siswa as $s)
+         @if (Auth::user()->id == $s->user_id)
+         <?php
+            $keringanan = "";
+
+            if($s->status_ayah == 'Meninggal' && $s->tanggungan > 3 && $s->ph_ibu >= 1000000){
+                $keringanan = "Ya";
+            } else{
+                $keringanan = "Tidak";
+            } 
+         ?>
+         @endif
+        @endforeach 
+     </div>
+
+    <style type="text/css">
+        table tr td,
+        table tr th{
+            font-size: 12pt;
+            
+        }
+        .table td, .table th {
+            padding: 5px;
+            border: 1px solid black;
+        }
+
+        .tabel_data {
+          border: 1px solid black ;
+          border-collapse: collapse ;
+        }
+
+        .border_none {
+            border: 1px solid black ;
+            border-top: 1px solid black ;
+        }
+
+        .tr-break {
+            page-break-inside:avoid; page-break-after:auto;
+            border: 1px solid black
+        }
+        .thead-break {display: table-header-group;}
+
+        .right   { text-align: right;}
+    </style>
+    <center>
+        <h3>PPDB RA QURROTA A'YUN</h3>
+        <h6>JL. Krapyak, Panggungrejo, Kepanjen, Kab.Malang</h6>
+        <h6>Telp. 085102120143, 087704616524</h6>
+        <h5>_____________________________________________________________________</h5>
+        <h4>DATA CALON SISWA BARU</h4>
+    </center>
+    <br>    
+                    <table class="table cell-border tabel_data" style="page-break-inside:auto; margin-bottom: 1px; padding-bottom: 1px;" width="500">
                         @foreach ($siswa as $s)
                         @if (Auth::user()->id == $s->user_id)
-                        <tr>
-                            <td><strong>Nama Calon siswa    : </strong></td>
-                            <td>{{ $s->nama }}</td>
+                        <tr class="tr-break">
+                            <td colspan="2" class="tabel_data"><strong>&nbsp;A. Identitas Calon Siswa</strong></td>
+                            <br>
                         </tr>
-                        <tr>
-                            <td><strong>Tempat,Tanggal Lahir    : </strong></td>
-                            <td>{{ $s->tempat }}, {{ $s->tgl_lahir }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Nama Calon Siswa</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->nama }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Jenis Kelamin       : </strong></td>
-                            <td>{{ $s->jenis_kelamin }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Tempat, Tanggal Lahir</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->tempat }}, {{ $s->tgl_lahir }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Agama          : </strong></td>
-                            <td>{{ $s->agama }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Jenis Kelamin</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->jenis_kelamin }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Alamat          : </strong></td>
-                            <td>{{ $s->alamat }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Agama</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->agama }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Nama Ayah   : </strong></td>
-                            <td>{{ $s->nm_ayah }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Alamat</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->alamat }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Pekerjaan Ayah   : </strong></td>
-                            <td>{{ $s->kj_ayah }}</td>
+                        <tr class="tr-break">
+                            <td colspan="2" class="tabel_data"><strong>&nbsp;B. Identitas Orang Tua / Wali Calon Siswa</strong></td>
+                            <br>
                         </tr>
-                        <tr>
-                            <td><strong>No Telp Ayah   : </strong></td>
-                            <td>{{ $s->no_ayah }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Nama Ayah</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->nm_ayah }}</td>
                         </tr>
-                        <tr> 
-                            <td><strong>Nama Ibu   : </strong></td>
-                            <td>{{ $s->nm_ibu }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Pekerjaan Ayah</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->kj_ayah }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Pekerjaan Ibu   : </strong></td>
-                            <td>{{ $s->kj_ibu }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Penghasilan Ayah</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;Rp. {{ $s->ph_ayah }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>No Telp Ibu   : </strong></td>
-                            <td>{{ $s->no_ibu }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;No Telp Ayah</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->no_ayah }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Nama Wali   : </strong></td>
-                            <td>{{ $s->nm_wali }}</td>
+                        <tr class="tr-break"> 
+                            <td class="tabel_data"><strong>&nbsp;Nama Ibu</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->nm_ibu }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Pekerjaan Wali   : </strong></td>
-                            <td>{{ $s->kj_wali }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Pekerjaan Ibu</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->kj_ibu }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>No Telp Wali   : </strong></td>
-                            <td>{{ $s->no_wali }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Penghasilan Ibu</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;Rp. {{ $s->ph_ibu }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Email           : </strong></td>
-                            <td>{{ $s->email }}</td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;No Telp Ibu</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->no_ibu }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Akte           : </strong></td>
-                            <td><img width="250px" src="{{public_path('uploads/'.$s->akte)}}"></td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Nama Wali</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->nm_wali }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>KK           : </strong></td>
-                            <td><img width="250px" src="{{public_path('uploads/'.$s->kk)}}"></td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Pekerjaan Wali</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->kj_wali }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>KTP           : </strong></td>
-                            <td><img width="250px" src="{{public_path('uploads/'.$s->ktp)}}"></td>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Penghasilan Wali</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;Rp. {{ $s->ph_wali }}</td>
+                        </tr>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;No Telp Wali</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->no_wali }}</td>
+                        </tr>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Jumlah Tanggungan Orang Tua / Wali</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->tanggungan }}</td>
+                        </tr>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Email</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $s->email }}</td>
+                        </tr>
+                        <tr class="tr-break">
+                            <td class="tabel_data"><strong>&nbsp;Status Keringanan</strong></td>
+                            <td class="tabel_data">&nbsp;&nbsp;{{ $keringanan }}</td>
                         </tr>
                         @endif
                         @endforeach 
                     </table>
-
+                <br>
+            <p><i>*Dokumen ini harap dibawa ketika melakukan daftar ulang. Beserta FotoCopy Akte, KK, KTP Orang Tua*</p><br><br>
+            <p class="right">Orang Tua / Wali Murid</p>
+            <br><br><br>
+            <p class="right">_______________________</p>
+            
 </body>
 </html>
