@@ -24,7 +24,7 @@ class User extends Authenticatable
         return $this->hasOne('App\Siswa', 'user_id');
     }
     public function pendaftar(){
-        return $this->hasOne('App\Pendaftar', 'idPendaftar');
+        return $this->hasOne('App\Pendaftar', 'idPendaftar')->onDelete('cascade')->onUpdate('cascade');
     }
 
     /**

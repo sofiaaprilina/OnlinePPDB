@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Siswa;
 use App\Pendaftar;
+use PDF;
 use Illuminate\Http\Request;
 
 class SeleksiController extends Controller
@@ -15,17 +16,11 @@ class SeleksiController extends Controller
      */
     public function index()
     {
-        $siswas = Siswa::where('berkas', '=', 'Terkonfirmasi')->paginate(5);
+        // $siswas = Siswa::where('berkas', '=', 'Terkonfirmasi')->paginate(5);
+        $siswas = \App\Siswa::where('status', '=', 'Lolos')->take(125)->get();
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
         $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
 
-        // $keringanan = "";
-
-        // if($siswa->status_ayah == 'Meninggal' && $siswa->tanggungan > 3 && $siswa->ph_ibu >= 1000000){
-        //     $keringanan = "Ya";
-        // } else{
-        //     $keringanan = "Tidak";
-        // }
         return view('seleksi.index',compact('siswas','daftars','alerts'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -94,5 +89,12 @@ class SeleksiController extends Controller
     public function destroy(Siswa $siswa)
     {
         //
+    }
+
+    public function cetak(){
+        $siswa = Siswa::where('status', '=', 'Lolos')->get();
+        // $siswa = Siswa::where('id', $id)->get();
+        $pdf = PDF::loadview('seleksi.cetak_pdf',compact('siswa'))->setPaper('letter', 'landscape');
+        return $pdf->stream();
     }
 }

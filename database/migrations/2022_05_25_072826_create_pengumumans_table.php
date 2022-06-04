@@ -16,8 +16,8 @@ class CreatePengumumansTable extends Migration
         Schema::create('pengumumans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamp('tanggal')->default(\DB::raw('CURRENT_TIMESTAMP'));
-            $table->enum('kategori', ['Dashboard', 'Alert'])->nullable();
             $table->string('judul');
+            $table->string('pamflet')->nullable();
             $table->text('isi');
             $table->timestamps();
         });

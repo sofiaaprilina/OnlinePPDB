@@ -29,11 +29,8 @@
             <div class="card-body">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label><b>Kategori</b></label>
-                        <select class="form-control" name="kategori" required>
-                            <option value="Dashboard">Dashboard</option>
-                            <option value="Alert">Alert</option>
-                        </select>
+                        <label><b>Cover</b></label><br>
+                        <input type="file" class="form-control" name="pamflet" accept="image/jpeg,image/jpg,image/png">
                     </div>
                 </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

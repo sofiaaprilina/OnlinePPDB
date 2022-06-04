@@ -43,6 +43,7 @@ class CreateSiswasTable extends Migration
             $table->string('ktp')->nullable();
             $table->string('gaji')->nullable();
             $table->enum('berkas', ['Terkonfirmasi', 'Belum Terkonfirmasi', 'Tidak Valid'])->default('Belum Terkonfirmasi');
+            $table->enum('status', ['Lolos', 'Tidak Lolos'])->nullable();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->timestamps();
         });

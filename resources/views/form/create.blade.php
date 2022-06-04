@@ -66,12 +66,12 @@
 			</div>
             <div class="form-group">
                 <label for="bayar"><b>Ijazah PAUD Siswa (bila ada)</b></label><br/>
-                <input type="file" name="sekolah" accept="image/jpeg,image/jpg,image/png"> 
+                <input type="file" name="sekolah" class="form-control" accept="image/jpeg,image/jpg,image/png"> 
 				<p>Format berkas berupa gambar dengan ekstensi .jpg/.jpeg/.png </p>
 			</div>
             <div class="form-group">
                 <label for="bayar"><b>Upload Bukti Pembayaran</b><small style="color: red";>*</small></label><br/>
-                <input type="file" name="bayar" accept="image/jpeg,image/jpg,image/png" required> 
+                <input type="file" name="bayar" class="form-control" accept="image/jpeg,image/jpg,image/png" required> 
 				<p>Format berkas berupa gambar dengan ekstensi .jpg/.jpeg/.png </p>
 			</div><br/>
 			<div>

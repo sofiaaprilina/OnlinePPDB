@@ -16,6 +16,12 @@
             <div class="card-body">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
+                        <label><b>Cover</b></label><br>
+                        <img width="150px" src="{{asset('pamflet/'.$pengumuman->pamflet)}}" data-action="zoom">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
                         <strong>Judul:</strong>
                         <input type="text" name="judul" class="form-control" value="{{$pengumuman->judul}}" readonly>
                     </div>

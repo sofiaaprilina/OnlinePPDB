@@ -175,7 +175,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; RA QURROTA A'YUN KEPANJEN 2022</span>
                     </div>
                 </div>
             </footer>
@@ -235,6 +235,19 @@
 
     <!-- Zoom Js -->
     <script src="{{asset('zoom/js/zoom.js')}}"></script>
+
+    <script>
+        $(".status").on("change", function(){
+        // alert($(this).data('id'));
+        // alert($(this).val());
+            var temp = $(this); 
+            $.ajax({
+                url: '{{ url("/ubah-status-siswa") }}',
+                type: 'post',
+                data: {_token: "{{ csrf_token() }}", id: $(this).data("id"),  status: $(this).val() },
+            });
+        });
+    </script>
 
 </body>
 

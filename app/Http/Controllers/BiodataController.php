@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Siswa;
-use App\Pengumuman;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Auth;
@@ -18,8 +17,7 @@ class BiodataController extends Controller
     public function index()
     {
         $siswas = Siswa::all();
-        $alerts = Pengumuman::where('kategori', '=', 'Alert')->get();
-        return view('biodata.index', compact('siswas','alerts'));
+        return view('biodata.index', compact('siswas'));
     }
 
     /**

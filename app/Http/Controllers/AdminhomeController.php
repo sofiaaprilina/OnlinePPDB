@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Admin;
 use App\Panitia;
 use App\User;
+use App\Pengumuman;
 use Illuminate\Http\Request;
 
 class AdminhomeController extends Controller
@@ -19,6 +20,7 @@ class AdminhomeController extends Controller
         $admin = Admin::get();
         $panitia   = Panitia::get();
         $siswa      = User::get();
-        return view('admin.dashboard', compact('admin', 'panitia', 'siswa'));
+        $pengumuman = Pengumuman::get();
+        return view('admin.dashboard', compact('admin', 'panitia', 'siswa','pengumuman'));
     }
 }

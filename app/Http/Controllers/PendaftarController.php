@@ -6,6 +6,7 @@ use App\Pendaftar;
 use App\Siswa;
 use App\User;
 use File;
+use PDF;
 use Illuminate\Http\Request;
 
 class PendaftarController extends Controller
@@ -75,7 +76,7 @@ class PendaftarController extends Controller
         //     $pendaftar->bayar = $image_name;
         // }
         if($request->sekolah != null){
-            $image_name = $request->id . '_ijazahPaud_' . time(). '.'. $request->sekolah->extension();
+            $image_name = $request->siswa . '_ijazahPaud_' . time(). '.'. $request->sekolah->extension();
             if(File::exists(public_path('uploads/ijazahPaud/' . $pendaftar->sekolah))) {
                 File::delete(public_path('uploads/ijazahPaud/' . $pendaftar->sekolah));
             }  
@@ -86,7 +87,7 @@ class PendaftarController extends Controller
         }
 
         if($request->bayar != null){
-            $image_name2 = $request->id . '_pembayaran_' . time(). '.'. $request->bayar->extension();
+            $image_name2 = $request->siswa . '_pembayaran_' . time(). '.'. $request->bayar->extension();
             if(File::exists(public_path('buktiPendaftaran' . $pendaftar->bayar))) {
                 File::delete(public_path('buktiPendaftaran' . $pendaftar->bayar));
             }  
@@ -163,7 +164,7 @@ class PendaftarController extends Controller
         $pendaftar->tgl_daftar = $request->tgl_daftar;
 
         if($request->sekolah != null){
-            $image_name = $request->id . '_ijazahPaud_' . time(). '.'. $request->sekolah->extension();
+            $image_name = $request->siswa . '_ijazahPaud_' . time(). '.'. $request->sekolah->extension();
             if(File::exists(public_path('uploads/ijazahPaud/' . $pendaftar->sekolah))) {
                 File::delete(public_path('uploads/ijazahPaud/' . $pendaftar->sekolah));
             }  
@@ -174,7 +175,7 @@ class PendaftarController extends Controller
         }
 
         if($request->bayar != null){
-            $image_name2 = $request->id . '_pembayaran_' . time(). '.'. $request->bayar->extension();
+            $image_name2 = $request->siswa . '_pembayaran_' . time(). '.'. $request->bayar->extension();
             if(File::exists(public_path('buktiPendaftaran' . $pendaftar->bayar))) {
                 File::delete(public_path('buktiPendaftaran' . $pendaftar->bayar));
             }  
@@ -213,8 +214,9 @@ class PendaftarController extends Controller
     public function add($id)
     {
         $pendaftar = \App\Pendaftar::find($id);
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
-        return view('pendaftar.add',compact('pendaftar','daftars'));
+        return view('pendaftar.add',compact('pendaftar','daftars','alerts'));
     }
 
     public function olah($id, Request $request)
@@ -256,6 +258,13 @@ class PendaftarController extends Controller
 		->orwhere('status', 'like', '%' . $cari . '%')
 		->paginate(10);
         
-	return view('pendaftar.index', ['pendaftars'=>$pendaftars]);
-}
+	    return view('pendaftar.index', ['pendaftars'=>$pendaftars]);
+    }
+
+    public function cetak(){
+        $pendaftars = Pendaftar::all();
+        // $siswa = Siswa::where('id', $id)->get();
+        $pdf = PDF::loadview('pendaftar.cetak_pdf',compact('pendaftars'))->setPaper('letter', 'landscape');
+        return $pdf->stream();
+    }
 }

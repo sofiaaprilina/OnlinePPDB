@@ -2,11 +2,21 @@
 @section('title', 'Tambah Pendaftar')
 @section('notif')
     <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-bell fa-fw"></i>
-        <span class="badge badge-danger badge-counter">{{$daftars->count()}}</span>
-        </a>
+        @php
+            $jumlah = $daftars->count() + $alerts->count();
+        @endphp
+        @if ($jumlah > 0)
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter">{{$jumlah}}</span>
+            </a>
+        @else
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter"></span>
+            </a>
+        @endif
+
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
         aria-labelledby="alertsDropdown">
         <h6 class="dropdown-header">
@@ -22,6 +32,19 @@
                 <div>
                     <div class="small text-gray-500">{{$daftar->tgl_daftar}}</div>
                     <span class="font-weight-bold">Pendaftar: {{$daftar->siswa}} {{$daftar->status}}</span>
+                </div>
+            </a>
+            @endforeach
+            @foreach ($alerts as $alert)
+            <a class="dropdown-item d-flex align-items-center" href="/siswa">
+                <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">{{$alert->created_at}}</div>
+                    <span class="font-weight-bold">Berkas: {{$alert->nama}} {{$alert->berkas}}</span>
                 </div>
             </a>
             @endforeach

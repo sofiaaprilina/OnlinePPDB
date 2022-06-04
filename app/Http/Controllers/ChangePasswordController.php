@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Siswa;
 
 class ChangePasswordController extends Controller
 {
@@ -16,7 +17,8 @@ class ChangePasswordController extends Controller
 
     public function index()
     {
-        return view('user.changePassword');
+        $siswas = Siswa::all();
+        return view('user.changePassword', compact('siswas'));
     }
 
     public function store(Request $request)

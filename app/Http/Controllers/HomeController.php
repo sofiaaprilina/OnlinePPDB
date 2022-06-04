@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pengumuman;
+use App\Siswa;
 
 class HomeController extends Controller
 {
@@ -24,8 +25,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pengumumans = Pengumuman::where('kategori', '=', 'Dashboard')->get();
-        $alerts = Pengumuman::where('kategori', '=', 'Alert')->get();
-        return view('user.dashboard', compact('pengumumans','alerts'));
+        $pengumumans = Pengumuman::all();
+        $siswas = Siswa::all();
+        
+        foreach ($siswas as $siswa) {
+            if ($siswa->status == 'Lolos') {
+                alert()->success('Silahkan mencetak bukti pendaftaran dan melakukan daftar ulang sesuai jadwal yang ditentukan.', 'Selamat Ananda Lolos Seleksi');
+            } 
+            else if($siswa->status == 'Tidak Lolos') {
+                alert()->error('Jangan kecewa masih banyak kesempatan lain. Terima kasih sudah mendaftar', 'Maaf Ananda Tidak Lolos Seleksi');
+            }
+        }
+        
+        return view('user.dashboard', compact('pengumumans','siswas'));
     }
 }

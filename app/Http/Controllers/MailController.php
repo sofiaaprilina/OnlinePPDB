@@ -100,4 +100,23 @@ class MailController extends Controller
             ->with('success','Konfirmasi berkas no valid berhasil');
     
         }
+
+        public function keringanan($id){
+            $siswa = \App\Siswa::find($id);
+            // $user = \App\User::find($id);
+    
+            $details = [
+            'title' => 'PPDB RA QURROTA AYUN websitepercobaan.com',
+            'body1' => 'Terimakasih sudah melakukan Pendaftaran Peserta Didik Baru pada RA.Qurrota Ayun Kepanjen.',
+            'body2' => 'Ananda Berhak Mendapatkan Keringanan.',
+            'body3' => 'Untuk informasi selanjutnya mengenai keringanan dapat menghubungi panitia.'
+            ];
+           
+            \Mail::to($siswa->email)->send(new \App\Mail\MyTestMail($details));
+           
+            // dd("Email sudah terkirim.");
+            return redirect()->route('seleksi.index')
+                ->with('success','Konfirmasi keringanan berhasil');
+        
+        }
 }

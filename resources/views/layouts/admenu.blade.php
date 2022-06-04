@@ -18,6 +18,9 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('guru/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+    <!-- Zoom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{asset('zoom/css/zoom.css')}}">
+
 </head>
 
 <body id="page-top">
@@ -161,7 +164,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; RA QURROTA A'YUN KEPANJEN 2022</span>
                     </div>
                 </div>
             </footer>
@@ -218,6 +221,9 @@
     <!-- Page level custom scripts -->
     <script src="{{asset('guru/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('guru/js/demo/chart-pie-demo.js')}}"></script>
+
+    <!-- Zoom Js -->
+    <script src="{{asset('zoom/js/zoom.js')}}"></script>
 
 </body>
 

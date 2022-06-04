@@ -4,12 +4,20 @@
 
 @section('notif')
     <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-bell fa-fw"></i>
-        <?php $jumlah = $daftars->count() + $alerts->count() ?>
-        <span class="badge badge-danger badge-counter"><?php echo $jumlah = $daftars->count() + $alerts->count() ?></span>
-        </a>
+        @php
+            $jumlah = $daftars->count() + $alerts->count();
+        @endphp
+        @if ($jumlah > 0)
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter">{{$jumlah}}</span>
+            </a>
+        @else
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter"></span>
+            </a>
+        @endif
         
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="alertsDropdown">
@@ -54,6 +62,12 @@
              </div>
              <div class="pull-right">
                  <a class="btn btn-primary" href="{{ route('pendaftar.create') }}"> Tambah Pendaftar</a>
+                 <a href="{{ route('pendaftar.cetak_pdf') }}" target="_blank" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-print"></i>
+                    </span>
+                    <span class="text text-justify">Cetak PDF</span>
+                </a>
                  <div class="pull-right" style="float: right">
                     <form action="/cari" method="GET"
                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">

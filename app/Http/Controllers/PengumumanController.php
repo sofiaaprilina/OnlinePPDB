@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pengumuman;
+use File;
 use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
@@ -43,8 +44,17 @@ class PengumumanController extends Controller
     {
         $pengumuman = new Pengumuman;
         $pengumuman->tanggal = $request->tanggal;
-        $pengumuman->kategori = $request->kategori;
         $pengumuman->judul = $request->judul;
+        if($request->pamflet != null){
+            $image_name = 'cover_' . time(). '.'. $request->pamflet->extension();
+            if(File::exists(public_path('pamflet/' . $pengumuman->pamflet))) {
+                File::delete(public_path('pamflet/' . $pengumuman->pamflet));
+            }  
+            $request->pamflet->move(public_path('pamflet/'), $image_name);
+            $pengumuman->pamflet = $image_name;
+        } else if($request->pamflet == null && $pengumuman->pamflet && file_exists(public_path('pamflet/' . $pengumuman->pamflet))){
+            $image_name = $pengumuman->pamflet;
+        }
         $pengumuman->isi = $request->isi;
         $pengumuman->save();
    
@@ -87,8 +97,17 @@ class PengumumanController extends Controller
     {
         $pengumuman = \App\Pengumuman::find($id);
         $pengumuman->tanggal = $request->tanggal;
-        $pengumuman->kategori = $request->kategori;
         $pengumuman->judul = $request->judul;
+        if($request->pamflet != null){
+            $image_name = 'cover_' . time(). '.'. $request->pamflet->extension();
+            if(File::exists(public_path('pamflet/' . $pengumuman->pamflet))) {
+                File::delete(public_path('pamflet/' . $pengumuman->pamflet));
+            }  
+            $request->pamflet->move(public_path('pamflet/'), $image_name);
+            $pengumuman->pamflet = $image_name;
+        } else if($request->pamflet == null && $pengumuman->pamflet && file_exists(public_path('pamflet/' . $pengumuman->pamflet))){
+            $image_name = $pengumuman->pamflet;
+        }
         $pengumuman->isi = $request->isi;
         $pengumuman->save();
 
@@ -105,6 +124,9 @@ class PengumumanController extends Controller
     public function destroy($id)
     {
         $pengumuman = \App\Pengumuman::find($id);
+        if(File::exists(public_path('pamflet/' . $pengumuman->pamflet))) {
+            File::delete(public_path('pamflet/' . $pengumuman->pamflet));
+        }
         $pengumuman->delete();
   
         return redirect()->route('pengumuman.index')

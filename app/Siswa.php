@@ -9,7 +9,7 @@ class Siswa extends Model
     protected $table = 'siswas';
     protected $fillable = ['idPendaftar', 'nama', 'tempat', 'tgl_lahir', 'jenis_kelamin', 'agama', 'alamat', 'nm_ayah', 'kj_ayah', 'no_ayah', 'ph_ayah', 'status_ayah',
                         'nm_ibu', 'kj_ibu', 'ph_ibu', 'no_ibu', 'status_ibu', 'nm_wali', 'kj_wali', 'ph_wali', 'no_wali', 'tanggungan', 'email', 'akte', 'kk', 'ktp', 
-                        'gaji', 'user_id'];
+                        'gaji', 'berkas', 'status', 'user_id'];
     
     public function user()
     {

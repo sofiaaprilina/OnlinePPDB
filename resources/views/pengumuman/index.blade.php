@@ -42,18 +42,18 @@
          <tr>
              <th>Id</th>
              <th>Tanggal</th>
-             <th>Kategori</th>
              <th>Judul</th>
              <th>Isi</th>
-             <th >Action</th>
+             <th>Gambar</th>
+             <th>Action</th>
          </tr>
          @foreach ($pengumumans as $pengumuman)
          <tr>
              <td>{{ $pengumuman->id }}</td>
              <td>{{ $pengumuman->tanggal }}</td>
-             <td>{{ $pengumuman->kategori }}</td>
              <td>{{ $pengumuman->judul }}</td>
              <td>{{ $pengumuman->isi }}</td>
+             <td><img width="100px" src="{{asset('pamflet/'.$pengumuman->pamflet)}}" data-action="zoom"></td>
              <td width="200px">
                 <form action="{{ route('pengumuman.destroy',$pengumuman->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('pengumuman.show',$pengumuman->id) }}"><i class="fas fa-clipboard-list text-gray-100"></i></a>

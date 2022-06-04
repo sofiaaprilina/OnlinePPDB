@@ -30,12 +30,9 @@
             <div class="card-body">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label><b>Kategori</b></label>
-                        <select class="form-control" name="kategori">
-                            <option value="{{ $pengumuman->kategori}}">{{ $pengumuman->kategori}}</option>
-                            <option value="Dashboard">Dashboard</option>
-                            <option value="Alert">Alert</option>
-                        </select>
+                        <label><b>Cover</b></label><br>
+                        <input type="file" class="form-control" name="pamflet" value="{{ $pengumuman->pamflet }}"><br>
+                        <img width="150px" src="{{asset('pamflet/'.$pengumuman->pamflet)}}">
                     </div>
                 </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

@@ -4,12 +4,20 @@
 
 @section('notif')
     <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-bell fa-fw"></i>
-        <?php $jumlah = $daftars->count() + $alerts->count() ?>
-        <span class="badge badge-danger badge-counter"><?php echo $jumlah = $daftars->count() + $alerts->count() ?></span>
-        </a>
+        @php
+            $jumlah = $daftars->count() + $alerts->count();
+        @endphp
+        @if ($jumlah > 0)
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter">{{$jumlah}}</span>
+            </a>
+        @else
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter"></span>
+            </a>
+        @endif
         
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="alertsDropdown">
@@ -69,6 +77,21 @@
                 <br>
                 </form>
                  </div>
+                 <div class="pull-left">
+                    <a href="#" class="btn btn-info btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-info"></i>
+                        </span>
+                        <span class="text text-justify">Berkas Terkonfirmasi    : {{$konfirm}} <br>Berkas Belum Terkonfirmasi    : {{$nokonfirm}} </span>
+                    </a>
+                    <a href="#" class="btn btn-success btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-info"></i>
+                        </span>
+                        <span class="text text-justify">Lolos Seleksi    : {{$sis}} <br>Kuota    : 125 </span>
+                    </a>
+                    <div class="my-2"></div>
+                 </div>
              </div>
          </div>
      </div>
@@ -89,7 +112,7 @@
              <th>Tempat Tanggal Lahir</th>
              <th>Jenis Kelamin</th>
              <th>Alamat</th>
-             <th>Email</th>
+             <th>Status Berkas</th>
              <th>Status</th>
              <th >Action</th>
          </tr>
@@ -100,8 +123,19 @@
              <td>{{ $siswa->tempat }},{{ $siswa->tgl_lahir }}</td>
              <td>{{ $siswa->jenis_kelamin }}</td>
              <td>{{ $siswa->alamat }}</td>
-             <td>{{ $siswa->email }}</td>
              <td>{{ $siswa->berkas }}</td>
+            <td width="100px">
+                @if ($siswa->berkas == 'Terkonfirmasi')
+                    <select class="status form-control" data-id="{{ $siswa->id }}" style="padding: 2px">
+                        <option value="{{$siswa->status}}">{{$siswa->status}}</option>
+                        @if ($sis < 125)
+                            <option value="Lolos" {{ $siswa->status ? 'selected' : '' }}>Lolos</option>
+                        @endif
+                        <option value="Tidak Lolos" {{ !$siswa->status ? 'selected' : '' }}>Tidak Lolos</option>
+                    </select>
+                @endif
+            </td>
+             
              <td width="200px">
                 <form action="{{ route('siswa.destroy',$siswa->id) }}" method="POST">
                     <div class="nav-item dropdown no-arrow">
@@ -136,5 +170,18 @@
      </div>
 
     {{ $siswas->links() }}
+
+    {{-- <script>
+        $(".status").on("change", function(){
+        // alert($(this).data('id'));
+        // alert($(this).val());
+            var temp = $(this); 
+            $.ajax({
+                url: '{{ url("/ubah-status-siswa") }}',
+                type: 'post',
+                data: {_token: "{{ csrf_token() }}", id: $(this).data("id"),  status: $(this).val() },
+            });
+        });
+    </script> --}}
 
  @endsection

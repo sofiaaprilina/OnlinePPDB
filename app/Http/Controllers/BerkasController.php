@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Siswa;
-use App\Pengumuman;
 use File;
 use Illuminate\Http\Request;
 
@@ -17,8 +16,7 @@ class BerkasController extends Controller
     public function index()
     {
         $siswas = Siswa::all();
-        $alerts = Pengumuman::where('kategori', '=', 'Alert')->get();
-        return view('berkas.index', compact('siswas','alerts'));
+        return view('berkas.index', compact('siswas'));
     }
 
     /**

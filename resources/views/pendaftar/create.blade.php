@@ -3,12 +3,20 @@
 
 @section('notif')
     <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-bell fa-fw"></i>
-        <?php $jumlah = $daftars->count() + $alerts->count() ?>
-        <span class="badge badge-danger badge-counter"><?php echo $jumlah = $daftars->count() + $alerts->count() ?></span>
-        </a>
+        @php
+            $jumlah = $daftars->count() + $alerts->count();
+        @endphp
+        @if ($jumlah > 0)
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter">{{$jumlah}}</span>
+            </a>
+        @else
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter"></span>
+            </a>
+        @endif
         
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="alertsDropdown">
@@ -133,7 +141,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="bayar"><b>Ijazah PAUD</b></label><br>
-                <input type="file" name="sekolah" accept="image/jpeg,image/jpg,image/png">
+                <input type="file" name="sekolah" class="form-control" accept="image/jpeg,image/jpg,image/png">
                 <p><small style="color: red";>*</small> Format berkas berupa gambar dengan ekstensi .jpg/.jpeg/.png </p>
             </div>
         </div>
@@ -141,7 +149,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="bayar"><b>Bukti Pembayaran</b></label><br>
-                <input type="file" name="bayar" accept="image/jpeg,image/jpg,image/png" required>
+                <input type="file" name="bayar" class="form-control" accept="image/jpeg,image/jpg,image/png" required>
                 <p><small style="color: red";>*</small> Format berkas berupa gambar dengan ekstensi .jpg/.jpeg/.png </p>
             </div>
         </div>

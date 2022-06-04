@@ -2,12 +2,20 @@
 @section('title', 'Edit Data Siswa')
 @section('notif')
     <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-bell fa-fw"></i>
-        <?php $jumlah = $daftars->count() + $alerts->count() ?>
-        <span class="badge badge-danger badge-counter"><?php echo $jumlah = $daftars->count() + $alerts->count() ?></span>
-        </a>
+        @php
+            $jumlah = $daftars->count() + $alerts->count();
+        @endphp
+        @if ($jumlah > 0)
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter">{{$jumlah}}</span>
+            </a>
+        @else
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter"></span>
+            </a>
+        @endif
         
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="alertsDropdown">
@@ -88,7 +96,7 @@
                         </tr>
                         <tr>
                             <td><strong>Tempat Lahir Siswa </strong></td>
-                            <td><input type="text" value="{{ $siswa->tempat }}" class="form-control"></td>
+                            <td><input type="text" value="{{$siswa->tempat}}" class="form-control"></td>
                         </tr>
                         <tr>
                             <td><strong>Tanggal Lahir Siswa </strong></td>
@@ -96,7 +104,13 @@
                         </tr>
                         <tr>
                             <td><strong>Jenis Kelamin Siswa </strong></td>
-                            <td><input type="text" name="jenis_kelamin" value="{{ $siswa->jenis_kelamin }}" class="form-control"></td>
+                            <td>
+                                <select name="jenis_kelamin" class="form-control">
+                                    <option value="{{$siswa->jenis_kelamin}}">{{$siswa->jenis_kelamin}}</option>
+                                    <option value="Laki-laki">Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td><strong>Agama </strong></td>

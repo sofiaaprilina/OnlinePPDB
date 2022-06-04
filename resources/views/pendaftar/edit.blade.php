@@ -2,12 +2,20 @@
 @section('title', 'Edit Data Pendaftar')
 @section('notif')
     <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-bell fa-fw"></i>
-        <?php $jumlah = $daftars->count() + $alerts->count() ?>
-        <span class="badge badge-danger badge-counter"><?php echo $jumlah = $daftars->count() + $alerts->count() ?></span>
-        </a>
+        @php
+            $jumlah = $daftars->count() + $alerts->count();
+        @endphp
+        @if ($jumlah > 0)
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter">{{$jumlah}}</span>
+            </a>
+        @else
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter"></span>
+            </a>
+        @endif
         
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="alertsDropdown">
@@ -120,7 +128,7 @@
                     <tr>
                         <td><strong>Ijazah PAUD</strong></td>
                         <td>
-                            <input type="file" name="sekolah" value="{{ $pendaftar->sekolah }}">
+                            <input type="file" name="sekolah" value="{{ $pendaftar->sekolah }}" class="form-control">
                             <p><small style="color: red";>*</small> Format berkas berupa gambar dengan ekstensi .jpg/.jpeg/.png </p>
                         </td>
                     </tr>

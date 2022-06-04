@@ -21,9 +21,12 @@ class SiswaController extends Controller
     public function index()
     {
         $siswas = Siswa::paginate(5);
+        $sis = Siswa::where('status', '=', 'Lolos')->count();
+        $konfirm = Siswa::where('berkas', '=', 'Terkonfirmasi')->count();
+        $nokonfirm = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->count();
         $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
         $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
-        return view('siswa.index',compact('siswas','daftars','alerts'))
+        return view('siswa.index',compact('siswas','daftars','alerts','sis','konfirm','nokonfirm'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -155,8 +158,8 @@ class SiswaController extends Controller
         //     'ktp' => 'required',
         // ]);
         $siswa->nama = $request->nama;
-        $siswa->tempat = $request->tempat;
-        $siswa->tgl_lahir = $request->tgl_lahir;
+        // $siswa->tempat = $request->tempat;
+        // $siswa->tgl_lahir = $request->tgl_lahir;
         $siswa->jenis_kelamin = $request->jenis_kelamin;
         $siswa->agama = $request->agama;
         $siswa->alamat = $request->alamat;
@@ -170,21 +173,6 @@ class SiswaController extends Controller
         $siswa->status_ibu = $request->status_ibu;
         $siswa->email = $request->email;
 
-        // if($siswa->akte && file_exists(storage_path('app/public/' . $siswa->akte)))
-        // {
-        //     \Storage::delete('public/'.$siswa->akte);
-        // }
-        // if($siswa->kk && file_exists(storage_path('app/public/' . $siswa->kk)))
-        // {
-        //     \Storage::delete('public/'.$siswa->kk);
-        // }
-        // if($siswa->ktp && file_exists(storage_path('app/public/' . $siswa->ktp)))
-        // {
-        //     \Storage::delete('public/'.$siswa->ktp);
-        // }
-        // $image_name = $request->file('akte')->store('images', 'public');
-        // $image_name2 = $request->file('kk')->store('images', 'public');
-        // $image_name3  = $request->file('ktp')->store('images', 'public');
         if($request->akte != null){
             $image_name = auth()->id() . '_akte_' . time(). '.'. $request->akte->extension();
             if(File::exists(public_path('uploads/' . $siswa->akte))) {
@@ -265,6 +253,22 @@ class SiswaController extends Controller
         $siswas = \App\Siswa::where('nama', 'LIKE', '%' . $cari . '%')
 		->paginate(10);
         
-	return view('siswa.index', ['siswas'=>$siswas]);
+	    return view('siswa.index', ['siswas'=>$siswas]);
+    }
+
+    public function ubahStatus(Request $request){
+        try {
+            $affected = \App\Siswa::where('id', $request->id)
+                            ->update(
+                                [
+                                    'status' => $request->status,
+                                    'updated_at' => new \DateTime(),
+                                ]
+                            );
+            return true;
+        } catch (\Exception $e) {
+            $message = "Gagal update. ".$e->getMessage();
+            return false;
+        }
     }
 }

@@ -16,8 +16,7 @@ class CetakController extends Controller
     public function index()
     {
         $siswas = Siswa::all();
-        $alerts = Pengumuman::where('kategori', '=', 'Alert')->get();
-        return view('cetak.index', compact('siswas','alerts'));
+        return view('cetak.index', compact('siswas'));
     }
 
     /**

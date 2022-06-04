@@ -17,9 +17,16 @@
          <?php
             $keringanan = "";
 
-            if($s->status_ayah == 'Meninggal' && $s->tanggungan > 3 && $s->ph_ibu >= 1000000){
+            if ($siswa->status_ayah == 'Meninggal' && $siswa->tanggungan > 3 && $siswa->ph_ibu < 1000000){
                 $keringanan = "Ya";
-            } else{
+            }
+            elseif ($siswa->status_ibu == 'Meninggal' && $siswa->tanggungan > 3 && $siswa->ph_ayah < 1000000) {
+                $keringanan = "Ya";
+            } 
+            elseif ($siswa->status_ayah == 'Meninggal' && $siswa->status_ibu == 'Meninggal' && $siswa->ph_wali < 1000000 && $siswa->tanggungan > 3){
+                $keringanan = "Ya";
+            }
+            else{
                 $keringanan = "Tidak";
             } 
          ?>

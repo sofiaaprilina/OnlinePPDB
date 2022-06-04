@@ -103,8 +103,8 @@ Route::delete('/destroy', 'PendaftarController@destroy')->name('pendaftar.destro
 Route::delete('/destroy{id}', 'PendaftarController@destroy')->name('pendaftar.destroy');
 Route::get('/add/{id}', 'PendaftarController@add')->name('pendaftar.add');
 Route::post('/olah/{id}', 'PendaftarController@olah')->name('pendaftar.olah');
-Route::get('/koneksi', 'PendaftarController@connect')->name('pendaftar.connect');
 Route::get('/cari', 'PendaftarController@cari')->name('cari');
+Route::get('/cetak_pendaftar', 'PendaftarController@cetak')->name('pendaftar.cetak_pdf');
 
 //Akun
 Route::resource('akun','AkunController');
@@ -134,6 +134,7 @@ Route::put('/update/{id}', 'SiswaController@update')->name('siswa.update');
 Route::delete('/destroy', 'SiswaController@destroy')->name('siswa.destroy');
 Route::delete('/destroy{id}', 'SiswaController@destroy')->name('siswa.destroy');
 Route::get('/cariSiswa', 'SiswaController@cari')->name('cariSiswa');
+Route::post('/ubah-status-siswa', 'SiswaController@ubahStatus')->name('daftar-siswa.status');
 
 //Seleksi
 Route::resource('seleksi','SeleksiController');
@@ -149,6 +150,7 @@ Route::put('/update/{id}', 'SeleksiController@update')->name('seleksi.update');
 Route::delete('/destroy', 'SeleksiController@destroy')->name('seleksi.destroy');
 Route::delete('/destroy{id}', 'SeleksiController@destroy')->name('seleksi.destroy');
 Route::get('/cariSeleksi', 'SeleksiController@cari')->name('cariSeleksi');
+Route::get('/cetak_seleksi', 'SeleksiController@cetak')->name('seleksi.cetak_pdf');
 });
 
 //Form
@@ -205,3 +207,4 @@ Route::get('kirim-email/{id}','MailController@index')->name('konfirmasi');
 Route::get('novalid/{id}','MailController@novalid')->name('novalid');
 Route::get('berkas-valid/{id}','MailController@berkasvalid')->name('berkas.valid');
 Route::get('berkas-novalid/{id}','MailController@berkasnovalid')->name('berkas.novalid');
+Route::get('confirm-keringanan/{id}','MailController@keringanan')->name('keringanan');
