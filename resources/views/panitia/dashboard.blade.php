@@ -150,7 +150,8 @@
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
             </div>
-            <div class="card-body">
+            @if ($confirms->count() > 0)
+               <div class="card-body">
                 <?php $blm = round($confirms->count() / $daftars->count() * 100,2); ?>
                 <h4 class="small font-weight-bold">Pendaftar Terkonfirmasi <span
                         class="float-right">40%</span></h4>
@@ -172,7 +173,9 @@
                     <div class="progress-bar bg-success" role="progressbar" style="width: {{$lolos}}%"
                         aria-valuenow="{{$lolos}}" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-            </div>
+            </div> 
+            @endif
+            
         </div>
     </div>
 </div>

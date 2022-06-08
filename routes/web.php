@@ -208,3 +208,6 @@ Route::get('novalid/{id}','MailController@novalid')->name('novalid');
 Route::get('berkas-valid/{id}','MailController@berkasvalid')->name('berkas.valid');
 Route::get('berkas-novalid/{id}','MailController@berkasnovalid')->name('berkas.novalid');
 Route::get('confirm-keringanan/{id}','MailController@keringanan')->name('keringanan');
+
+//Beranda
+Route::get('/beranda','ProfileController@index');
