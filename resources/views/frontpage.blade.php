@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>PPDB RA Qurrota A'yun</title>
+        <title>PPDB RA QURROTA A'YUN</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{{asset('front/assets/favicon.ico')}}" />
         <!-- Bootstrap icons-->
@@ -15,10 +15,9 @@
     </head>
     <body>
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-5">
-                <a class="navbar-brand" href="#!">PPDB RA Qurrota A'yun</a>
+                <a class="navbar-brand" href="#"><img src="{{asset('bootpro/assets/img/logo-ra.png')}}" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -67,138 +66,28 @@
             <div class="container px-5 my-5">
                 <div class="text-center mb-5">
                     <h2 class="fw-bolder">Alur Pendaftaran</h2>
-                    <p class="lead mb-0">Berikut adalah alur pendaftaran peserta didik baru tahun ajaran 2021/2022</p>
+                    <p class="lead mb-0">Berikut adalah alur pendaftaran peserta didik baru RA Qurrota A'yun tahun ajaran 2021/2022</p>
                 </div>
-                <div class="row gx-5 justify-content-center">
-                    <!-- Pricing card free-->
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="card mb-5 mb-xl-0">
-                            <div class="card-body p-5">
-                                <div class="mb-3">
-                                    <center><img src="https://cdn-icons-png.flaticon.com/512/3029/3029373.png" width="60px" height="60px"></center>
+                    <div class="row gx-5 justify-content-center">
+                        @foreach ($informasis as $info)
+                        <!-- Pricing card pro-->
+                        <div class="col-lg-6 col-xl-4">
+                            <div class="card mb-5 mb-xl-0">
+                                <div class="card-body p-5">
+                                    <div class="mb-3">
+                                        <center><img src="{{asset('images/info/'.$info->gambar)}}" width="60px" height="60px"></center>
+                                    </div>
+                                    <div class="small text-uppercase fw-bold text-muted"> <center><h1>{{$info->no}}</h1></center></div>
+                                    <ul class="list-unstyled mb-4">
+                                        <li class="mb-2 text-muted">
+                                            <center>{{$info->keterangan}}</center>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="small text-uppercase fw-bold text-muted"> <center><h1>1.</h1></center></div>
-                                <ul class="list-unstyled mb-4">
-                                    <li class="mb-2 text-muted">
-                                        Melakukan pembayaran
-                                        formulir sebesar Rp. 10.000 melalui aplikasi LinkAja atau Dana.
-                                    </li>
-                                    <li class="mb-2 text-muted">
-                                        <i class="bi bi-check text-primary"></i>
-                                        LinkAja : 085732263529
-                                    </li>
-                                    <li class="mb-2 text-muted">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Dana    : 085707930793
-                                    </li>
-                                    {{-- <li class="mb-2 text-muted">
-                                        <i class="bi bi-check text-primary"></i>
-                                        BCA    : 9090118
-                                    </li> --}}
-                                    <li class="mb-2 text-muted">
-                                        an RA Qurrota A'yun
-                                    </li>
-                                </ul>
                             </div>
                         </div>
+                @endforeach
                     </div>
-                    <!-- Pricing card pro-->
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="card mb-5 mb-xl-0">
-                            <div class="card-body p-5">
-                                <div class="mb-3">
-                                    <center><img src="https://cdn-icons-png.flaticon.com/512/1055/1055672.png" width="60px" height="60px"></center>
-                                </div>
-                                <div class="small text-uppercase fw-bold text-muted"> <center><h1>2</h1></center></div>
-                                <ul class="list-unstyled mb-4">
-                                    <li class="mb-2 text-muted">
-                                        <center>
-                                        Mengisi form pendaftaran secara online disertai pengupload an bukti pembayaran</center>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Pricing card enterprise-->
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="card mb-5 mb-xl-0">
-                            <div class="card-body p-5">
-                                <div class="mb-3">
-                                    <center><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="60px" height="60px"></center>
-                                </div>
-                                <div class="small text-uppercase fw-bold text-muted"> <center><h1>3</h1></center></div>
-                                <ul class="list-unstyled mb-4">
-                                    <li class="mb-2 text-muted">
-                                        <center>
-                                            Menunggu konfirmasi untuk akun berupa user dan password untuk akses sistem melalui Email
-                                        </center>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="card mb-5 mb-xl-0">
-                            <div class="card-body p-5">
-                                <div class="mb-3">
-                                    <center><img src="https://cdn-icons-png.flaticon.com/512/1728/1728902.png" width="60px" height="60px"></center>
-                                </div>
-                                <div class="small text-uppercase fw-bold text-muted"> <center><h1>4</h1></center></div>
-                                <ul class="list-unstyled mb-4">
-                                    <li class="mb-2 text-muted">
-                                        <center>
-                                            Melakukan login ke sistem menggunakan username dan password yang telah didapat pada langkah ke-3
-                                        </center>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="card mb-5 mb-xl-0">
-                            <div class="card-body p-5">
-                                <div class="mb-3">
-                                    <center><img src="https://cdn-icons-png.flaticon.com/512/6079/6079932.png" width="60px" height="60px"></center>
-                                </div>
-                                <div class="small text-uppercase fw-bold text-muted"> <center><h1>5</h1></center></div>
-                                <ul class="list-unstyled mb-4">
-                                    <li class="mb-2 text-muted">
-                                        Melengkapi berkas-berkas pendaftaran
-                                    </li>
-                                    <li class="mb-2 text-muted">
-                                        <i class="bi bi-check text-primary"></i>
-                                        KK (Kartu Keluarga)
-                                    </li>
-                                    <li class="mb-2 text-muted">
-                                        <i class="bi bi-check text-primary"></i>
-                                        Akte Kelahiran
-                                    </li>
-                                    <li class="mb-2 text-muted">
-                                        <i class="bi bi-check text-primary"></i>
-                                        KTP Orang Tua
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="card mb-5 mb-xl-0">
-                            <div class="card-body p-5">
-                                <div class="mb-3">
-                                    <center><img src="https://cdn-icons-png.flaticon.com/512/3143/3143460.png" width="60px" height="60px"></center>
-                                </div>
-                                <div class="small text-uppercase fw-bold text-muted"> <center><h1>6</h1></center></div>
-                                <ul class="list-unstyled mb-4">
-                                    <li class="mb-2 text-muted">
-                                        <center>
-                                            Mencetak bukti pendaftaran pada menu cetak bukti
-                                        </center>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
         <!-- Testimonials section-->
@@ -206,8 +95,8 @@
         <!-- Contact section-->
         
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+        <footer class="py-4 bg-dark">
+            <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; RA QURROTA A'YUN KEPANJEN 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

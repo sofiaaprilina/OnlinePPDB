@@ -65,36 +65,52 @@
             </div>
         </div>
     </div><br>
-    <a href="#" class="btn btn-primary btn-icon-split">
-        <span class="icon text-white-50">
-            <i class="fas fa-user"></i>
-        </span>
-        <span class="text">A. Identitas Calon Siswa</span>
-    </a>
-    <div class="my-2"></div>
+        <a href="#" class="btn btn-primary btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-user"></i>
+            </span>
+            <span class="text">A. Identitas Calon Siswa</span>
+        </a>
+        <div class="my-2"></div>
             <div class="table">
                 <table width="1000px">
                     <tr>
-                        <td><strong>Nama Calon Siswa    : </strong></td>
+                        <td><strong>No Kartu Keluarga </strong></td>
+                        <td>:</td>
+                        <td>{{ $siswa->no_kk }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NIK Calon Siswa</strong></td>
+                        <td>:</td>
+                        <td>{{ $siswa->nik }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nama Calon Siswa</strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->nama }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Tempat,Tanggal Lahir    : </strong></td>
+                        <td><strong>Tempat,Tanggal Lahir </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->tempat }}, {{ $siswa->tgl_lahir }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Jenis Kelamin       : </strong></td>
+                        <td><strong>Jenis Kelamin</strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->jenis_kelamin }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Agama          : </strong></td>
+                        <td><strong>Agama </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->agama }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Alamat          : </strong></td>
+                        <td><strong>Alamat</strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->alamat }}</td>
                     </tr>
                 </table>
+                <div class="my-2"></div>
                 <a href="#" class="btn btn-primary btn-icon-split">
                     <span class="icon text-white-50">
                         <i class="fas fa-user"></i>
@@ -104,87 +120,122 @@
                 <div class="my-2"></div>
                 <table width="1000px">
                     <tr>
-                        <td><strong>Nama Ayah   : </strong></td>
+                        <td><strong>NIK Ayah </strong></td>
+                        <td>:</td>
+                        <td>{{ $siswa->nik_ayah }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nama Ayah </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->nm_ayah }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Pekerjaan Ayah   : </strong></td>
+                        <td><strong>Pekerjaan Ayah </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->kj_ayah }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Penghasilan Ayah   : </strong></td>
+                        <td><strong>Penghasilan Ayah </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->ph_ayah }}</td>
                     </tr>
                     <tr>
-                        <td><strong>No Telp Ayah   : </strong></td>
+                        <td><strong>No Telp Ayah </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->no_ayah }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Status Ayah   : </strong></td>
+                        <td><strong>Status Ayah</strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->status_ayah }}</td>
                     </tr>
                     <tr> 
-                        <td><strong>Nama Ibu   : </strong></td>
+                        <td><strong>NIK Ibu </strong></td>
+                        <td>:</td>
+                        <td>{{ $siswa->nik_ibu }}</td>
+                    </tr>
+                    <tr> 
+                        <td><strong>Nama Ibu</strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->nm_ibu }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Pekerjaan Ibu   : </strong></td>
+                        <td><strong>Pekerjaan Ibu </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->kj_ibu }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Penghasilan Ibu   : </strong></td>
+                        <td><strong>Penghasilan Ibu </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->ph_ibu }}</td>
                     </tr>
                     <tr>
-                        <td><strong>No Telp Ibu   : </strong></td>
+                        <td><strong>No Telp Ibu</strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->no_ibu }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Status Ibu   : </strong></td>
+                        <td><strong>Status Ibu</strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->status_ibu }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Nama Wali   : </strong></td>
+                        <td><strong>NIK Wali </strong></td>
+                        <td>:</td>
+                        <td>{{ $siswa->nik_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nama Wali </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->nm_wali }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Pekerjaan Wali   : </strong></td>
+                        <td><strong>Pekerjaan Wali</strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->kj_wali }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Penghasilan Wali   : </strong></td>
+                        <td><strong>Penghasilan Wali </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->ph_wali }}</td>
                     </tr>
                     <tr>
-                        <td><strong>No Telp Wali   : </strong></td>
+                        <td><strong>No Telp Wali </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->no_wali }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Tanggungan Orang Tua   : </strong></td>
+                        <td><strong>Tanggungan </strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->tanggungan }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Email           : </strong></td>
+                        <td><strong>Email</strong></td>
+                        <td>:</td>
                         <td>{{ $siswa->email }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Akte Kelahiran : </strong></td>
-                        <td><img width="150px" src="{{asset('uploads/'.$siswa->akte)}}" data-action="zoom"></td>
+                        <td><strong>Akte Kelahiran</strong></td>
+                        <td>:</td>
+                        <td><img src="{{asset('uploads/'.$siswa->akte)}}" data-action="zoom"></td>
                     </tr>
                     <tr>
-                        <td><strong>Kartu Keluarga : </strong></td>
+                        <td><strong>Kartu Keluarga</strong></td>
+                        <td>:</td>
                         <td><img width="150px" src="{{asset('uploads/'.$siswa->kk)}}" data-action="zoom"></td>
                     </tr>
                     <tr>
-                        <td><strong>KTP Orang Tua : </strong></td>
+                        <td><strong>KTP Orang Tua</strong></td>
+                        <td>:</td>
                         <td><img width="150px" src="{{asset('uploads/'.$siswa->ktp)}}" data-action="zoom"></td>
                     </tr>
                     <tr>
-                        <td><strong>Slip Gaji : </strong></td>
+                        <td><strong>Slip Gaji</strong></td>
+                        <td>:</td>
                         <td><img width="150px" src="{{asset('uploads/'.$siswa->gaji)}}" data-action="zoom"></td>
                     </tr>
                 </table>
             </div>
         </div>
-     </div>
+    </div>
 @endsection

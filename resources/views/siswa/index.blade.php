@@ -62,11 +62,28 @@
              </div>
              <div class="pull-right">
                  <!-- <a class="btn btn-success" href="{{ route('siswa.create') }}"> Tambah Siswa</a> -->
+                    <form action="/filter-siswa" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <select name="filter" id="filter" aria-controls="dataTable" class="custom-select custom-select-md form-control form-control-md">
+                                <option value="Semua">Semua Data</option>
+                                <option value="Terkonfirmasi">Terkonfirmasi</option>
+                                <option value="Belum Terkonfirmasi">Belum Terkonfirmasi</option>
+                                <option value="Tidak Valid">Tidak Valid</option>
+                                <option value="Lolos">Lolos</option>
+                                <option value="Tidak Lolos">Tidak Lolos</option>
+                            </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
+                                Filter
+                            </button>
+                        </div>
+                    </div> <br>
+                    </form>
                  <div class="pull-right" style="float: right">
                     <form action="/cariSiswa" method="GET"
                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
-                    <input type="text" name="cariSiswa"  class="form-control bg-light border-1 small" placeholder="Search for..."
+                    <input type="text" name="cari"  class="form-control bg-light border-1 small" placeholder="Search for..."
                         aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">

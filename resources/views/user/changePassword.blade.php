@@ -9,10 +9,10 @@
     @foreach ($siswas as $siswa)
         @if (Auth::user()->id == $siswa->user_id)
             <?php 
-                if ($siswa->agama == null || $siswa->alamat == null) {
+                if ($siswa->no_kk == null || $siswa->nik == null || $siswa->agama == null || $siswa->alamat == null) {
                     $jumlah+=1;
                 }
-                if ($siswa->nm_ayah == null || $siswa->kj_ayah == null || $siswa->ph_ayah == null || $siswa->no_ayah == null || $siswa->nm_ibu == null || $siswa->kj_ibu == null || $siswa->ph_ibu == null || $siswa->no_ibu == null || $siswa->tanggungan == null || $siswa->email == null) {
+                if ($siswa->nik_ayah == null || $siswa->nm_ayah == null || $siswa->kj_ayah == null || $siswa->ph_ayah == null || $siswa->no_ayah == null || $siswa->nik_ibu == null || $siswa->nm_ibu == null || $siswa->kj_ibu == null || $siswa->ph_ibu == null || $siswa->no_ibu == null || $siswa->tanggungan == null || $siswa->email == null) {
                     $jumlah+=1;
                 }
                 if ($siswa->akte == null) {
@@ -46,7 +46,7 @@
             </h6>
             @foreach ($siswas as $siswa)
                 @if (Auth::user()->id == $siswa->user_id)
-                    @if ($siswa->agama == null || $siswa->alamat == null)
+                    @if ($siswa->no_kk == null || $siswa->nik == null || $siswa->agama == null || $siswa->alamat == null)
                         <a class="dropdown-item d-flex align-items-center" href="/biodata">
                             <div class="mr-3">
                                 <div class="icon-circle bg-warning">
@@ -59,7 +59,7 @@
                             </div>
                         </a>
                     @endif
-                    @if ($siswa->nm_ayah == null || $siswa->kj_ayah == null || $siswa->ph_ayah == null || $siswa->no_ayah == null || $siswa->nm_ibu == null || $siswa->kj_ibu == null || $siswa->ph_ibu == null || $siswa->no_ibu == null || $siswa->tanggungan == null || $siswa->email == null)
+                    @if ($siswa->nik_ayah == null || $siswa->nm_ayah == null || $siswa->kj_ayah == null || $siswa->ph_ayah == null || $siswa->no_ayah == null || $siswa->nik_ibu == null ||  $siswa->nm_ibu == null || $siswa->kj_ibu == null || $siswa->ph_ibu == null || $siswa->no_ibu == null || $siswa->tanggungan == null || $siswa->email == null)
                         <a class="dropdown-item d-flex align-items-center" href="/biodata">
                             <div class="mr-3">
                                 <div class="icon-circle bg-warning">

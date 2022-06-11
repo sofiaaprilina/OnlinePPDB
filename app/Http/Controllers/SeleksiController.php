@@ -91,6 +91,16 @@ class SeleksiController extends Controller
         //
     }
 
+    public function cari(Request $request){
+        $cari= $request->get('cari');
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        $siswas = \App\Siswa::where('nama', 'LIKE', '%' . $cari . '%')
+		->paginate(10);
+        
+	    return view('siswa.index', ['siswas'=>$siswas, 'daftars'=>$daftars, 'alerts'=>$alerts]);
+    }
+
     public function cetak(){
         $siswa = Siswa::where('status', '=', 'Lolos')->get();
         // $siswa = Siswa::where('id', $id)->get();

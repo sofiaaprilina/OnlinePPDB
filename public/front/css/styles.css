@@ -4037,6 +4037,13 @@ textarea.form-control-lg {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+#mainNav {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border: none;
+  background-color: #87ceeb;
+  transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+}
 .navbar > .container,
 .navbar > .container-fluid,
 .navbar > .container-sm,
@@ -4054,8 +4061,12 @@ textarea.form-control-lg {
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
   font-size: 1.25rem;
-  text-decoration: none;
+  height: 5rem;
+  text-decoration: none; 
   white-space: nowrap;
+}
+.navbar-brand img {
+  height: 5rem;
 }
 .navbar-nav {
   display: flex;

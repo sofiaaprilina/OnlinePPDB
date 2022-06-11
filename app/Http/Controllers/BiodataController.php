@@ -58,17 +58,21 @@ class BiodataController extends Controller
 
         // ]);
         $siswa = new Siswa;
+        $siswa->no_kk = $request->no_kk;
+        $siswa->nik = $request->nik;
         $siswa->nama = $request->nama;
         $siswa->tempat = $request->tempat;
         $siswa->tgl_lahir = $request->tgl_lahir;
         $siswa->jenis_kelamin = $request->jenis_kelamin;
         $siswa->agama = $request->agama;
         $siswa->alamat = $request->alamat;
+        $siswa->nik_ayah = $request->nik_ayah;
         $siswa->nm_ayah = $request->nm_ayah;
         $siswa->kj_ayah = $request->kj_ayah;
         $siswa->ph_ayah = $request->ph_ayah;
         $siswa->no_ayah = $request->no_ayah;
         $siswa->status_ayah = $request->status_ayah;
+        $siswa->nik_ibu = $request->nik_ibu;
         $siswa->nm_ibu = $request->nm_ibu;
         $siswa->kj_ibu = $request->kj_ibu;
         $siswa->ph_ibu = $request->ph_ibu;
@@ -133,13 +137,17 @@ class BiodataController extends Controller
         // ]);
 
         $siswas = Siswa::where('id', $id)->update([
+            'no_kk' => $request->no_kk,
+            'nik' => $request->nik,
             'agama' => $request->agama,
             'alamat' => $request->alamat,
+            'nik_ayah' => $request->nik_ayah,
             'nm_ayah' => $request->nm_ayah,
             'kj_ayah' => $request->kj_ayah,
             'ph_ayah' => $request->ph_ayah,
             'no_ayah' => $request->no_ayah,
             'status_ayah' => $request->status_ayah,
+            'nik_ibu' => $request->nik_ibu,
             'nm_ibu' => $request->nm_ibu,
             'kj_ibu' => $request->kj_ibu,
             'ph_ibu' => $request->ph_ibu,

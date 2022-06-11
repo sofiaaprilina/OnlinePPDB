@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontpage');
-});
+//Beranda
+Route::get('/','ProfileController@index');
+
+//PPDB
+Route::get('/ppdb','ProfileController@ppdb');
 
 Auth::routes();
 
@@ -85,72 +87,103 @@ Route::middleware('auth:admin')->group(function(){
    Route::delete('/destroy', 'PengumumanController@destroy')->name('pengumuman.destroy');
    Route::delete('/destroy{id}', 'PengumumanController@destroy')->name('pengumuman.destroy');
    Route::get('/cariPengumuman', 'PengumumanController@cari')->name('cariPengumuman');
+
+   //Informasi
+   Route::resource('informasi','InformasiController');
+   Route::get('/index', 'InformasiController@index')->name('informasi.index');
+   Route::get('/create', 'InformasiController@create')->name('informasi.create');
+   Route::get('/edit', 'InformasiController@edit')->name('informasi.edit');
+   Route::get('/edit/{id}', 'InformasiController@edit')->name('informasi.edit');
+   Route::get('/show', 'InformasiController@show')->name('informasi.show');
+   Route::get('/show/{id}', 'InformasiController@show')->name('informasi.show');
+   Route::post('/store', 'InformasiController@store')->name('informasi.store');
+   Route::put('/update/{id}', 'InformasiController@update')->name('informasi.update');
+   Route::delete('/destroy', 'InformasiController@destroy')->name('informasi.destroy');
+   Route::delete('/destroy{id}', 'InformasiController@destroy')->name('informasi.destroy');
+   Route::get('/cariInformasi', 'InformasiController@cari')->name('cariInformasi');
+
+   //Tampilan
+   Route::resource('tampilan','TampilanController');
+   Route::get('/index', 'TampilanController@index')->name('tampilan.index');
+   Route::get('/create', 'TampilanController@create')->name('tampilan.create');
+   Route::get('/edit', 'TampilanController@edit')->name('tampilan.edit');
+   Route::get('/edit/{id}', 'TampilanController@edit')->name('tampilan.edit');
+   Route::get('/show', 'TampilanController@show')->name('tampilan.show');
+   Route::get('/show/{id}', 'TampilanController@show')->name('tampilan.show');
+   Route::post('/store', 'TampilanController@store')->name('tampilan.store');
+   Route::put('/update/{id}', 'TampilanController@update')->name('tampilan.update');
+   Route::delete('/destroy', 'TampilanController@destroy')->name('tampilan.destroy');
+   Route::delete('/destroy{id}', 'TampilanController@destroy')->name('tampilan.destroy');
+   Route::get('/cariTampilan', 'TampilanController@cari')->name('cariTampilan');
+   Route::get('/filter-tampilan', 'TampilanController@filter')->name('filterTampilan');
 });
 
 Route::middleware('auth:panitia')->group(function(){
     Route::get('/dashboard', 'HomeController1@index')->name('panitia.home');
-//Pendaftar
-Route::resource('pendaftar','PendaftarController');
-Route::get('/index', 'PendaftarController@index')->name('pendaftar.index');
-Route::get('/create', 'PendaftarController@create')->name('pendaftar.create');
-Route::get('/edit', 'PendaftarController@edit')->name('pendaftar.edit');
-Route::get('/edit/{id}', 'PendaftarController@edit')->name('pendaftar.edit');
-Route::get('/show', 'PendaftarController@show')->name('pendaftar.show');
-Route::get('/show/{id}', 'PendaftarController@show')->name('pendaftar.show');
-Route::post('/store', 'PendaftarController@store')->name('pendaftar.store');
-Route::put('/update/{id}', 'PendaftarController@update')->name('pendaftar.update');
-Route::delete('/destroy', 'PendaftarController@destroy')->name('pendaftar.destroy');
-Route::delete('/destroy{id}', 'PendaftarController@destroy')->name('pendaftar.destroy');
-Route::get('/add/{id}', 'PendaftarController@add')->name('pendaftar.add');
-Route::post('/olah/{id}', 'PendaftarController@olah')->name('pendaftar.olah');
-Route::get('/cari', 'PendaftarController@cari')->name('cari');
-Route::get('/cetak_pendaftar', 'PendaftarController@cetak')->name('pendaftar.cetak_pdf');
+    //Pendaftar
+    Route::resource('pendaftar','PendaftarController');
+    Route::get('/index', 'PendaftarController@index')->name('pendaftar.index');
+    Route::get('/create', 'PendaftarController@create')->name('pendaftar.create');
+    Route::get('/edit', 'PendaftarController@edit')->name('pendaftar.edit');
+    Route::get('/edit/{id}', 'PendaftarController@edit')->name('pendaftar.edit');
+    Route::get('/show', 'PendaftarController@show')->name('pendaftar.show');
+    Route::get('/show/{id}', 'PendaftarController@show')->name('pendaftar.show');
+    Route::post('/store', 'PendaftarController@store')->name('pendaftar.store');
+    Route::put('/update/{id}', 'PendaftarController@update')->name('pendaftar.update');
+    Route::delete('/destroy', 'PendaftarController@destroy')->name('pendaftar.destroy');
+    Route::delete('/destroy{id}', 'PendaftarController@destroy')->name('pendaftar.destroy');
+    Route::get('/add/{id}', 'PendaftarController@add')->name('pendaftar.add');
+    Route::post('/olah/{id}', 'PendaftarController@olah')->name('pendaftar.olah');
+    Route::get('/cari', 'PendaftarController@cari')->name('cari');
+    Route::get('/filter', 'PendaftarController@filter')->name('filter');
+    Route::get('/cetak_pendaftar', 'PendaftarController@cetak')->name('pendaftar.cetak_pdf');
 
-//Akun
-Route::resource('akun','AkunController');
-Route::get('/index', 'AkunController@index')->name('akun.index');
-Route::get('/create', 'AkunController@create')->name('akun.create');
-Route::get('/edit', 'AkunController@edit')->name('akun.edit');
-Route::get('/edit/{id}', 'AkunController@edit')->name('akun.edit');
-Route::get('/show', 'AkunController@show')->name('akun.show');
-Route::get('/show/{id}', 'AkunController@show')->name('akun.show');
-Route::post('/store', 'AkunController@store')->name('akun.store');
-Route::put('/update/{id}', 'AkunController@update')->name('akun.update');
-Route::delete('/destroy', 'AkunController@destroy')->name('akun.destroy');
-Route::delete('/destroy{id}', 'AkunController@destroy')->name('akun.destroy');
-Route::get('/cariAkun', 'AkunController@cari')->name('cariAkun');
+    //Akun
+    Route::resource('akun','AkunController');
+    Route::get('/index', 'AkunController@index')->name('akun.index');
+    Route::get('/create', 'AkunController@create')->name('akun.create');
+    Route::get('/edit', 'AkunController@edit')->name('akun.edit');
+    Route::get('/edit/{id}', 'AkunController@edit')->name('akun.edit');
+    Route::get('/show', 'AkunController@show')->name('akun.show');
+    Route::get('/show/{id}', 'AkunController@show')->name('akun.show');
+    Route::post('/store', 'AkunController@store')->name('akun.store');
+    Route::put('/update/{id}', 'AkunController@update')->name('akun.update');
+    Route::delete('/destroy', 'AkunController@destroy')->name('akun.destroy');
+    Route::delete('/destroy{id}', 'AkunController@destroy')->name('akun.destroy');
+    Route::get('/cariAkun', 'AkunController@cari')->name('cariAkun');
 
-//Siswa
-Route::resource('siswa','SiswaController');
-Route::get('/index', 'SiswaController@index')->name('siswa.index');
-Route::get('/create', 'SiswaController@create')->name('siswa.create');
-Route::get('/edit', 'SiswaController@edit')->name('siswa.edit');
-Route::get('/edit/{id}', 'SiswaController@edit')->name('siswa.edit');
-Route::get('/show', 'SiswaController@show')->name('siswa.show');
-Route::get('/show/{id}', 'SiswaController@show')->name('siswa.show');
-Route::post('/store', 'SiswaController@store')->name('siswa.store');
-// Route::put('/update', 'SiswaController@update')->name('siswa.update');
-Route::put('/update/{id}', 'SiswaController@update')->name('siswa.update');
-Route::delete('/destroy', 'SiswaController@destroy')->name('siswa.destroy');
-Route::delete('/destroy{id}', 'SiswaController@destroy')->name('siswa.destroy');
-Route::get('/cariSiswa', 'SiswaController@cari')->name('cariSiswa');
-Route::post('/ubah-status-siswa', 'SiswaController@ubahStatus')->name('daftar-siswa.status');
+    //Siswa
+    Route::resource('siswa','SiswaController');
+    Route::get('/index', 'SiswaController@index')->name('siswa.index');
+    Route::get('/create', 'SiswaController@create')->name('siswa.create');
+    Route::get('/edit', 'SiswaController@edit')->name('siswa.edit');
+    Route::get('/edit/{id}', 'SiswaController@edit')->name('siswa.edit');
+    Route::get('/show', 'SiswaController@show')->name('siswa.show');
+    Route::get('/show/{id}', 'SiswaController@show')->name('siswa.show');
+    Route::post('/store', 'SiswaController@store')->name('siswa.store');
+    // Route::put('/update', 'SiswaController@update')->name('siswa.update');
+    Route::put('/update/{id}', 'SiswaController@update')->name('siswa.update');
+    Route::delete('/destroy', 'SiswaController@destroy')->name('siswa.destroy');
+    Route::delete('/destroy{id}', 'SiswaController@destroy')->name('siswa.destroy');
+    Route::get('/cariSiswa', 'SiswaController@cari')->name('cariSiswa');
+    Route::post('/ubah-status-siswa', 'SiswaController@ubahStatus')->name('daftar-siswa.status');
+    Route::get('/filter-siswa', 'SiswaController@filter')->name('filter-siswa');
 
-//Seleksi
-Route::resource('seleksi','SeleksiController');
-Route::get('/index', 'SeleksiController@index')->name('seleksi.index');
-Route::get('/create', 'SeleksiController@create')->name('seleksi.create');
-Route::get('/edit', 'SeleksiController@edit')->name('seleksi.edit');
-Route::get('/edit/{id}', 'SeleksiController@edit')->name('seleksi.edit');
-Route::get('/show', 'SeleksiController@show')->name('seleksi.show');
-Route::get('/show/{id}', 'SeleksiController@show')->name('seleksi.show');
-Route::post('/store', 'SeleksiController@store')->name('seleksi.store');
-// Route::put('/update', 'SiswaController@update')->name('siswa.update');
-Route::put('/update/{id}', 'SeleksiController@update')->name('seleksi.update');
-Route::delete('/destroy', 'SeleksiController@destroy')->name('seleksi.destroy');
-Route::delete('/destroy{id}', 'SeleksiController@destroy')->name('seleksi.destroy');
-Route::get('/cariSeleksi', 'SeleksiController@cari')->name('cariSeleksi');
-Route::get('/cetak_seleksi', 'SeleksiController@cetak')->name('seleksi.cetak_pdf');
+    //Seleksi
+    Route::resource('seleksi','SeleksiController');
+    Route::get('/index', 'SeleksiController@index')->name('seleksi.index');
+    Route::get('/create', 'SeleksiController@create')->name('seleksi.create');
+    Route::get('/edit', 'SeleksiController@edit')->name('seleksi.edit');
+    Route::get('/edit/{id}', 'SeleksiController@edit')->name('seleksi.edit');
+    Route::get('/show', 'SeleksiController@show')->name('seleksi.show');
+    Route::get('/show/{id}', 'SeleksiController@show')->name('seleksi.show');
+    Route::post('/store', 'SeleksiController@store')->name('seleksi.store');
+    // Route::put('/update', 'SiswaController@update')->name('siswa.update');
+    Route::put('/update/{id}', 'SeleksiController@update')->name('seleksi.update');
+    Route::delete('/destroy', 'SeleksiController@destroy')->name('seleksi.destroy');
+    Route::delete('/destroy{id}', 'SeleksiController@destroy')->name('seleksi.destroy');
+    Route::get('/cariSeleksi', 'SeleksiController@cari')->name('cariSeleksi');
+    Route::get('/cetak_seleksi', 'SeleksiController@cetak')->name('seleksi.cetak_pdf');
 });
 
 //Form
@@ -208,6 +241,3 @@ Route::get('novalid/{id}','MailController@novalid')->name('novalid');
 Route::get('berkas-valid/{id}','MailController@berkasvalid')->name('berkas.valid');
 Route::get('berkas-novalid/{id}','MailController@berkasnovalid')->name('berkas.novalid');
 Route::get('confirm-keringanan/{id}','MailController@keringanan')->name('keringanan');
-
-//Beranda
-Route::get('/beranda','ProfileController@index');

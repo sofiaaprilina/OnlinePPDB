@@ -30,7 +30,7 @@
     </style>
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="#page-top"><img src="{{asset('bootpro/assets/img/logo-ra.png')}}" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,6 +44,7 @@
                         <li class="nav-item"><a class="nav-link" href="#about">PROFIL</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">GURU</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">PPDB</a></li>
+                        <li class="nav-item"><a class="nav-link dropdown" href="#">LOGIN</a></li>
                     </ul>
                 </div>
             </div>
@@ -91,82 +92,41 @@
                     <h2 class="section-heading text-uppercase">SARANA DAN PRASARANA</h2><br><br>
                 </div>
                 <div class="row text-center">
-                    <div class="col-md-4">
-                        <h3 class="my-3">RUANG KELAS</h3>
-                        <p class="text-muted"><img src="{{asset('bootpro/assets/img/ekskul/kelas.jpg')}}" alt="Image" height="250" width="250"></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h3 class="my-3">PERMAINAN OUTDOR</h3>
-                        <p class="text-muted"><img src="{{asset('bootpro/assets/img/ekskul/outdor.jpg')}}" alt="Image" height="250" width="250"></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h3 class="my-3">PERMAINAN INDOR</h3>
-                        <p class="text-muted"><img src="{{asset('bootpro/assets/img/ekskul/indor.jpg')}}" alt="Image" height="250" width="250"></p>
-                    </div>
-                </div><br><br>
-                <div class="text-center">
-                        <h3 class="section-heading text-uppercase">Video Pengenalan Ruang Kelas</h3><br>
-                        <video width="700" controls>   
-                            <source src="{{asset('bootpro/assets/img/ekskul/kelas.mp4')}}" type="video/mp4" />
-                        </video>
-                </div><br><br><br>
+                    @foreach ($fasilitas as $f)
+                    @if ($f->file != null)
+                        <div class="col-md-4">
+                            <h3 class="my-3">{{$f->judul}}</h3>
+                            <p class="text-muted"><img src="{{asset('images/gambarSistem/'.$f->file)}}" alt="Image" height="250" width="250"></p>
+                        </div>
+                    @endif
+                    @endforeach
+                </div>
+                <br><br>
+                @foreach ($fasilitas as $f)
+                    @if ($f->link !=null)
+                        <div class="text-center">
+                            <h3 class="section-heading text-uppercase">{{$f->judul}}</h3><br>
+                            <iframe width="700px" height="350px" src="{{$f->link}}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    @endif
+                @endforeach
+                <br><br><br>
+
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">EKSTRAKURIKULER</h2><br><br>
                 </div>
                 <div class="row text-center">
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-1 fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">KARATE</h4>
-                        <p class="text-muted"><img src="{{asset('bootpro/assets/img/ekskul/karate.jpg')}}" alt="Image" height="250" width="250"></p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-2 fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">BANJARI</h4>
-                        <p class="text-muted"><img src="{{asset('bootpro/assets/img/ekskul/banjari.jpg')}}" alt="Image" height="250" width="250"></p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-3 fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">SEPAK BOLA</h4>
-                        <p class="text-muted"><img src="{{asset('bootpro/assets/img/ekskul/futsal.jpg')}}" alt="Image" height="250" width="250"></p>
-                    </div>
+                    @foreach ($ekskul as $e)
+                        <div class="col-md-4">
+                            <span class="fa-stack fa-4x">
+                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fas fa-{{$e->no}} fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h4 class="my-3">{{$e->judul}}</h4>
+                            <p class="text-muted" style="padding-bottom: 10px;"><img src="{{asset('images/gambarSistem/'.$e->file)}}" alt="Image" height="250" width="250"></p>
+                        </div>   
+                    @endforeach
                 </div><br><br>
-                <div class="container">
-                    <div class="row text-center">
-                        <div class="col-md-4">
-                            <span class="fa-stack fa-4x">
-                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                                <i class="fas fa-4 fa-stack-1x fa-inverse"></i>
-                            </span>
-                            <h4 class="my-3">TARI</h4>
-                            <p class="text-muted"><img src="{{asset('bootpro/assets/img/ekskul/tari.jpg')}}" alt="Image" height="250" width="250"></p>
-                        </div>
-                        <div class="col-md-4">
-                            <span class="fa-stack fa-4x">
-                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                                <i class="fas fa-5 fa-stack-1x fa-inverse"></i>
-                            </span>
-                            <h4 class="my-3">MEWARNA</h4>
-                            <p class="text-muted"><img src="{{asset('bootpro/assets/img/ekskul/mewarna.jpg')}}" alt="Image" height="250" width="250"></p>
-                        </div>
-                        <div class="col-md-4">
-                            <span class="fa-stack fa-4x">
-                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                                <i class="fas fa-6 fa-stack-1x fa-inverse"></i>
-                            </span>
-                            <h4 class="my-3">TAHFIDS</h4>
-                            <p class="text-muted"><img src="{{asset('bootpro/assets/img/ekskul/mengaji.jpg')}}" alt="Image" height="250" width="250"></p>
-                        </div>
-                    </div>
-            </div>
         </section>
         <!-- Portfolio Grid-->
         <section class="page-section bg-custome2" id="portfolio">
@@ -176,92 +136,24 @@
                     <h3 class="section-subheading text-muted"></h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 1-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/senam.jpg')}}" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">FISIK MOTORIK</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 2-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/sholat.png')}}" alt="..."/>
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">KEGIATAN KEAGAMAAN</div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                        <!-- Portfolio item 4-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/outclas1.jpg')}}" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">OUTING CLASS</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <!-- Portfolio item 6-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/hBesar1.jpg')}}" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">PERINGATAN HARI BESAR / HARI ISLAM</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <!-- Portfolio item 8-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/scDaring.jpg')}}" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">PEMBELAJARAN DARING</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <!-- Portfolio item 9-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/luring.png')}}" alt="..."/>
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">PEMBELAJARAN LURING</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <?php $no = 1;?> 
+                     @foreach ($kegiatan as $k)
+                         <div class="col-lg-4 col-sm-6 mb-4">
+                             <!-- Portfolio item 1-->
+                             <div class="portfolio-item">
+                                 <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal{{$no++}}">
+                                     <div class="portfolio-hover">
+                                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                     </div>
+                                     <img class="img-fluid" src="{{asset('images/gambarSistem/'.$k->file)}}" alt="..." />
+                                 </a>
+                                 <div class="portfolio-caption">
+                                     <div class="portfolio-caption-heading">{{$k->judul}}</div>
+                                 </div>
+                             </div>
+                         </div>   
+                     @endforeach
+                 </div>
             </div>
         </section>
         <!-- About-->
@@ -333,36 +225,23 @@
                     <h3 class="section-subheading text-muted"></h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="team-member">
-                            <img class="mx-auto" src="{{asset('bootpro/assets/img/guru/guru1.jpg')}}" alt="..." />
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="team-member">
-                            <img class="mx-auto" src="{{asset('bootpro/assets/img/guru/guru2.jpg')}}" alt="..." />
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="team-member">
-                            <img class="mx-auto" src="{{asset('bootpro/assets/img/guru/guru3.jpg')}}" alt="..." />
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="team-member">
-                            <img class="mx-auto" src="{{asset('bootpro/assets/img/guru/guru4.jpg')}}" alt="..." />
-                            
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="section-heading text-uppercase">VIDEO PENGENALAN IBU DEWAN GURU </h3><br>
-                        <video width="700" controls>   
-                            <source src="{{asset('bootpro/assets/img/guru/video.mp4')}}" type="video/mp4" />
-                        </video>
-                    </div>
+                    @foreach ($guru as $g)
+                        @if ($g->file != null)
+                            <div class="col-lg-6">
+                                <div class="team-member">
+                                    <img class="mx-auto" src="{{asset('images/gambarSistem/'.$g->file)}}" alt="..." />
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                    @foreach ($guru as $g)
+                        @if ($g->link != null)
+                            <div class="text-center">
+                                <h3 class="section-heading text-uppercase">{{$g->judul}}</h3><br>
+                                <iframe width="700px" height="350px" src="{{$g->link}}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -371,11 +250,18 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">YUK GABUNG BERSAMA RA QURROTA A'YUN </h2><br><br>
-                    <video width="600" controls>   
-                        <source src="{{asset('bootpro/assets/img/PPDB/video.mp4')}}" type="video/mp4" />
-                    </video><br><br>
+                    @foreach ($ppdb as $p)
+                        @if ($p->link != null)
+                            <iframe width="700px" height="350px" src="{{$p->link}}" frameborder="0" allowfullscreen></iframe>
+                        @endif
+                    @endforeach
+                    <br><br>
                 </div>
-                <img class="img-fluid" src="{{asset('bootpro/assets/img/PPDB/pamflet.jpg')}}" alt="image" height="500" width="500"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @foreach ($ppdb as $p)
+                    @if ($p->file != null)
+                        <img class="img-fluid" src="{{asset('images/gambarSistem/'.$p->file)}}" alt="image" height="500" width="500"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @endif
+                @endforeach
                 <a href="/">
                 <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                     <i class="fas fa-share-square-o me-1"></i>
@@ -389,11 +275,11 @@
         <footer class="footer py-4">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; RA Qurrota A'yun Kepanjen</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <div class="col-lg-5 text-lg-start">Copyright &copy; RA QURROTA A'YUN KEPANJEN 2022</div>
+                    <div class="col-lg-3 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-instagram"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -412,38 +298,30 @@
                                     <h2 class="text-uppercase">FISIK MOTORIK</h2><br><br>
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- Senam 1-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/senam.jpg')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- Senam 2-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/senam2.jpg')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- Senam 3-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/senam3.jpg')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- Senam 4-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/senam4.png')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            @if ($fismot->count() != 0)
+                                                @foreach ($fismot as $f1)
+                                                    <div class="col-lg-6 col-sm-8 mb-6">
+                                                        <!-- Senam 1-->
+                                                        <div class="portfolio-item">
+                                                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                                                <img class="img-fluid" src="{{asset('images/gambarSistem/'.$f1->file)}}" alt="..." />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                @endforeach    
+                                            @endif
+                                            @foreach ($motorik as $mot)
+                                                @if ($mot->file != null)
+                                                    <div class="col-lg-6 col-sm-8 mb-6">
+                                                        <!-- Senam 2-->
+                                                        <div class="portfolio-item">
+                                                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                                                <img class="img-fluid" src="{{asset('images/gambarSistem/'.$mot->file)}}" alt="..." />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -464,15 +342,33 @@
                                 <div class="modal-body">
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">KEGIATAN KEAGAMAAN</h2><br><br>
-                                    <div class="col-lg-6 col-sm-8 mb-6">
-                                        <!-- Senam 4-->
-                                        <div class="portfolio-item">
-                                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                                <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/sholat.png')}}" alt="..." />
-                                            </a>
-                                            <h5>Praktek Sholat</h5>
-                                        </div>
-                                    </div>
+                                        @if ($kagama->count() != 0)
+                                            @foreach ($kagama as $kag)
+                                                <div class="col-lg-6 col-sm-8 mb-6">
+                                                    <!-- Senam 1-->
+                                                    <div class="portfolio-item">
+                                                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                                            <img class="img-fluid" src="{{asset('images/gambarSistem/'.$kag->file)}}" alt="..." />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endforeach    
+                                        @endif
+                                        @if ($keagamaan->count() != 0)
+                                            @foreach ($keagamaan as $keag)
+                                                @if ($keag->file != null)
+                                                    <div class="col-lg-6 col-sm-8 mb-6">
+                                                        <!-- Senam 2-->
+                                                        <div class="portfolio-item">
+                                                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                                                <img class="img-fluid" src="{{asset('images/gambarSistem/'.$keag->file)}}" alt="..." />
+                                                            </a>
+                                                            <h5>{{$keag->judul}}</h5>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
                                 </div>
                             </div>
                         </div>
@@ -493,38 +389,33 @@
                                     <h2 class="text-uppercase">OUTING CLASS</h2>
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- outclas 1-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/outclas1.jpg')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- outclas 2-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/outclas2.jpg')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- outclas 3-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/outclas3.png')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- outclas 4-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/outclas4.png')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            @if ($kouting->count() != 0)
+                                                @foreach ($kouting as $kout)
+                                                    <div class="col-lg-6 col-sm-8 mb-6">
+                                                        <!-- Senam 1-->
+                                                        <div class="portfolio-item">
+                                                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                                                <img class="img-fluid" src="{{asset('images/gambarSistem/'.$kout->file)}}" alt="..." />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                @endforeach    
+                                            @endif
+                                            @if ($outing->count() != 0)
+                                                @foreach ($outing as $out)
+                                                    @if ($out->file != null)
+                                                        <div class="col-lg-6 col-sm-8 mb-6">
+                                                            <!-- Senam 2-->
+                                                            <div class="portfolio-item">
+                                                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                                                    <img class="img-fluid" src="{{asset('images/gambarSistem/'.$out->file)}}" alt="..." />
+                                                                </a>
+                                                                <h5>{{$out->judul}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -547,42 +438,21 @@
                                     <h2 class="text-uppercase">PERINGATAN HARI BESAR / HARI ISLAM</h2><br><br>
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- outclas 1-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/hBesar1.jpg')}}" alt="..." />
-                                                    </a>
-                                                   <h5>Peringatan Hari Santri</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- outclas 2-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/hariGuru.jpg')}}" alt="..." />
-                                                    </a>
-                                                    <h5>Peringatan Hari Guru</h5><br><br>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- outclas 3-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/maulid2.jpg')}}" alt="..." />
-                                                    </a>
-                                                    <h5>Peringatan Maulid Nabi SAW</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- outclas 4-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/maulid1.png')}}" alt="..." />
-                                                    </a>
-                                                    <h5>Peringatan Maulid Nabi SAW</h5>
-                                                </div>
-                                            </div>
+                                            @if ($hrbesar->count() != 0)
+                                                @foreach ($hrbesar as $hbes)
+                                                    @if ($hbes->file != null)
+                                                        <div class="col-lg-6 col-sm-8 mb-6">
+                                                            <!-- Senam 2-->
+                                                            <div class="portfolio-item">
+                                                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                                                    <img class="img-fluid" src="{{asset('images/gambarSistem/'.$hbes->file)}}" alt="..." />
+                                                                </a>
+                                                                <h5>{{$hbes->judul}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -605,16 +475,35 @@
                                     <h2 class="text-uppercase">PEMBELAJARAN DARING</h2><br><br>
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- outclas 1-->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal8">
-                                                        <video width="600"controls>
-                                                            <source src="{{asset('bootpro/assets/img/kegiatan/daring1.mp4')}}" type="video/mp4" />
-                                                          </video>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            @if ($daring->count() != 0)
+                                                @foreach ($daring as $dar)
+                                                    @if ($dar->file != null)
+                                                        <div class="col-lg-6 col-sm-8 mb-6">
+                                                            <!-- Senam 2-->
+                                                            <div class="portfolio-item">
+                                                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                                                    <img class="img-fluid" src="{{asset('images/gambarSistem/'.$dar->file)}}" alt="..." />
+                                                                </a>
+                                                                <h5>{{$dar->judul}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                                <br><br>
+                                                @foreach ($daring as $dar)
+                                                    @if ($dar->link != null)
+                                                        <div class="col-lg-6 col-sm-8 mb-6">
+                                                            <!-- Senam 2-->
+                                                            <div class="portfolio-item">
+                                                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                                                    <iframe width="600px" height="350px" src="{{$dar->link}}" frameborder="0" allowfullscreen></iframe>
+                                                                </a>
+                                                                <h5>{{$dar->judul}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -637,38 +526,33 @@
                                     <h2 class="text-uppercase">PEMBELAJARAN LURING</h2><br><br>
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- luring -->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/luring.png')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- luring -->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/luring3.jpg')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- luring -->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/luring1.jpg')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-8 mb-6">
-                                                <!-- luring -->
-                                                <div class="portfolio-item">
-                                                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                                        <img class="img-fluid" src="{{asset('bootpro/assets/img/kegiatan/luring2.jpg')}}" alt="..." />
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            @if ($kluring->count() != 0)
+                                                @foreach ($kluring as $klur)
+                                                    <div class="col-lg-6 col-sm-8 mb-6">
+                                                        <!-- Senam 1-->
+                                                        <div class="portfolio-item">
+                                                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                                                <img class="img-fluid" src="{{asset('images/gambarSistem/'.$klur->file)}}" alt="..." />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                @endforeach    
+                                            @endif
+                                            @if ($luring->count() != 0)
+                                                @foreach ($luring as $lur)
+                                                    @if ($lur->file != null)
+                                                        <div class="col-lg-6 col-sm-8 mb-6">
+                                                            <!-- Senam 2-->
+                                                            <div class="portfolio-item">
+                                                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                                                    <img class="img-fluid" src="{{asset('images/gambarSistem/'.$lur->file)}}" alt="..." />
+                                                                </a>
+                                                                <h5>{{$lur->judul}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

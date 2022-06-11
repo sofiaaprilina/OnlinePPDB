@@ -91,19 +91,33 @@
                 <div class="table">
                     <table width="1000px">
                         <tr>
-                            <td><strong>Nama Calon Siswa </strong></td>
+                            <td><strong>No Kartu Keluarga</strong></td>
+                            <td>:</td>
+                            <td><input type="text" name="no_kk" value="{{ $siswa->no_kk }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="16"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>NIK Calon Siswa</strong></td>
+                            <td>:</td>
+                            <td><input type="text" name="nik" value="{{ $siswa->nik }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="16"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nama Calon Siswa</strong></td>
+                            <td>:</td>
                             <td><input type="text" name="nama" value="{{ $siswa->nama }}" class="form-control"></td>
                         </tr>
                         <tr>
-                            <td><strong>Tempat Lahir Siswa </strong></td>
-                            <td><input type="text" value="{{$siswa->tempat}}" class="form-control"></td>
+                            <td><strong>Tempat Lahir </strong></td>
+                            <td>:</td>
+                            <td><input type="text" name="tempat" value="{{$siswa->tempat}}" class="form-control"></td>
                         </tr>
                         <tr>
-                            <td><strong>Tanggal Lahir Siswa </strong></td>
-                            <td><input type="date" value="{{ $siswa->tgl_lahir }}" class="form-control"></td>
+                            <td><strong>Tanggal Lahir </strong></td>
+                            <td>:</td>
+                            <td><input type="date" name="tgl_lahir" value="{{ $siswa->tgl_lahir }}" class="form-control"></td>
                         </tr>
                         <tr>
-                            <td><strong>Jenis Kelamin Siswa </strong></td>
+                            <td><strong>Jenis Kelamin </strong></td>
+                            <td>:</td>
                             <td>
                                 <select name="jenis_kelamin" class="form-control">
                                     <option value="{{$siswa->jenis_kelamin}}">{{$siswa->jenis_kelamin}}</option>
@@ -114,10 +128,12 @@
                         </tr>
                         <tr>
                             <td><strong>Agama </strong></td>
+                            <td>:</td>
                             <td><input type="text" name="agama" value="{{ $siswa->agama }}" class="form-control"></td>
                         </tr>
                         <tr>
                             <td><strong>Alamat </strong></td>
+                            <td>:</td>
                             <td><input type="text" name="alamat" value="{{ $siswa->alamat }}" class="form-control"></td>
                         </tr>
                     </table>
@@ -130,15 +146,23 @@
                     <div class="my-2"></div>
                     <table width="1000px">
                         <tr>
+                            <td><strong>NIK Ayah </strong></td>
+                            <td>:</td>
+                            <td><input type="text" name="nik_ayah" value="{{ $siswa->nik_ayah }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="16"></td>
+                        </tr>
+                        <tr>
                             <td><strong>Nama Ayah </strong></td>
+                            <td>:</td>
                             <td><input type="text" name="nm_ayah" value="{{ $siswa->nm_ayah }}" class="form-control"></td>
                         </tr>
                         <tr>
                             <td><strong>Pekerjaan Ayah </strong></td>
+                            <td>:</td>
                             <td><input type="text" name="kj_ayah" value="{{ $siswa->kj_ayah }}" class="form-control"></td>
                         </tr>
                         <tr>
                             <td><strong>Penghasilan Ayah </strong></td>
+                            <td>:</td>
                             <td>
                                 <input type="text" name="ph_ayah" id="ph_ayah" value="{{ $siswa->ph_ayah }}" class="form-control">
                                 <p><small style="color: red";>*</small> Per bulan.</p>
@@ -146,10 +170,12 @@
                         </tr>
                         <tr>
                             <td><strong>No Telp Ayah </strong></td>
+                            <td>:</td>
                             <td><input type="text" name="no_ayah" value="{{ $siswa->no_ayah }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="13"></td>
                         </tr>
                         <tr>
                             <td><strong>Status Ayah</strong></td>
+                            <td>:</td>
                             <td>
                                 <select name="status_ayah" class="form-control">
                                     <option value="{{$siswa->status_ayah}}">{{$siswa->status_ayah}}</option>
@@ -159,15 +185,23 @@
                             </td>
                         </tr>
                         <tr> 
+                            <td><strong>NIK Ibu </strong></td>
+                            <td>:</td>
+                            <td><input type="text" name="nik_ibu" value="{{ $siswa->nik_ibu }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="16"></td>
+                        </tr>
+                        <tr> 
                             <td><strong>Nama Ibu </strong></td>
+                            <td>:</td>
                             <td><input type="text" name="nm_ibu" value="{{ $siswa->nm_ibu }}" class="form-control"></td>
                         </tr>
                         <tr>
                             <td><strong>Pekerjaan Ibu </strong></td>
+                            <td>:</td>
                             <td><input type="text" name="kj_ibu" value="{{ $siswa->kj_ibu }}" class="form-control"></td>
                         </tr>
                         <tr>
                             <td><strong>Penghasilan Ibu </strong></td>
+                            <td>:</td>
                             <td>
                                 <input type="text" name="ph_ibu" id="ph_ibu" value="{{ $siswa->ph_ibu }}" class="form-control">
                                 <p><small style="color: red";>*</small> Per bulan.</p>
@@ -175,10 +209,12 @@
                         </tr>
                         <tr>
                             <td><strong>No Telp Ibu </strong></td>
+                            <td>:</td>
                             <td><input type="text" name="no_ibu" value="{{ $siswa->no_ibu }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="13"></td>
                         </tr>
                         <tr>
                             <td><strong>Status Ibu</strong></td>
+                            <td>:</td>
                             <td>
                                 <select name="status_ibu" class="form-control">
                                     <option value="{{$siswa->status_ibu}}">{{$siswa->status_ibu}}</option>
@@ -188,15 +224,23 @@
                             </td>
                         </tr>
                         <tr>
+                            <td><strong>NIK Wali </strong></td>
+                            <td>:</td>
+                            <td><input type="text" name="nik_wali" value="{{ $siswa->nik_wali }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="16"></td>
+                        </tr>
+                        <tr>
                             <td><strong>Nama Wali </strong></td>
+                            <td>:</td>
                             <td><input type="text" name="nm_wali" value="{{ $siswa->nm_wali }}" class="form-control"></td>
                         </tr>
                         <tr>
                             <td><strong>Pekerjaan Wali </strong></td>
+                            <td>:</td>
                             <td><input type="text" name="kj_wali" value="{{ $siswa->kj_wali }}" class="form-control"></td>
                         </tr>
                         <tr>
                             <td><strong>Penghasilan Wali</strong></td>
+                            <td>:</td>
                             <td>
                                 <input type="text" name="ph_wali" id="ph_wali" value="{{ $siswa->ph_wali }}" class="form-control">
                                 <p><small style="color: red";>*</small> Per bulan.</p>
@@ -204,10 +248,12 @@
                         </tr>
                         <tr>
                             <td><strong>No Telp Wali </strong></td>
+                            <td>:</td>
                             <td><input type="text" name="no_wali" value="{{ $siswa->no_wali }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="13"></td>
                         </tr>
                         <tr>
                             <td><strong>Tanggungan Orang Tua / Wali </strong></td>
+                            <td>:</td>
                             <td>
                                 <input type="number" name="tanggungan" id="tanggungan" value="{{ $siswa->tanggungan }}" class="form-control">
                                 <p><small style="color: red";>*</small> Jumlah anggota keluarga yang masih dibiayai orang tua / wali.</p>
@@ -215,37 +261,46 @@
                         </tr>
                         <tr>
                             <td><strong>Email Orang Tua / Wali</strong></td>
+                            <td>:</td>
                             <td><input type="email" name="email" value="{{ $siswa->email }}" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"></td>
                         </tr>
                         <tr>
                             <td><strong>Akte Kelahiran</strong></td>
+                            <td>:</td>
                             <td><input type="file" class="form-control" name="akte" value="{{ $siswa->akte }}" accept="image/jpeg,image/jpg,image/png"></td>
                         </tr>
                         <tr>
+                            <td></td>
                             <td></td>
                             <td><img width="150px" src="{{asset('uploads/'.$siswa->akte)}}" data-action="zoom"></td>
                         </tr>
                         <tr>
                             <td><strong>Kartu Keluarga</strong></td>
+                            <td>:</td>
                             <td><input type="file" class="form-control" name="kk" value="{{ $siswa->kk }}" accept="image/jpeg,image/jpg,image/png"></td>
                         </tr>
                         <tr>
+                            <td></td>
                             <td></td>
                             <td><img width="150px" src="{{asset('uploads/'.$siswa->kk)}}" data-action="zoom"></td>
                         </tr>
                         <tr>
                             <td><strong>KTP Orang Tua</strong></td>
+                            <td>:</td>
                             <td><input type="file" class="form-control" name="ktp" value="{{ $siswa->ktp }}" accept="image/jpeg,image/jpg,image/png"></td>
                         </tr>
                         <tr>
+                            <td></td>
                             <td></td>
                             <td><img width="150px" src="{{asset('uploads/'.$siswa->ktp)}}" data-action="zoom"></td>
                         </tr>
                         <tr>
                             <td><strong>Slip Gaji</strong></td>
+                            <td>:</td>
                             <td><input type="file" class="form-control" name="gaji" value="{{ $siswa->gaji }}" accept="image/jpeg,image/jpg,image/png"></td>
                         </tr>
                         <tr>
+                            <td></td>
                             <td></td>
                             <td><img width="150px" src="{{asset('uploads/'.$siswa->gaji)}}" data-action="zoom"></td>
                         </tr>

@@ -26,7 +26,7 @@
 			<br>
             <br>
 			<div class="col-xs-15 col-sm-15 col-md-15 text-center">
-                <a class="btn btn-primary" href="/"> Back</a>
+                <a class="btn btn-primary" href="/ppdb"> Back</a>
             </div>
             </form>
         </section>

@@ -66,8 +66,21 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="/pengumuman">
-                    <i class="fas fa-fw fa-info"></i>
+                    <i class="fas fa-fw fa-list"></i>
                     <span>Pengumuman</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/informasi">
+                    <i class="fas fa-fw fa-info"></i>
+                    <span>Informasi PPDB</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/tampilan">
+                    <i class="fas fa-fw fa-clipboard-list"></i>
+                    <span>Kelola Tampilan</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -162,7 +175,7 @@
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
+                <div class="container">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; RA QURROTA A'YUN KEPANJEN 2022</span>
                     </div>
@@ -224,6 +237,26 @@
 
     <!-- Zoom Js -->
     <script src="{{asset('zoom/js/zoom.js')}}"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#kategori').on('change', function() {
+              if ( this.value == 'Ekskul')
+              //.....................^.......
+              {
+                $("#no").show();
+              }
+              else {
+                $("#no").hide();
+              }
+            });
+            $('#judul').keyup(function() {
+                this.value = this.value.toLocaleUpperCase();
+            });
+        });
+    </script>
 
 </body>
 

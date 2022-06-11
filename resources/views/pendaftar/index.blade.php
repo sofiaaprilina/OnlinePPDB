@@ -68,6 +68,22 @@
                     </span>
                     <span class="text text-justify">Cetak PDF</span>
                 </a>
+                <form action="/filter" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <select name="filter" id="filter" aria-controls="dataTable" class="custom-select custom-select-md form-control form-control-md">
+                            <option value="Semua">Semua Data</option>
+                            <option value="Terkonfirmasi">Terkonfirmasi</option>
+                            <option value="Belum Konfirmasi">Belum Konfirmasi</option>
+                            <option value="Valid">Valid</option>
+                            <option value="Tidak Valid">Tidak Valid</option>
+                        </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            Filter
+                        </button>
+                    </div>
+                </div>
+                </form>
                  <div class="pull-right" style="float: right">
                     <form action="/cari" method="GET"
                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">

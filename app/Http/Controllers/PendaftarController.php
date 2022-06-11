@@ -253,12 +253,28 @@ class PendaftarController extends Controller
 
     public function cari(Request $request){
         $cari= $request->get('cari');
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
         $pendaftars = \App\Pendaftar::where('siswa', 'LIKE', '%' . $cari . '%')
 		->orwhere('ortu', 'like', '%' . $cari . '%')
 		->orwhere('status', 'like', '%' . $cari . '%')
 		->paginate(10);
         
-	    return view('pendaftar.index', ['pendaftars'=>$pendaftars]);
+	    return view('pendaftar.index', ['pendaftars'=>$pendaftars, 'daftars'=>$daftars, 'alerts'=>$alerts]);
+    }
+
+    public function filter(Request $request){
+        $filter= $request->get('filter');
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        if ($filter == 'Semua'){
+            $pendaftars = Pendaftar::paginate(5);
+        } else {
+            $pendaftars = \App\Pendaftar::where('status', 'LIKE', '%' . $filter . '%')
+            ->paginate(10);
+        }
+        
+	    return view('pendaftar.index', ['pendaftars'=>$pendaftars, 'daftars'=>$daftars, 'alerts'=>$alerts]);
     }
 
     public function cetak(){

@@ -150,32 +150,33 @@
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
             </div>
-            @if ($confirms->count() > 0)
-               <div class="card-body">
+            @if ($confirms->count() > 0 || $checks->count() > 0 || $seleksi->count() > 0)
+            <div class="card-body">
                 <?php $blm = round($confirms->count() / $daftars->count() * 100,2); ?>
-                <h4 class="small font-weight-bold">Pendaftar Terkonfirmasi <span
-                        class="float-right">40%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                        aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <?php $blm = round($checks->count() / $siswas->count() * 100,2); ?>
-                <h4 class="small font-weight-bold">Berkas Terkonfirmasi <span
-                        class="float-right">80%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                @if ($confirms->count() > 0)
+                    <h4 class="small font-weight-bold">Pendaftar Terkonfirmasi <span
+                            class="float-right">{{$blm}}%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{$blm}}%"
+                            aria-valuenow="{{$blm}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> 
+                @endif
+                <?php $berkas = round($checks->count() / $siswas->count() * 100,2); ?>
+                @if ($checks->count() > 0)
+                    <h4 class="small font-weight-bold">Berkas Terkonfirmasi <span class="float-right">{{$berkas}}%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: {{$berkas}}%" aria-valuenow="{{$berkas}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                @endif
                 <?php $lolos = round($seleksi->count() / 125 * 100,2); ?>
-                <h4 class="small font-weight-bold">Lolos Seleksi <span
-                        class="float-right">{{$lolos}}%</span></h4>
-                <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: {{$lolos}}%"
-                        aria-valuenow="{{$lolos}}" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                @if ($seleksi->count() > 0)
+                    <h4 class="small font-weight-bold">Lolos Seleksi <span class="float-right">{{$lolos}}%</span></h4>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: {{$lolos}}%" aria-valuenow="{{$lolos}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                @endif
             </div> 
-            @endif
-            
+            @endif  
         </div>
     </div>
 </div>

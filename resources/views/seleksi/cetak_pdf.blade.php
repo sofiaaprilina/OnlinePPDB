@@ -73,14 +73,14 @@
                         <tr class="tr-break" style="text-align: center;">
                             <th>ID</th>
                             <th>Nama Siswa</th>
-                            <th>Tempat, Tangggal Lahir</th>
+                            <th>TTL</th>
                             <th>Jenis Kelamin</th>
                             <th>Agama</th>
                             <th>Alamat</th>
+                            <th>No KK</th>
+                            <th>NIK</th>
                             <th>Nama Ayah</th>
-                            <th>No Ayah</th>
                             <th>Nama Ibu</th>
-                            <th>No Ibu</th>
                             <th>Keringanan</th>
                             <th>Check</th>
                         </tr>
@@ -110,10 +110,10 @@
                             <td>{{$s->jenis_kelamin}}</td>
                             <td>{{$s->agama}}</td>
                             <td>{{$s->alamat}}</td>
+                            <td>{{$s->no_kk}}</td>
+                            <td>{{$s->nik}}</td>
                             <td>{{$s->nm_ayah}}</td>
-                            <td>{{$s->no_ayah}}</td>
                             <td>{{$s->nm_ibu}}</td>
-                            <td>{{$s->no_ibu}}</td>
                             <td>{{$keringanan}}</td>
                             <td></td>
                         </tr>

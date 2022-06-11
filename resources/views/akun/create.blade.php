@@ -58,7 +58,13 @@
             <h2>Tambah Akun Pendaftar</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-warning" href="{{ route('pendaftar.index') }}"> Data Pendaftar</a>
+            {{-- <a class="btn btn-success" href="{{ route('pendaftar.index') }}"> Data Pendaftar</a> --}}
+            <a href="#" class="btn btn-warning btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-info"></i>
+                </span>
+                <span class="text">Tambahkan akun sesuai urutan ID Pendaftar !</span>
+            </a>
             <a class="btn btn-primary" style="float: right;" href="{{ route('akun.index') }}"> Back</a>
         </div>
     </div>

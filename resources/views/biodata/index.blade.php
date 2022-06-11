@@ -9,10 +9,10 @@
     @foreach ($siswas as $siswa)
         @if (Auth::user()->id == $siswa->user_id)
             <?php 
-                if ($siswa->agama == null || $siswa->alamat == null) {
+                if ($siswa->no_kk == null || $siswa->nik == null || $siswa->agama == null || $siswa->alamat == null) {
                     $jumlah+=1;
                 }
-                if ($siswa->nm_ayah == null || $siswa->kj_ayah == null || $siswa->ph_ayah == null || $siswa->no_ayah == null || $siswa->nm_ibu == null || $siswa->kj_ibu == null || $siswa->ph_ibu == null || $siswa->no_ibu == null || $siswa->tanggungan == null || $siswa->email == null) {
+                if ($siswa->nik_ayah == null || $siswa->nm_ayah == null || $siswa->kj_ayah == null || $siswa->ph_ayah == null || $siswa->no_ayah == null || $siswa->nik_ibu == null || $siswa->nm_ibu == null || $siswa->kj_ibu == null || $siswa->ph_ibu == null || $siswa->no_ibu == null || $siswa->tanggungan == null || $siswa->email == null) {
                     $jumlah+=1;
                 }
                 if ($siswa->akte == null) {
@@ -46,7 +46,7 @@
             </h6>
             @foreach ($siswas as $siswa)
                 @if (Auth::user()->id == $siswa->user_id)
-                    @if ($siswa->agama == null || $siswa->alamat == null)
+                    @if ($siswa->no_kk == null || $siswa->nik == null || $siswa->agama == null || $siswa->alamat == null)
                         <a class="dropdown-item d-flex align-items-center" href="/biodata">
                             <div class="mr-3">
                                 <div class="icon-circle bg-warning">
@@ -59,7 +59,7 @@
                             </div>
                         </a>
                     @endif
-                    @if ($siswa->nm_ayah == null || $siswa->kj_ayah == null || $siswa->ph_ayah == null || $siswa->no_ayah == null || $siswa->nm_ibu == null || $siswa->kj_ibu == null || $siswa->ph_ibu == null || $siswa->no_ibu == null || $siswa->tanggungan == null || $siswa->email == null)
+                    @if ($siswa->nik_ayah == null || $siswa->nm_ayah == null || $siswa->kj_ayah == null || $siswa->ph_ayah == null || $siswa->no_ayah == null || $siswa->nik_ibu == null ||  $siswa->nm_ibu == null || $siswa->kj_ibu == null || $siswa->ph_ibu == null || $siswa->no_ibu == null || $siswa->tanggungan == null || $siswa->email == null)
                         <a class="dropdown-item d-flex align-items-center" href="/biodata">
                             <div class="mr-3">
                                 <div class="icon-circle bg-warning">
@@ -158,6 +158,14 @@
                 <div class="table">
                     <table width="1000px">
                         <tr>
+                            <td><strong>No Kartu Keluarga</strong></td>
+                            <td><input type="text" name="no_kk" value="{{ $siswa->no_kk }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="16"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>NIK Calon Siswa</strong></td>
+                            <td><input type="text" name="nik" value="{{ $siswa->nik }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="16"></td>
+                        </tr>
+                        <tr>
                             <td><strong>Nama Calon Siswa</strong></td>
                             <td><input type="text" name="nama" value="{{ $siswa->nama }}" class="form-control" readonly></td>
                         </tr>
@@ -187,6 +195,10 @@
                     <div class="my-2"></div>
                     <table width="1000px">
                         <tr>
+                            <td><strong>NIK Ayah</strong></td>
+                            <td><input type="text" name="nik_ayah" value="{{ $siswa->nik_ayah }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="16"></td>
+                        </tr>
+                        <tr>
                             <td><strong>Nama Ayah </strong></td>
                             <td><input type="text" name="nm_ayah" value="{{ $siswa->nm_ayah }}" class="form-control"></td>
                         </tr>
@@ -214,6 +226,10 @@
                                     <option value="Meninggal">Meninggal</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
+                            <td><strong>NIK Ibu</strong></td>
+                            <td><input type="text" name="nik_ibu" value="{{ $siswa->nik_ibu }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="16"></td>
                         </tr>
                         <tr> 
                             <td><strong>Nama Ibu</strong></td>
@@ -243,6 +259,10 @@
                                     <option value="Meninggal">Meninggal</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
+                            <td><strong>NIK Wali</strong></td>
+                            <td><input type="text" name="nik_wali" value="{{ $siswa->nik_wali }}" class="form-control" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="16"></td>
                         </tr>
                         <tr>
                             <td><strong>Nama Wali </strong></td>

@@ -69,15 +69,19 @@ class SiswaController extends Controller
             'ktp' => 'required',
         ]);
         $siswa = new Siswa;
+        $siswa->no_kk = $request->no_kk;
+        $siswa->nik = $request->nik;
         $siswa->nama = $request->nama;
         $siswa->tempat = $request->tempat;
         $siswa->tgl_lahir = $request->tgl_lahir;
         $siswa->jenis_kelamin = $request->jenis_kelamin;
         $siswa->agama = $request->agama;
         $siswa->alamat = $request->alamat;
+        $siswa->nik_ayah = $request->nik_ayah;
         $siswa->nm_ayah = $request->nm_ayah;
         $siswa->kj_ayah = $request->kj_ayah;
         $siswa->no_ayah = $request->no_ayah;
+        $siswa->nik_ibu = $request->nik_ibu;
         $siswa->nm_ibu = $request->nm_ibu;
         $siswa->kj_ibu = $request->kj_ibu;
         $siswa->no_ibu = $request->no_ibu;
@@ -139,34 +143,20 @@ class SiswaController extends Controller
     public function update($id, Request $request)
     {
         $siswa = \App\Siswa::find($id);
-        // $request->validate([
-        //     'nama' => 'required',
-        //     'tempat' => 'required',
-        //     'tgl_lahir' => 'required',
-        //     'jenis_kelamin' => 'required',
-        //     'agama' => 'required',
-        //     'alamat' => 'required',
-        //     'nm_ayah' => 'required',
-        //     'kj_ayah' => 'required',
-        //     'no_ayah' => 'required',
-        //     'nm_ibu' => 'required',
-        //     'kj_ibu' => 'required',
-        //     'no_ibu' => 'required',
-        //     'email' => 'required',
-        //     'akte' => 'required',
-        //     'kk' => 'required',
-        //     'ktp' => 'required',
-        // ]);
+        $siswa->no_kk = $request->no_kk;
+        $siswa->nik = $request->nik;
         $siswa->nama = $request->nama;
-        // $siswa->tempat = $request->tempat;
-        // $siswa->tgl_lahir = $request->tgl_lahir;
+        $siswa->tempat = $request->tempat;
+        $siswa->tgl_lahir = $request->tgl_lahir;
         $siswa->jenis_kelamin = $request->jenis_kelamin;
         $siswa->agama = $request->agama;
         $siswa->alamat = $request->alamat;
+        $siswa->nik_ayah = $request->nik_ayah;
         $siswa->nm_ayah = $request->nm_ayah;
         $siswa->kj_ayah = $request->kj_ayah;
         $siswa->no_ayah = $request->no_ayah;
         $siswa->status_ayah = $request->status_ayah;
+        $siswa->nik_ibu = $request->nik_ibu;
         $siswa->nm_ibu = $request->nm_ibu;
         $siswa->kj_ibu = $request->kj_ibu;
         $siswa->no_ibu = $request->no_ibu;
@@ -250,10 +240,16 @@ class SiswaController extends Controller
     }
     public function cari(Request $request){
         $cari= $request->get('cari');
+        $sis = Siswa::where('status', '=', 'Lolos')->count();
+        $konfirm = Siswa::where('berkas', '=', 'Terkonfirmasi')->count();
+        $nokonfirm = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->count();
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
         $siswas = \App\Siswa::where('nama', 'LIKE', '%' . $cari . '%')
 		->paginate(10);
         
-	    return view('siswa.index', ['siswas'=>$siswas]);
+	    return view('siswa.index', ['siswas'=>$siswas, 'sis'=>$sis, 'konfirm'=>$konfirm, 'nokonfirm'=>$nokonfirm, 
+                                    'daftars'=>$daftars, 'alerts'=>$alerts]);
     }
 
     public function ubahStatus(Request $request){
@@ -270,5 +266,24 @@ class SiswaController extends Controller
             $message = "Gagal update. ".$e->getMessage();
             return false;
         }
+    }
+
+    public function filter(Request $request){
+        $filter= $request->get('filter');
+        $sis = Siswa::where('status', '=', 'Lolos')->count();
+        $konfirm = Siswa::where('berkas', '=', 'Terkonfirmasi')->count();
+        $nokonfirm = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->count();
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
+        if ($filter == 'Semua'){
+            $siswas = Siswa::paginate(5);
+        } else {
+            $siswas = \App\Siswa::where('status', 'LIKE', '%' . $filter . '%')
+            ->orwhere('berkas', '=', $filter)
+            ->paginate(10);
+        }
+        
+	    return view('siswa.index', ['siswas'=>$siswas, 'sis'=>$sis, 'konfirm'=>$konfirm, 'nokonfirm'=>$nokonfirm, 
+                                    'daftars'=>$daftars, 'alerts'=>$alerts]);
     }
 }

@@ -34,7 +34,8 @@ class AkunController extends Controller
     {
         $pendaftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
         $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
-        return view('akun.create', compact('pendaftars','alerts'));
+        $users = User::all();
+        return view('akun.create', compact('pendaftars','alerts','users'));
     }
 
     /**
@@ -55,14 +56,23 @@ class AkunController extends Controller
 
         ]);
         $pass = substr(md5(mt_rand()), 1, 8);
-        $user = User::create([
-            'idPendaftar' => $request->get('idPendaftar'),
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'password' => Hash::make($pass),
-            'decrypt' => $pass,
-        ]);
+        
+        $existing_input = User::where([
+            ['idPendaftar', '=', $request->idPendaftar], 
+            ['name', '=',  $request->name], 
+            ['email', '=', $request->email]
+        ])->first();
+
+        if ( ! $existing_input) {
+            $user = User::create([
+                'idPendaftar' => $request->get('idPendaftar'),
+                'name' => $request->name,
+                'email' => $request->email,
+                'username' => $request->username,
+                'password' => Hash::make($pass),
+                'decrypt' => $pass,
+            ]);
+        }
         // $user = new User;
         // $user->name = $request->name;
         // $user->email = $request->email;
@@ -145,10 +155,12 @@ class AkunController extends Controller
     }
     public function cari(Request $request){
         $cari= $request->get('cari');
+        $daftars = Pendaftar::where('status', '=', 'Belum Konfirmasi')->get();
+        $alerts = Siswa::where('berkas', '=', 'Belum Terkonfirmasi')->get();
         $users = \App\User::where('username', 'LIKE', '%' . $cari . '%')
 		->orwhere('name', 'like', '%' . $cari . '%')
 		->paginate(10);
         
-	return view('akun.index', ['users'=>$users]);
-}
+        return view('akun.index', ['users'=>$users, 'daftars'=>$daftars, 'alerts'=>$alerts]);
+    }
 }
