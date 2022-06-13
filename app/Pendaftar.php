@@ -12,6 +12,6 @@ class Pendaftar extends Model
     
     public function user()
     {
-        return $this->hasOne('App\User', 'idPendaftar');
+        return $this->hasOne('App\User', 'id');
     }
 }

@@ -28,15 +28,6 @@ class HomeController extends Controller
         $pengumumans = Pengumuman::all();
         $siswas = Siswa::all();
         
-        foreach ($siswas as $siswa) {
-            if ($siswa->status == 'Lolos') {
-                alert()->success('Silahkan mencetak bukti pendaftaran dan melakukan daftar ulang sesuai jadwal yang ditentukan.', 'Selamat Ananda Lolos Seleksi');
-            } 
-            else if($siswa->status == 'Tidak Lolos') {
-                alert()->error('Jangan kecewa masih banyak kesempatan lain. Terima kasih sudah mendaftar', 'Maaf Ananda Tidak Lolos Seleksi');
-            }
-        }
-        
         return view('user.dashboard', compact('pengumumans','siswas'));
     }
 }

@@ -47,8 +47,8 @@ class AkunController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'id' => 'required',
             'name' => 'required',
-            'idPendaftar' => 'required',
             'name' => 'required',
             'email' => 'required',
             'username' => 'required',
@@ -58,14 +58,14 @@ class AkunController extends Controller
         $pass = substr(md5(mt_rand()), 1, 8);
         
         $existing_input = User::where([
-            ['idPendaftar', '=', $request->idPendaftar], 
+            ['id', '=', $request->id], 
             ['name', '=',  $request->name], 
             ['email', '=', $request->email]
         ])->first();
 
         if ( ! $existing_input) {
             $user = User::create([
-                'idPendaftar' => $request->get('idPendaftar'),
+                'id' => $request->get('id'),
                 'name' => $request->name,
                 'email' => $request->email,
                 'username' => $request->username,

@@ -50,13 +50,9 @@ class CreateSiswasTable extends Migration
             $table->enum('berkas', ['Terkonfirmasi', 'Belum Terkonfirmasi', 'Tidak Valid'])->default('Belum Terkonfirmasi');
             $table->enum('status', ['Lolos', 'Tidak Lolos'])->nullable();
             $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->enum('keringanan', ['Ya', 'Tidak'])->default('Tidak');
             $table->timestamps();
         });
-        Schema::table('siswas', function($table)
-        {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-        });
-
     }
 
     /**

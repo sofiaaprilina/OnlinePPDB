@@ -281,7 +281,7 @@
                         </tr>
                         <tr>
                             <td><strong>Status Keringanan</strong></td>
-                            <td>{{ $keringanan }}</td>
+                            <td>{{ $siswa->keringanan }}</td>
                         </tr>
                     </table>
                 </div>

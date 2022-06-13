@@ -180,7 +180,7 @@
             </tr>
             <tr class="tr-break">
                 <td class="tabel_data"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status Keringanan</strong></td>
-                <td class="tabel_data">&nbsp;&nbsp;{{ $keringanan }}</td>
+                <td class="tabel_data">&nbsp;&nbsp;{{ $s->keringanan }}</td>
             </tr>
             @endif
             @endforeach 

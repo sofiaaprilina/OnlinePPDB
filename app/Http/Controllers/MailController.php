@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    public function index($id){
+    public function index($id, Request $request){
         $pendaftar = \App\Pendaftar::find($id);
         $user = \App\User::find($id);
 
@@ -22,13 +22,35 @@ class MailController extends Controller
        
         \Mail::to($pendaftar->email)->send(new \App\Mail\MyTestMail($details));
 
+        $user = \App\User::find($id);
+        $pendaftar = \App\Pendaftar::find($id);
+        $request->validate([
+            'idPendaftar' => 'required',
+            'nama' => 'required',
+            'tempat' => 'required',
+            'tgl_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+            'email' => 'required',
+        ]);
+        $siswa = \App\Siswa::create([
+            'idPendaftar' => $request->id,
+            'nama' => $request->nama,
+            'tempat' => $request->tempat,
+            'tgl_lahir' => $request->tgl_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+            'email' => $request->email,
+            'user_id' => $user->id,
+        ]);
+
         $pendaftar->update([
-            'status' => 'Valid'
+            'status' => 'Terkonfirmasi'
             ]);
        
         // dd("Email sudah terkirim.");
         return redirect()->route('pendaftar.index')
-            ->with('success','Konfirmasi pendaftar berhasil');
+            ->with('success','Konfirmasi pendaftar berhasil dan pendaftar berhasil ditambahkan ke menu biodata dan berkas siswa');
     
         }
 
@@ -63,7 +85,7 @@ class MailController extends Controller
         'title' => 'PPDB RA QURROTA AYUN websitepercobaan.com',
         'body1' => 'Terimakasih sudah melakukan Pendaftaran Peserta Didik Baru pada RA.Qurrota Ayun Kepanjen.',
         'body2' => 'Berkas Pendaftaran yang Anda Upload/Masukkan Sudah Sesuai.',
-        'body3' => 'Tunggu Informasi Selanjutnya Mengenai Hasil Seleksi pada Website PPDB.'
+        'body3' => 'Hasil Seleksi Akan Ditampilkan di Masing-Masing Akun Pada Website PPDB. Silahkan Memeriksa Akun Anda.'
         ];
        
         \Mail::to($siswa->email)->send(new \App\Mail\MyTestMail($details));
@@ -113,6 +135,10 @@ class MailController extends Controller
             ];
            
             \Mail::to($siswa->email)->send(new \App\Mail\MyTestMail($details));
+
+            $siswa->update([
+                'keringanan' => 'Ya'
+                ]);
            
             // dd("Email sudah terkirim.");
             return redirect()->route('seleksi.index')

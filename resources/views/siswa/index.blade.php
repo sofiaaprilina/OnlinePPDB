@@ -144,9 +144,9 @@
             <td width="100px">
                 @if ($siswa->berkas == 'Terkonfirmasi')
                     <select class="status form-control" data-id="{{ $siswa->id }}" style="padding: 2px">
-                        <option value="{{$siswa->status}}">{{$siswa->status}}</option>
+                        <option value="{{$siswa->status}}" {{ $siswa->status ? 'selected' : '' }}>{{$siswa->status}}</option>
                         @if ($sis < 125)
-                            <option value="Lolos" {{ $siswa->status ? 'selected' : '' }}>Lolos</option>
+                            <option value="Lolos" {{ !$siswa->status ? 'selected' : '' }}>Lolos</option>
                         @endif
                         <option value="Tidak Lolos" {{ !$siswa->status ? 'selected' : '' }}>Tidak Lolos</option>
                     </select>
@@ -187,18 +187,5 @@
      </div>
 
     {{ $siswas->links() }}
-
-    {{-- <script>
-        $(".status").on("change", function(){
-        // alert($(this).data('id'));
-        // alert($(this).val());
-            var temp = $(this); 
-            $.ajax({
-                url: '{{ url("/ubah-status-siswa") }}',
-                type: 'post',
-                data: {_token: "{{ csrf_token() }}", id: $(this).data("id"),  status: $(this).val() },
-            });
-        });
-    </script> --}}
 
  @endsection

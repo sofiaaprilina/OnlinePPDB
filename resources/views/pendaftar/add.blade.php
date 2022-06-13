@@ -71,7 +71,7 @@
     </div>
 @endif
 
-<form action="{{ route('pendaftar.olah',$pendaftar->id) }}" method="POST" enctype="multipart/form-data" >
+<form action="{{ route('konfirmasi',$pendaftar->id) }}" method="POST" enctype="multipart/form-data" >
     @csrf
   
      <div class="row justify-content-center">
@@ -132,7 +132,7 @@
                 </div>
                 
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary">Konfirmasi</button>
                     </div>
                 </div>
             </div>

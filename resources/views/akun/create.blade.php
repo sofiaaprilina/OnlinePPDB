@@ -59,12 +59,12 @@
         </div>
         <div class="pull-right">
             {{-- <a class="btn btn-success" href="{{ route('pendaftar.index') }}"> Data Pendaftar</a> --}}
-            <a href="#" class="btn btn-warning btn-icon-split">
+            {{-- <a href="#" class="btn btn-warning btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-info"></i>
                 </span>
                 <span class="text">Tambahkan akun sesuai urutan ID Pendaftar !</span>
-            </a>
+            </a> --}}
             <a class="btn btn-primary" style="float: right;" href="{{ route('akun.index') }}"> Back</a>
         </div>
     </div>
@@ -91,7 +91,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>ID Pendaftar: </strong>
-                <select name="idPendaftar" class="form-control" id="idPendaftar" required = 'required' >
+                <select name="id" class="form-control" id="id" required = 'required' >
                     @foreach ($pendaftars as $p)
                         <option value="{{$p->id}}">{{$p->id}} | {{$p->siswa}}</option>
                     @endforeach

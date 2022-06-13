@@ -133,7 +133,7 @@ Route::middleware('auth:panitia')->group(function(){
     Route::delete('/destroy', 'PendaftarController@destroy')->name('pendaftar.destroy');
     Route::delete('/destroy{id}', 'PendaftarController@destroy')->name('pendaftar.destroy');
     Route::get('/add/{id}', 'PendaftarController@add')->name('pendaftar.add');
-    Route::post('/olah/{id}', 'PendaftarController@olah')->name('pendaftar.olah');
+   //  Route::post('/olah/{id}', 'PendaftarController@olah')->name('pendaftar.olah');
     Route::get('/cari', 'PendaftarController@cari')->name('cari');
     Route::get('/filter', 'PendaftarController@filter')->name('filter');
     Route::get('/cetak_pendaftar', 'PendaftarController@cetak')->name('pendaftar.cetak_pdf');
@@ -184,6 +184,13 @@ Route::middleware('auth:panitia')->group(function(){
     Route::delete('/destroy{id}', 'SeleksiController@destroy')->name('seleksi.destroy');
     Route::get('/cariSeleksi', 'SeleksiController@cari')->name('cariSeleksi');
     Route::get('/cetak_seleksi', 'SeleksiController@cetak')->name('seleksi.cetak_pdf');
+
+    //Konfirmasi Email
+    Route::post('kirim-email/{id}','MailController@index')->name('konfirmasi');
+    Route::get('novalid/{id}','MailController@novalid')->name('novalid');
+    Route::get('berkas-valid/{id}','MailController@berkasvalid')->name('berkas.valid');
+    Route::get('berkas-novalid/{id}','MailController@berkasnovalid')->name('berkas.novalid');
+    Route::get('confirm-keringanan/{id}','MailController@keringanan')->name('keringanan');
 });
 
 //Form
@@ -234,10 +241,3 @@ Route::get('/cetak_pdf', 'CetakController@cetak')->name('cetak.cetak_pdf');
 //Ganti Password
 Route::get('change-password', 'ChangePasswordController@index')->name('change.pw');
 Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
-
-//Konfirmasi Email
-Route::get('kirim-email/{id}','MailController@index')->name('konfirmasi');
-Route::get('novalid/{id}','MailController@novalid')->name('novalid');
-Route::get('berkas-valid/{id}','MailController@berkasvalid')->name('berkas.valid');
-Route::get('berkas-novalid/{id}','MailController@berkasnovalid')->name('berkas.novalid');
-Route::get('confirm-keringanan/{id}','MailController@keringanan')->name('keringanan');

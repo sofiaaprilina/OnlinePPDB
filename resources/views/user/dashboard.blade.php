@@ -121,7 +121,18 @@
 <div class="container">
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
+        @foreach ($siswas as $siswa)
+            @if (Auth::user()->id == $siswa->user_id)
+            <?php
+                if ($siswa->status == 'Lolos') {
+                    alert()->success('Silahkan mencetak bukti pendaftaran dan melakukan daftar ulang sesuai jadwal yang ditentukan.', 'Selamat Ananda Lolos Seleksi');
+                } 
+                else if($siswa->status == 'Tidak Lolos') {
+                    alert()->error('Jangan kecewa masih banyak kesempatan lain. Terima kasih sudah mendaftar', 'Maaf Ananda Tidak Lolos Seleksi');
+                }
+            ?>
+            @endif
+        @endforeach
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>

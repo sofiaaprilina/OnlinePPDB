@@ -71,7 +71,7 @@
     <br>    
     <table class="table cell-border tabel_data" style="page-break-inside:auto; margin-bottom: 0px; padding-bottom: 0px;">
                         <tr class="tr-break" style="text-align: center;">
-                            <th>ID</th>
+                            <th>No</th>
                             <th>Nama Siswa</th>
                             <th>TTL</th>
                             <th>Jenis Kelamin</th>
@@ -102,9 +102,10 @@
                             </thead>
                 
                         <tbody style="font-family: 'Times New Roman'; border-top: 1px solid black !important;">
+                            <?php $no=1; ?>
                         @foreach ($siswa as $s)
                         <tr class="tabel_data ">
-                            <td>{{$s->id}}</td>
+                            <td>{{$no++}}</td>
                             <td>{{$s->nama}}</td>
                             <td>{{$s->tempat}},{{$s->tgl_lahir}}</td>
                             <td>{{$s->jenis_kelamin}}</td>
@@ -114,14 +115,14 @@
                             <td>{{$s->nik}}</td>
                             <td>{{$s->nm_ayah}}</td>
                             <td>{{$s->nm_ibu}}</td>
-                            <td>{{$keringanan}}</td>
+                            <td>{{$s->keringanan}}</td>
                             <td></td>
                         </tr>
                         @endforeach 
                     </tbody>
                     </table>
                 <br>
-            <br><br>
+            <p>Jumlah Siswa : {{$siswa->count()}}</p><br><br>
             <p class="right">Panitia</p>
             <br><br><br>
             <p class="right">_______________________</p>

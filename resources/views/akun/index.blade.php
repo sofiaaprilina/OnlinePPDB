@@ -93,17 +93,18 @@
             <div class="table">
      <table class="table-bordered" width="1000px">
          <tr>
-             <th>Id</th>
+             <th>No</th>
              <th>ID Pendaftaran</th>
              <th>Nama</th>
              <th>Username</th>
              <th>Password</th>
              <th >Action</th>
          </tr>
+         <?php $no=1; ?>
          @foreach ($users as $user)
          <tr>
+             <td>{{ $no++ }}</td>
              <td>{{ $user->id }}</td>
-             <td>{{ $user->idPendaftar }}</td>
              <td>{{ $user->name }}</td>
              <td>{{ $user->username }}</td>
              <td>{{ $user->decrypt }}</td>

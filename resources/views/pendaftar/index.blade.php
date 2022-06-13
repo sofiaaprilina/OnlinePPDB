@@ -74,7 +74,6 @@
                             <option value="Semua">Semua Data</option>
                             <option value="Terkonfirmasi">Terkonfirmasi</option>
                             <option value="Belum Konfirmasi">Belum Konfirmasi</option>
-                            <option value="Valid">Valid</option>
                             <option value="Tidak Valid">Tidak Valid</option>
                         </select>
                     <div class="input-group-append">
@@ -140,15 +139,12 @@
                         <a class="btn btn-warning" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Konfirmasi</a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="{{ route('konfirmasi',$pendaftar->id) }}">
+                            <a class="dropdown-item" href="{{ route('pendaftar.add',$pendaftar->id) }}">
                                 Kirim Notifikasi Akun
                             </a>
                             <a class="dropdown-item" href="{{ route('novalid',$pendaftar->id) }}">
                                 Kirim Notifikasi Tidak Valid
                             </a>
-                            <a class="dropdown-item" href="{{ route('pendaftar.add',$pendaftar->id) }}">
-                                Tambah Siswa
-                             </a>
                          </div>
                     </div>
                     <br>

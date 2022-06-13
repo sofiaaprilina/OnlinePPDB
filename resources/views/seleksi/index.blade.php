@@ -105,39 +105,44 @@
             <div class="table">
      <table class="table-bordered" width="1000px">
          <tr>
-             <th>Id</th>
+             <th>No</th>
              <th>Nama Siswa</th>
              <th>Email</th>
              <th>Status</th>
              <th>Status Keringanan</th>
              <th >Action</th>
          </tr>
+         <?php $no=1; ?>
          @foreach ($siswas as $siswa)
          <?php
             $keringanan = "";
 
             if ($siswa->status_ayah == 'Meninggal' && $siswa->tanggungan > 3 && $siswa->ph_ibu < 1000000){
-                $keringanan = "Ya";
+                $keringanan = "Direkomendasikan";
             }
             elseif ($siswa->status_ibu == 'Meninggal' && $siswa->tanggungan > 3 && $siswa->ph_ayah < 1000000) {
-                $keringanan = "Ya";
+                $keringanan = "Direkomendasikan";
             } 
             elseif ($siswa->status_ayah == 'Meninggal' && $siswa->status_ibu == 'Meninggal' && $siswa->ph_wali < 1000000 && $siswa->tanggungan > 3){
-                $keringanan = "Ya";
+                $keringanan = "Direkomendasikan";
             }
             else{
                 $keringanan = "Tidak";
             }
          ?>
          <tr>
-             <td>{{ $siswa->id }}</td>
+             <td>{{ $no++ }}</td>
              <td>{{ $siswa->nama }}</td>
              <td>{{ $siswa->email }}</td>
              <td>{{ $siswa->status }}</td>
-             <td>{{ $keringanan }}</td>
+             @if ($siswa->keringanan == 'Ya')
+                <td>{{ $siswa->keringanan }}</td>
+             @else
+                <td>{{ $keringanan }}</td>   
+             @endif
              <td width="200px">
                 {{-- <form action="#" method="POST"> --}}
-                    @if ($keringanan == 'Ya')
+                    @if ($keringanan == 'Direkomendasikan')
                         <div class="nav-item dropdown no-arrow">
                             <a class="btn btn-warning" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Konfirmasi</a>
